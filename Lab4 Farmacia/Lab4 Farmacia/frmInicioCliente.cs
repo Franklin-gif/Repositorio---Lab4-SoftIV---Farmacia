@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace Lab4_Farmacia
 {
-    public partial class frmRegistro : Form
+    public partial class frmInicioCliente : Form
     {
-        public frmRegistro()
+        public frmInicioCliente()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void medicamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmInicioCliente inicioCliente = new frmInicioCliente();
-            inicioCliente.Show();
+
         }
     }
 }

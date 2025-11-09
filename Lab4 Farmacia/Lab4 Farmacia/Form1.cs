@@ -30,7 +30,7 @@ namespace Lab4_Farmacia
 
         private void btmIniciarSesion_Click(object sender, EventArgs e)
         {
-            frmInicio frmInicio = new frmInicio();
+            frmInicioAdmin frmInicio = new frmInicioAdmin();
             frmInicio.Show();
         }
     }

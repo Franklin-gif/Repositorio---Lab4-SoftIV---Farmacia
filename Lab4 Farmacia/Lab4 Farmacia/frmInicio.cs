@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Lab4_Farmacia
 {
-    public partial class frmInicio : Form
+    public partial class frmInicioAdmin : Form
     {
-        public frmInicio()
+        public frmInicioAdmin()
         {
             InitializeComponent();
         }

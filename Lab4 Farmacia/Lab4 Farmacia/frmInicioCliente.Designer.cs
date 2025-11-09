@@ -1,6 +1,6 @@
 ﻿namespace Lab4_Farmacia
 {
-    partial class frmInicioAdmin
+    partial class frmInicioCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicioAdmin));
             menuStrip1 = new MenuStrip();
-            medicamentosToolStripMenuItem = new ToolStripMenuItem();
             inventariosToolStripMenuItem = new ToolStripMenuItem();
             pedidosToolStripMenuItem = new ToolStripMenuItem();
             sesionToolStripMenuItem = new ToolStripMenuItem();
@@ -40,18 +38,12 @@
             // menuStrip1
             // 
             menuStrip1.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { medicamentosToolStripMenuItem, inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
-            menuStrip1.TabIndex = 1;
+            menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
-            // 
-            // medicamentosToolStripMenuItem
-            // 
-            medicamentosToolStripMenuItem.Name = "medicamentosToolStripMenuItem";
-            medicamentosToolStripMenuItem.Size = new Size(116, 20);
-            medicamentosToolStripMenuItem.Text = "Medicamentos";
             // 
             // inventariosToolStripMenuItem
             // 
@@ -71,15 +63,14 @@
             sesionToolStripMenuItem.Size = new Size(63, 20);
             sesionToolStripMenuItem.Text = "Sesion";
             // 
-            // frmInicioAdmin
+            // frmInicioCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(800, 450);
             Controls.Add(menuStrip1);
-            Name = "frmInicioAdmin";
-            Text = "frmInicioAdmin";
+            Name = "frmInicioCliente";
+            Text = "frmInicioCliente";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -89,7 +80,6 @@
         #endregion
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem medicamentosToolStripMenuItem;
         private ToolStripMenuItem inventariosToolStripMenuItem;
         private ToolStripMenuItem pedidosToolStripMenuItem;
         private ToolStripMenuItem sesionToolStripMenuItem;
