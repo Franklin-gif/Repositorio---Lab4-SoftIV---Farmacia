@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistro));
-            button1 = new Button();
+            btmRegistrar = new Button();
             label1 = new Label();
             lblUsuario = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            txtContraseña = new TextBox();
+            txtUsuario = new TextBox();
             lblFarmatec = new Label();
             pctbox = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pctbox).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // btmRegistrar
             // 
             button1.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.Location = new Point(384, 485);
@@ -50,6 +50,15 @@
             button1.Text = "Registrar";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+
+            btmRegistrar.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btmRegistrar.Location = new Point(336, 364);
+            btmRegistrar.Name = "btmRegistrar";
+            btmRegistrar.Size = new Size(110, 27);
+            btmRegistrar.TabIndex = 13;
+            btmRegistrar.Text = "Registrar";
+            btmRegistrar.UseVisualStyleBackColor = true;
+            btmRegistrar.Click += btmRegistrar_Click;
             // 
             // label1
             // 
@@ -75,21 +84,31 @@
             lblUsuario.TabIndex = 11;
             lblUsuario.Text = "Usuario";
             // 
-            // textBox2
+            // txtContraseña
             // 
             textBox2.Location = new Point(360, 351);
             textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(175, 27);
             textBox2.TabIndex = 10;
+
+            txtContraseña.Location = new Point(315, 263);
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.Size = new Size(154, 23);
+            txtContraseña.TabIndex = 10;
             // 
-            // textBox1
+            // txtUsuario
             // 
             textBox1.Location = new Point(360, 212);
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(175, 27);
             textBox1.TabIndex = 9;
+
+            txtUsuario.Location = new Point(315, 159);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(154, 23);
+            txtUsuario.TabIndex = 9;
             // 
             // lblFarmatec
             // 
@@ -123,14 +142,20 @@
             ClientSize = new Size(914, 600);
             Controls.Add(lblFarmatec);
             Controls.Add(pctbox);
-            Controls.Add(button1);
+            Controls.Add(btmRegistrar);
             Controls.Add(label1);
             Controls.Add(lblUsuario);
+
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Margin = new Padding(3, 4, 3, 4);
+
+            Controls.Add(txtContraseña);
+            Controls.Add(txtUsuario);
+
             Name = "frmRegistro";
             Text = "frmRegistro";
+            Load += frmRegistro_Load;
             ((System.ComponentModel.ISupportInitialize)pctbox).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -138,11 +163,11 @@
 
         #endregion
 
-        private Button button1;
+        private Button btmRegistrar;
         private Label label1;
         private Label lblUsuario;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox txtContraseña;
+        private TextBox txtUsuario;
         private Label lblFarmatec;
         private PictureBox pctbox;
     }
