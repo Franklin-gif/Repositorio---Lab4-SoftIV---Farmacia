@@ -42,9 +42,10 @@
             // button1
             // 
             button1.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(336, 364);
+            button1.Location = new Point(384, 485);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(110, 27);
+            button1.Size = new Size(126, 36);
             button1.TabIndex = 13;
             button1.Text = "Registrar";
             button1.UseVisualStyleBackColor = true;
@@ -56,9 +57,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Stencil", 9.75F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(315, 244);
+            label1.Location = new Point(360, 325);
             label1.Name = "label1";
-            label1.Size = new Size(89, 16);
+            label1.Size = new Size(116, 20);
             label1.TabIndex = 12;
             label1.Text = "Contraseña";
             // 
@@ -68,24 +69,26 @@
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Stencil", 9.75F);
             lblUsuario.ForeColor = Color.Transparent;
-            lblUsuario.Location = new Point(315, 137);
+            lblUsuario.Location = new Point(360, 183);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(62, 16);
+            lblUsuario.Size = new Size(84, 20);
             lblUsuario.TabIndex = 11;
             lblUsuario.Text = "Usuario";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(315, 263);
+            textBox2.Location = new Point(360, 351);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(154, 23);
+            textBox2.Size = new Size(175, 27);
             textBox2.TabIndex = 10;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(315, 159);
+            textBox1.Location = new Point(360, 212);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(154, 23);
+            textBox1.Size = new Size(175, 27);
             textBox1.TabIndex = 9;
             // 
             // lblFarmatec
@@ -94,9 +97,9 @@
             lblFarmatec.BackColor = Color.Transparent;
             lblFarmatec.Font = new Font("Stencil", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFarmatec.ForeColor = Color.Transparent;
-            lblFarmatec.Location = new Point(291, 46);
+            lblFarmatec.Location = new Point(333, 61);
             lblFarmatec.Name = "lblFarmatec";
-            lblFarmatec.Size = new Size(195, 42);
+            lblFarmatec.Size = new Size(244, 52);
             lblFarmatec.TabIndex = 7;
             lblFarmatec.Text = "FARMATEC";
             // 
@@ -104,20 +107,20 @@
             // 
             pctbox.BackColor = Color.Transparent;
             pctbox.Image = (Image)resources.GetObject("pctbox.Image");
-            pctbox.Location = new Point(189, -61);
+            pctbox.Location = new Point(216, -81);
             pctbox.Margin = new Padding(0);
             pctbox.Name = "pctbox";
-            pctbox.Size = new Size(215, 185);
+            pctbox.Size = new Size(246, 247);
             pctbox.SizeMode = PictureBoxSizeMode.Zoom;
             pctbox.TabIndex = 14;
             pctbox.TabStop = false;
             // 
             // frmRegistro
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(lblFarmatec);
             Controls.Add(pctbox);
             Controls.Add(button1);
@@ -125,6 +128,7 @@
             Controls.Add(lblUsuario);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmRegistro";
             Text = "frmRegistro";
             ((System.ComponentModel.ISupportInitialize)pctbox).EndInit();
