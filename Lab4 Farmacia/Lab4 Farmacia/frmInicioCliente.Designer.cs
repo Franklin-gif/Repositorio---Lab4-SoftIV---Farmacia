@@ -32,6 +32,7 @@
             inventariosToolStripMenuItem = new ToolStripMenuItem();
             pedidosToolStripMenuItem = new ToolStripMenuItem();
             sesionToolStripMenuItem = new ToolStripMenuItem();
+            lblBienvenida = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -63,14 +64,25 @@
             sesionToolStripMenuItem.Size = new Size(63, 20);
             sesionToolStripMenuItem.Text = "Sesion";
             // 
+            // lblBienvenida
+            // 
+            lblBienvenida.AutoSize = true;
+            lblBienvenida.Location = new Point(727, 426);
+            lblBienvenida.Name = "lblBienvenida";
+            lblBienvenida.Size = new Size(38, 15);
+            lblBienvenida.TabIndex = 3;
+            lblBienvenida.Text = "label1";
+            // 
             // frmInicioCliente
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblBienvenida);
             Controls.Add(menuStrip1);
             Name = "frmInicioCliente";
             Text = "frmInicioCliente";
+            Load += frmInicioCliente_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -83,5 +95,6 @@
         private ToolStripMenuItem inventariosToolStripMenuItem;
         private ToolStripMenuItem pedidosToolStripMenuItem;
         private ToolStripMenuItem sesionToolStripMenuItem;
+        private Label lblBienvenida;
     }
 }

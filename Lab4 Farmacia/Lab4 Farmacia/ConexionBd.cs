@@ -1,14 +1,17 @@
 ﻿using Npgsql;
+using System;
 using System.Data;
 
-public class ConexionBd
+namespace Lab4_Farmacia
 {
-    private string cadena = "Host=localhost;Port=5432;Database=Farmacia;Username=postgres;Password=HiLlarY2013;";
-
-    public NpgsqlConnection Conectar()
+    public class ConexionBd
     {
-        NpgsqlConnection cn = new NpgsqlConnection(cadena);
-        cn.Open();
-        return cn;
+        private static string cadena = "Host=localhost;Port=5432;Username=postgres;Password=HiLlarY2013;Database=Farmacia";
+        public static NpgsqlConnection ObtenerConexion()
+        {
+            NpgsqlConnection conexion = new NpgsqlConnection(cadena);
+            conexion.Open();
+            return conexion;
+        }
     }
 }
