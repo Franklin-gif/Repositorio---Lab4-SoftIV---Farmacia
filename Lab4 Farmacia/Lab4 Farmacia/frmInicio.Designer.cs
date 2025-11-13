@@ -28,68 +28,74 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInicioAdmin));
-            menuStrip1 = new MenuStrip();
+            mnAdmin = new MenuStrip();
             medicamentosToolStripMenuItem = new ToolStripMenuItem();
             inventariosToolStripMenuItem = new ToolStripMenuItem();
             pedidosToolStripMenuItem = new ToolStripMenuItem();
             sesionToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip1.SuspendLayout();
+            mnAdmin.SuspendLayout();
             SuspendLayout();
             // 
-            // menuStrip1
+            // mnAdmin
             // 
-            menuStrip1.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { medicamentosToolStripMenuItem, inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
-            menuStrip1.TabIndex = 1;
-            menuStrip1.Text = "menuStrip1";
+            mnAdmin.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mnAdmin.ImageScalingSize = new Size(20, 20);
+            mnAdmin.Items.AddRange(new ToolStripItem[] { medicamentosToolStripMenuItem, inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem });
+            mnAdmin.Location = new Point(0, 0);
+            mnAdmin.Name = "mnAdmin";
+            mnAdmin.Padding = new Padding(7, 3, 0, 3);
+            mnAdmin.Size = new Size(914, 30);
+            mnAdmin.TabIndex = 1;
+            mnAdmin.Text = "MenuAdmin";
             // 
             // medicamentosToolStripMenuItem
             // 
             medicamentosToolStripMenuItem.Name = "medicamentosToolStripMenuItem";
-            medicamentosToolStripMenuItem.Size = new Size(116, 20);
+            medicamentosToolStripMenuItem.Size = new Size(150, 24);
             medicamentosToolStripMenuItem.Text = "Medicamentos";
+            medicamentosToolStripMenuItem.Click += medicamentosToolStripMenuItem_Click;
             // 
             // inventariosToolStripMenuItem
             // 
             inventariosToolStripMenuItem.Name = "inventariosToolStripMenuItem";
-            inventariosToolStripMenuItem.Size = new Size(103, 20);
+            inventariosToolStripMenuItem.Size = new Size(133, 24);
             inventariosToolStripMenuItem.Text = "Inventarios";
+            inventariosToolStripMenuItem.Click += inventariosToolStripMenuItem_Click;
             // 
             // pedidosToolStripMenuItem
             // 
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(71, 20);
+            pedidosToolStripMenuItem.Size = new Size(94, 24);
             pedidosToolStripMenuItem.Text = "Pedidos";
+            pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click;
             // 
             // sesionToolStripMenuItem
             // 
             sesionToolStripMenuItem.Name = "sesionToolStripMenuItem";
-            sesionToolStripMenuItem.Size = new Size(63, 20);
+            sesionToolStripMenuItem.Size = new Size(82, 24);
             sesionToolStripMenuItem.Text = "Sesion";
+            sesionToolStripMenuItem.Click += sesionToolStripMenuItem_Click;
             // 
             // frmInicioAdmin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 450);
-            Controls.Add(menuStrip1);
+            ClientSize = new Size(914, 600);
+            Controls.Add(mnAdmin);
+            IsMdiContainer = true;
+            MainMenuStrip = mnAdmin;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmInicioAdmin";
             Text = "frmInicioAdmin";
-            Load += frmInicioAdmin_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            mnAdmin.ResumeLayout(false);
+            mnAdmin.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private MenuStrip menuStrip1;
+        private MenuStrip mnAdmin;
         private ToolStripMenuItem medicamentosToolStripMenuItem;
         private ToolStripMenuItem inventariosToolStripMenuItem;
         private ToolStripMenuItem pedidosToolStripMenuItem;

@@ -17,7 +17,22 @@ namespace Lab4_Farmacia
             InitializeComponent();
         }
 
-        private void frmInicioAdmin_Load(object sender, EventArgs e)
+        private void medicamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inventariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

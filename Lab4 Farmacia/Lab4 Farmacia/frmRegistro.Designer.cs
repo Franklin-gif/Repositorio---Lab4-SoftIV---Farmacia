@@ -42,9 +42,10 @@
             // btmRegistrar
             // 
             btmRegistrar.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btmRegistrar.Location = new Point(336, 364);
+            btmRegistrar.Location = new Point(373, 485);
+            btmRegistrar.Margin = new Padding(3, 4, 3, 4);
             btmRegistrar.Name = "btmRegistrar";
-            btmRegistrar.Size = new Size(110, 27);
+            btmRegistrar.Size = new Size(154, 36);
             btmRegistrar.TabIndex = 13;
             btmRegistrar.Text = "Registrar";
             btmRegistrar.UseVisualStyleBackColor = true;
@@ -56,9 +57,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Stencil", 9.75F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(315, 244);
+            label1.Location = new Point(360, 325);
             label1.Name = "label1";
-            label1.Size = new Size(89, 16);
+            label1.Size = new Size(116, 20);
             label1.TabIndex = 12;
             label1.Text = "Contraseña";
             // 
@@ -68,24 +69,26 @@
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Stencil", 9.75F);
             lblUsuario.ForeColor = Color.Transparent;
-            lblUsuario.Location = new Point(315, 137);
+            lblUsuario.Location = new Point(360, 183);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(62, 16);
+            lblUsuario.Size = new Size(84, 20);
             lblUsuario.TabIndex = 11;
             lblUsuario.Text = "Usuario";
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(315, 263);
+            txtContraseña.Location = new Point(360, 351);
+            txtContraseña.Margin = new Padding(3, 4, 3, 4);
             txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(154, 23);
+            txtContraseña.Size = new Size(175, 27);
             txtContraseña.TabIndex = 10;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(315, 159);
+            txtUsuario.Location = new Point(360, 212);
+            txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(154, 23);
+            txtUsuario.Size = new Size(175, 27);
             txtUsuario.TabIndex = 9;
             // 
             // lblFarmatec
@@ -94,9 +97,9 @@
             lblFarmatec.BackColor = Color.Transparent;
             lblFarmatec.Font = new Font("Stencil", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFarmatec.ForeColor = Color.Transparent;
-            lblFarmatec.Location = new Point(291, 46);
+            lblFarmatec.Location = new Point(333, 61);
             lblFarmatec.Name = "lblFarmatec";
-            lblFarmatec.Size = new Size(195, 42);
+            lblFarmatec.Size = new Size(244, 52);
             lblFarmatec.TabIndex = 7;
             lblFarmatec.Text = "FARMATEC";
             // 
@@ -104,20 +107,20 @@
             // 
             pctbox.BackColor = Color.Transparent;
             pctbox.Image = (Image)resources.GetObject("pctbox.Image");
-            pctbox.Location = new Point(189, -61);
+            pctbox.Location = new Point(216, -81);
             pctbox.Margin = new Padding(0);
             pctbox.Name = "pctbox";
-            pctbox.Size = new Size(215, 185);
+            pctbox.Size = new Size(246, 247);
             pctbox.SizeMode = PictureBoxSizeMode.Zoom;
             pctbox.TabIndex = 14;
             pctbox.TabStop = false;
             // 
             // frmRegistro
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(lblFarmatec);
             Controls.Add(pctbox);
             Controls.Add(btmRegistrar);
@@ -125,6 +128,7 @@
             Controls.Add(lblUsuario);
             Controls.Add(txtContraseña);
             Controls.Add(txtUsuario);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmRegistro";
             Text = "frmRegistro";
             Load += frmRegistro_Load;
