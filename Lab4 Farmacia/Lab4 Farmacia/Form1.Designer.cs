@@ -53,19 +53,17 @@
             panel1.Controls.Add(lblFarmatec);
             panel1.Font = new Font("Microsoft Sans Serif", 9.75F);
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(914, 601);
+            panel1.Size = new Size(800, 451);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
             // btmRegistro
             // 
             btmRegistro.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btmRegistro.Location = new Point(328, 457);
-            btmRegistro.Margin = new Padding(3, 4, 3, 4);
+            btmRegistro.Location = new Point(287, 343);
             btmRegistro.Name = "btmRegistro";
-            btmRegistro.Size = new Size(126, 36);
+            btmRegistro.Size = new Size(110, 27);
             btmRegistro.TabIndex = 6;
             btmRegistro.Text = "Registro";
             btmRegistro.UseVisualStyleBackColor = true;
@@ -77,9 +75,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Stencil", 9.75F);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(368, 283);
+            label1.Location = new Point(322, 212);
             label1.Name = "label1";
-            label1.Size = new Size(116, 20);
+            label1.Size = new Size(89, 16);
             label1.TabIndex = 5;
             label1.Text = "Contraseña";
             // 
@@ -89,35 +87,32 @@
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Stencil", 9.75F);
             lblUsuario.ForeColor = Color.White;
-            lblUsuario.Location = new Point(368, 140);
+            lblUsuario.Location = new Point(322, 105);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(84, 20);
+            lblUsuario.Size = new Size(62, 16);
             lblUsuario.TabIndex = 4;
             lblUsuario.Text = "Usuario";
             // 
             // txtContra
             // 
-            txtContra.Location = new Point(368, 308);
-            txtContra.Margin = new Padding(3, 4, 3, 4);
+            txtContra.Location = new Point(322, 231);
             txtContra.Name = "txtContra";
-            txtContra.Size = new Size(175, 26);
+            txtContra.Size = new Size(154, 22);
             txtContra.TabIndex = 3;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(368, 169);
-            txtUsuario.Margin = new Padding(3, 4, 3, 4);
+            txtUsuario.Location = new Point(322, 127);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(175, 26);
+            txtUsuario.Size = new Size(154, 22);
             txtUsuario.TabIndex = 2;
             // 
             // btmIniciarSesion
             // 
             btmIniciarSesion.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btmIniciarSesion.Location = new Point(477, 459);
-            btmIniciarSesion.Margin = new Padding(3, 4, 3, 4);
+            btmIniciarSesion.Location = new Point(417, 344);
             btmIniciarSesion.Name = "btmIniciarSesion";
-            btmIniciarSesion.Size = new Size(126, 35);
+            btmIniciarSesion.Size = new Size(110, 26);
             btmIniciarSesion.TabIndex = 1;
             btmIniciarSesion.Text = "Iniciar";
             btmIniciarSesion.UseVisualStyleBackColor = true;
@@ -129,22 +124,22 @@
             lblFarmatec.BackColor = Color.Transparent;
             lblFarmatec.Font = new Font("Stencil", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblFarmatec.ForeColor = Color.White;
-            lblFarmatec.Location = new Point(347, 21);
+            lblFarmatec.Location = new Point(304, 16);
             lblFarmatec.Name = "lblFarmatec";
-            lblFarmatec.Size = new Size(244, 52);
+            lblFarmatec.Size = new Size(195, 42);
             lblFarmatec.TabIndex = 0;
             lblFarmatec.Text = "FARMATEC";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Inicio De Sesion";
+            Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

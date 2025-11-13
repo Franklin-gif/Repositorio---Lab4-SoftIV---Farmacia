@@ -53,6 +53,7 @@ namespace Lab4_Farmacia
             {
                 MessageBox.Show("Error al registrar el cliente: " + ex.Message);
             }
+            
         }
 
     }

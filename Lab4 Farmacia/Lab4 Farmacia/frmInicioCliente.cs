@@ -7,7 +7,7 @@ namespace Lab4_Farmacia
     {
         string usuarioActual;
 
-        // 🔹 Constructor que recibe el usuario
+
         public frmInicioCliente(string usuario)
         {
             InitializeComponent();
@@ -17,6 +17,16 @@ namespace Lab4_Farmacia
         private void frmInicioCliente_Load(object sender, EventArgs e)
         {
             lblBienvenida.Text = "Bienvenido, " + usuarioActual;
+        }
+
+        private void lblBienvenida_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void inventariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

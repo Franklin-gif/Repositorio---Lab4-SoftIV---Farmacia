@@ -19,20 +19,42 @@ namespace Lab4_Farmacia
 
         private void medicamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrmMedicamentos frmMedicamentos = new FrmMedicamentos();
+            frmMedicamentos.MdiParent = this;
+            frmMedicamentos.WindowState= FormWindowState.Maximized;
+            frmMedicamentos.Show();
+          
         }
 
         private void inventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrmInventario frmInventario = new FrmInventario();
+            frmInventario.MdiParent = this;
+            frmInventario.WindowState= FormWindowState.Maximized;
+            frmInventario.Show();
+            
         }
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrmPedidos frmPedido  = new FrmPedidos();
+            frmPedido.MdiParent = this;
+            frmPedido.WindowState= FormWindowState.Maximized;
+            frmPedido.Show();
+            
         }
 
         private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Pasa el usuario y rol actuales. Puedes guardarlos como variables globales.
+            sesion ventanaSesion = new sesion("Admin", "Administrador");
+            ventanaSesion.MdiParent = this;
+            ventanaSesion.WindowState= FormWindowState.Maximized;
+            ventanaSesion.Show();
+            
+        }
+
+        private void frmInicioAdmin_Load(object sender, EventArgs e)
         {
 
         }

@@ -18,51 +18,77 @@ namespace Lab4_Farmacia
 
             try
             {
-                // ?? Obtener conexión desde la clase ConexionBd
                 using (NpgsqlConnection conn = ConexionBd.ObtenerConexion())
                 {
-                    string query = "SELECT tipo_usuario FROM usuarios WHERE usuario=@u AND clave=@c";
+                    // ?? Traer tanto el nombre de usuario como el tipo (rol)
+                    string query = "SELECT usuario, tipo_usuario FROM usuarios WHERE usuario=@u AND clave=@c";
+
                     using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@u", usuario);
                         cmd.Parameters.AddWithValue("@c", clave);
 
-                        object tipo = cmd.ExecuteScalar();
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (!reader.Read())
+                            {
+                                MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
 
-                        if (tipo == null)
-                        {
-                            MessageBox.Show("Usuario o contraseña incorrectos.");
-                            return;
-                        }
+                            // ?? Obtener datos del usuario
+                            string nombreUsuario = reader.GetString(0);
+                            string tipoUsuario = reader.GetString(1);
 
-                        // ?? Validación según el tipo
-                        if (tipo.ToString() == "Admin")
-                        {
-                            new frmInicioAdmin().Show();
-                            this.Hide();
-                        }
-                        else if (tipo.ToString() == "Cliente")
-                        {
-                            new frmInicioCliente(usuario).Show();
-                            this.Hide();
+                            // ?? Mostrar mensaje opcional
+                            MessageBox.Show($"Bienvenido {nombreUsuario} ({tipoUsuario})", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                         
+                            if (tipoUsuario == "Admin")
+                            {
+                                frmInicioAdmin frmAdmin = new frmInicioAdmin();
+                                frmAdmin.Show();
+                                sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
+                              
+                            }
+                            else if (tipoUsuario == "Cliente")
+                            {
+                                frmInicioCliente frmCliente = new frmInicioCliente(nombreUsuario);
+                                frmCliente.Show();
+
+                                sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
+                              
+                            }
+                            else
+                            {
+                                MessageBox.Show("Rol no reconocido en la base de datos.");
+                            }
+
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al iniciar sesión: " + ex.Message);
+                MessageBox.Show("Error al iniciar sesión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+           
         }
 
         private void btmRegistro_Click(object sender, EventArgs e)
         {
             frmRegistro registro = new frmRegistro();
             registro.ShowDialog();
+            this.Close();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

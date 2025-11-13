@@ -16,5 +16,10 @@ namespace Lab4_Farmacia
         {
             InitializeComponent();
         }
+
+        private void btnEjecutar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
