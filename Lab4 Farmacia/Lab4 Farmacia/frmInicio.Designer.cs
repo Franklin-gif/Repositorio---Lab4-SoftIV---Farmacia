@@ -80,6 +80,7 @@
             Controls.Add(menuStrip1);
             Name = "frmInicioAdmin";
             Text = "frmInicioAdmin";
+            Load += frmInicioAdmin_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
