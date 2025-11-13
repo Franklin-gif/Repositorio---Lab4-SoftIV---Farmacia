@@ -10,7 +10,19 @@
     <Compile Update="frmInicioCliente.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmMedicamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="sesion.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
