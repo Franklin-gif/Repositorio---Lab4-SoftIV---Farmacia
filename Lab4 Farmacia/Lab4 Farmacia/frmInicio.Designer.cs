@@ -43,50 +43,49 @@
             mnAdmin.Items.AddRange(new ToolStripItem[] { medicamentosToolStripMenuItem, inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem });
             mnAdmin.Location = new Point(0, 0);
             mnAdmin.Name = "mnAdmin";
-            mnAdmin.Padding = new Padding(7, 3, 0, 3);
-            mnAdmin.Size = new Size(914, 30);
+            mnAdmin.Size = new Size(800, 24);
             mnAdmin.TabIndex = 1;
             mnAdmin.Text = "MenuAdmin";
             // 
             // medicamentosToolStripMenuItem
             // 
             medicamentosToolStripMenuItem.Name = "medicamentosToolStripMenuItem";
-            medicamentosToolStripMenuItem.Size = new Size(150, 24);
+            medicamentosToolStripMenuItem.Size = new Size(116, 20);
             medicamentosToolStripMenuItem.Text = "Medicamentos";
             medicamentosToolStripMenuItem.Click += medicamentosToolStripMenuItem_Click;
             // 
             // inventariosToolStripMenuItem
             // 
             inventariosToolStripMenuItem.Name = "inventariosToolStripMenuItem";
-            inventariosToolStripMenuItem.Size = new Size(133, 24);
+            inventariosToolStripMenuItem.Size = new Size(103, 20);
             inventariosToolStripMenuItem.Text = "Inventarios";
             inventariosToolStripMenuItem.Click += inventariosToolStripMenuItem_Click;
             // 
             // pedidosToolStripMenuItem
             // 
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(94, 24);
+            pedidosToolStripMenuItem.Size = new Size(71, 20);
             pedidosToolStripMenuItem.Text = "Pedidos";
             pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click;
             // 
             // sesionToolStripMenuItem
             // 
             sesionToolStripMenuItem.Name = "sesionToolStripMenuItem";
-            sesionToolStripMenuItem.Size = new Size(82, 24);
+            sesionToolStripMenuItem.Size = new Size(63, 20);
             sesionToolStripMenuItem.Text = "Sesion";
             sesionToolStripMenuItem.Click += sesionToolStripMenuItem_Click;
             // 
             // frmInicioAdmin
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(mnAdmin);
             IsMdiContainer = true;
             MainMenuStrip = mnAdmin;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmInicioAdmin";
             Text = "frmInicioAdmin";
+            Load += frmInicioAdmin_Load;
             mnAdmin.ResumeLayout(false);
             mnAdmin.PerformLayout();
             ResumeLayout(false);

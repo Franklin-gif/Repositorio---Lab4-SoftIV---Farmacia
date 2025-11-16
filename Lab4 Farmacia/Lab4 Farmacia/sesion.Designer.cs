@@ -37,11 +37,11 @@
             // 
             lblRol.AutoSize = true;
             lblRol.BackColor = Color.Transparent;
-            lblRol.Font = new Font("Stencil", 36F);
+            lblRol.Font = new Font("Stencil", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRol.ForeColor = SystemColors.Window;
-            lblRol.Location = new Point(393, 212);
+            lblRol.Location = new Point(333, 166);
             lblRol.Name = "lblRol";
-            lblRol.Size = new Size(142, 71);
+            lblRol.Size = new Size(64, 32);
             lblRol.TabIndex = 13;
             lblRol.Text = "Rol";
             // 
@@ -49,11 +49,11 @@
             // 
             lblUsuario.AutoSize = true;
             lblUsuario.BackColor = Color.Transparent;
-            lblUsuario.Font = new Font("Stencil", 36F);
+            lblUsuario.Font = new Font("Stencil", 21.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblUsuario.ForeColor = SystemColors.Window;
-            lblUsuario.Location = new Point(322, 104);
+            lblUsuario.Location = new Point(333, 105);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(287, 71);
+            lblUsuario.Size = new Size(138, 34);
             lblUsuario.TabIndex = 11;
             lblUsuario.Text = "Usuario";
             // 
@@ -62,24 +62,28 @@
             btnCerrarSesion.BackColor = SystemColors.ButtonFace;
             btnCerrarSesion.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCerrarSesion.ForeColor = Color.Black;
-            btnCerrarSesion.Location = new Point(322, 341);
+            btnCerrarSesion.Location = new Point(282, 256);
+            btnCerrarSesion.Margin = new Padding(3, 2, 3, 2);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(287, 76);
+            btnCerrarSesion.Size = new Size(251, 57);
             btnCerrarSesion.TabIndex = 14;
             btnCerrarSesion.Text = "Cerrar Sesión";
             btnCerrarSesion.UseVisualStyleBackColor = false;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
             // sesion
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Diseño_sin_título__1_;
-            ClientSize = new Size(944, 527);
+            ClientSize = new Size(826, 395);
             Controls.Add(btnCerrarSesion);
             Controls.Add(lblRol);
             Controls.Add(lblUsuario);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "sesion";
             Text = "sesion";
+            Load += sesion_Load;
             ResumeLayout(false);
             PerformLayout();
         }

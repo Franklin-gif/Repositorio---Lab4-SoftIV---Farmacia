@@ -115,7 +115,7 @@
             rdbModificar.ForeColor = Color.White;
             rdbModificar.Location = new Point(334, 45);
             rdbModificar.Name = "rdbModificar";
-            rdbModificar.Size = new Size(247, 48);
+            rdbModificar.Size = new Size(201, 39);
             rdbModificar.TabIndex = 2;
             rdbModificar.TabStop = true;
             rdbModificar.Text = "Modificar ";
@@ -250,6 +250,7 @@
             pnlGeneral.Controls.Add(grpInf);
             pnlGeneral.Controls.Add(pnlDesicion);
             pnlGeneral.Location = new Point(3, 2);
+            pnlGeneral.Margin = new Padding(3, 2, 3, 2);
             pnlGeneral.Name = "pnlGeneral";
             pnlGeneral.Size = new Size(1876, 933);
             pnlGeneral.TabIndex = 1;
@@ -328,7 +329,7 @@
             lblPrecio.ForeColor = Color.White;
             lblPrecio.Location = new Point(103, 532);
             lblPrecio.Name = "lblPrecio";
-            lblPrecio.Size = new Size(122, 35);
+            lblPrecio.Size = new Size(98, 29);
             lblPrecio.TabIndex = 4;
             lblPrecio.Text = "Precio";
             // 
@@ -404,11 +405,12 @@
             // 
             // FrmMedicamentos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(1884, 939);
             Controls.Add(pnlGeneral);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMedicamentos";
             Text = "FrmMedicamentos";
             Load += FrmMedicamentos_Load;

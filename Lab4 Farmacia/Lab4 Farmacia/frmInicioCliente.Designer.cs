@@ -43,46 +43,48 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(914, 30);
+            menuStrip1.Size = new Size(800, 24);
             menuStrip1.TabIndex = 2;
             menuStrip1.Text = "menuStrip1";
             // 
             // inventariosToolStripMenuItem
             // 
             inventariosToolStripMenuItem.Name = "inventariosToolStripMenuItem";
-            inventariosToolStripMenuItem.Size = new Size(133, 24);
+            inventariosToolStripMenuItem.Size = new Size(103, 20);
             inventariosToolStripMenuItem.Text = "Inventarios";
+            inventariosToolStripMenuItem.Click += inventariosToolStripMenuItem_Click;
             // 
             // pedidosToolStripMenuItem
             // 
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(94, 24);
+            pedidosToolStripMenuItem.Size = new Size(71, 20);
             pedidosToolStripMenuItem.Text = "Pedidos";
             // 
             // sesionToolStripMenuItem
             // 
             sesionToolStripMenuItem.Name = "sesionToolStripMenuItem";
-            sesionToolStripMenuItem.Size = new Size(82, 24);
-            sesionToolStripMenuItem.Text = "Sesion";
+            sesionToolStripMenuItem.Size = new Size(117, 20);
+            sesionToolStripMenuItem.Text = "Cerrar Sesion";
+            sesionToolStripMenuItem.Click += sesionToolStripMenuItem_Click;
             // 
             // lblBienvenida
             // 
             lblBienvenida.AutoSize = true;
-            lblBienvenida.Location = new Point(831, 568);
+            lblBienvenida.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBienvenida.Location = new Point(343, 66);
             lblBienvenida.Name = "lblBienvenida";
-            lblBienvenida.Size = new Size(50, 20);
+            lblBienvenida.Size = new Size(65, 25);
             lblBienvenida.TabIndex = 3;
             lblBienvenida.Text = "label1";
+            lblBienvenida.Click += lblBienvenida_Click;
             // 
             // frmInicioCliente
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 600);
+            ClientSize = new Size(800, 450);
             Controls.Add(lblBienvenida);
             Controls.Add(menuStrip1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmInicioCliente";
             Text = "frmInicioCliente";
             Load += frmInicioCliente_Load;
