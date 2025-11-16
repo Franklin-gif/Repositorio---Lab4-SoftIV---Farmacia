@@ -26,6 +26,35 @@ namespace Lab4_Farmacia
 
         private void inventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            InventarioCli inv = new InventarioCli();
+            inv.Show();
+            this.Hide();
+        }
+
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show(
+                "¿Deseas cerrar sesión?",
+                "Confirmar",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (r == DialogResult.Yes)
+            {
+                Form1 login = new Form1();
+                login.Show();
+                this.Hide();
+            }
+        }
+
+        private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }
