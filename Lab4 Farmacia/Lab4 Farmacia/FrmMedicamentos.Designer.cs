@@ -28,43 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMedicamentos));
             pnlDesicion = new Panel();
             rdbReabastecer = new RadioButton();
             rdbEliminar = new RadioButton();
             rdbModificar = new RadioButton();
-            dataGridView1 = new DataGridView();
+            dgvDatos = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
+            nombre = new DataGridViewTextBoxColumn();
+            descripcion = new DataGridViewTextBoxColumn();
+            imagen = new DataGridViewImageColumn();
+            cantidad = new DataGridViewTextBoxColumn();
+            precio = new DataGridViewTextBoxColumn();
             rdbAgregar = new RadioButton();
             npgsqlDataAdapter1 = new Npgsql.NpgsqlDataAdapter();
             pnlGeneral = new Panel();
-            nudCant = new NumericUpDown();
-            pictureBox1 = new PictureBox();
-            btnEjecutar = new Button();
-            lblPrecioUnidad = new Label();
-            lblCantidad = new Label();
-            txtPrecio = new TextBox();
-            tctEjecutar = new TextBox();
-            lblmagen = new Label();
-            lblPrecio = new Label();
+            grpInf = new GroupBox();
+            rtbDescrip = new RichTextBox();
+            lblDescripcion = new Label();
             lblNombre = new Label();
+            btnEjecutar = new Button();
+            lblPrecio = new Label();
+            nudCant = new NumericUpDown();
+            txtPrecio = new TextBox();
+            txtNombre = new TextBox();
+            lblmagen = new Label();
+            lblCantidad = new Label();
+            lblPrecioUnidad = new Label();
+            pbImagen = new PictureBox();
             pnlDesicion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDatos).BeginInit();
             pnlGeneral.SuspendLayout();
+            grpInf.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudCant).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbImagen).BeginInit();
             SuspendLayout();
             // 
             // pnlDesicion
             // 
+            pnlDesicion.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             pnlDesicion.Controls.Add(rdbReabastecer);
             pnlDesicion.Controls.Add(rdbEliminar);
             pnlDesicion.Controls.Add(rdbModificar);
-            pnlDesicion.Controls.Add(dataGridView1);
+            pnlDesicion.Controls.Add(dgvDatos);
             pnlDesicion.Controls.Add(rdbAgregar);
-            pnlDesicion.Location = new Point(3, 2);
-            pnlDesicion.Margin = new Padding(3, 2, 3, 2);
+            pnlDesicion.Location = new Point(9, 10);
             pnlDesicion.Name = "pnlDesicion";
-            pnlDesicion.Size = new Size(526, 382);
+            pnlDesicion.Size = new Size(1268, 915);
             pnlDesicion.TabIndex = 0;
             // 
             // rdbReabastecer
@@ -72,10 +87,9 @@
             rdbReabastecer.AutoSize = true;
             rdbReabastecer.Font = new Font("Stencil", 22.2F);
             rdbReabastecer.ForeColor = Color.White;
-            rdbReabastecer.Location = new Point(248, 94);
-            rdbReabastecer.Margin = new Padding(3, 2, 3, 2);
+            rdbReabastecer.Location = new Point(907, 45);
             rdbReabastecer.Name = "rdbReabastecer";
-            rdbReabastecer.Size = new Size(240, 39);
+            rdbReabastecer.Size = new Size(294, 48);
             rdbReabastecer.TabIndex = 4;
             rdbReabastecer.TabStop = true;
             rdbReabastecer.Text = "Reabastecer";
@@ -86,10 +100,9 @@
             rdbEliminar.AutoSize = true;
             rdbEliminar.Font = new Font("Stencil", 22.2F);
             rdbEliminar.ForeColor = Color.White;
-            rdbEliminar.Location = new Point(18, 94);
-            rdbEliminar.Margin = new Padding(3, 2, 3, 2);
+            rdbEliminar.Location = new Point(634, 45);
             rdbEliminar.Name = "rdbEliminar";
-            rdbEliminar.Size = new Size(174, 39);
+            rdbEliminar.Size = new Size(215, 48);
             rdbEliminar.TabIndex = 3;
             rdbEliminar.TabStop = true;
             rdbEliminar.Text = "Eliminar";
@@ -100,8 +113,7 @@
             rdbModificar.AutoSize = true;
             rdbModificar.Font = new Font("Stencil", 22.2F);
             rdbModificar.ForeColor = Color.White;
-            rdbModificar.Location = new Point(248, 40);
-            rdbModificar.Margin = new Padding(3, 2, 3, 2);
+            rdbModificar.Location = new Point(334, 45);
             rdbModificar.Name = "rdbModificar";
             rdbModificar.Size = new Size(201, 39);
             rdbModificar.TabIndex = 2;
@@ -109,30 +121,121 @@
             rdbModificar.Text = "Modificar ";
             rdbModificar.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvDatos
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(18, 151);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(487, 198);
-            dataGridView1.TabIndex = 1;
+            dgvDatos.AllowUserToAddRows = false;
+            dgvDatos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDatos.BackgroundColor = Color.White;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvDatos.ColumnHeadersHeight = 29;
+            dgvDatos.Columns.AddRange(new DataGridViewColumn[] { ID, nombre, descripcion, imagen, cantidad, precio });
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgvDatos.DefaultCellStyle = dataGridViewCellStyle5;
+            dgvDatos.Location = new Point(51, 134);
+            dgvDatos.MultiSelect = false;
+            dgvDatos.Name = "dgvDatos";
+            dgvDatos.ReadOnly = true;
+            dgvDatos.RowHeadersWidth = 51;
+            dgvDatos.RowTemplate.Height = 120;
+            dgvDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDatos.Size = new Size(1150, 713);
+            dgvDatos.TabIndex = 1;
+            dgvDatos.SelectionChanged += dgvDatos_SelectionChanged;
+            // 
+            // ID
+            // 
+            ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ID.DataPropertyName = "id";
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            ID.DefaultCellStyle = dataGridViewCellStyle2;
+            ID.FillWeight = 40F;
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 50;
+            ID.Name = "ID";
+            ID.ReadOnly = true;
+            ID.Resizable = DataGridViewTriState.True;
+            // 
+            // nombre
+            // 
+            nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nombre.DataPropertyName = "nombre";
+            nombre.FillWeight = 70F;
+            nombre.HeaderText = "Nombre";
+            nombre.MinimumWidth = 6;
+            nombre.Name = "nombre";
+            nombre.ReadOnly = true;
+            // 
+            // descripcion
+            // 
+            descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            descripcion.DataPropertyName = "descripcion";
+            descripcion.FillWeight = 80F;
+            descripcion.HeaderText = "Descripción";
+            descripcion.MinimumWidth = 6;
+            descripcion.Name = "descripcion";
+            descripcion.ReadOnly = true;
+            // 
+            // imagen
+            // 
+            imagen.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            imagen.DataPropertyName = "imagen";
+            imagen.HeaderText = "Imagen";
+            imagen.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            imagen.MinimumWidth = 6;
+            imagen.Name = "imagen";
+            imagen.ReadOnly = true;
+            imagen.Resizable = DataGridViewTriState.True;
+            imagen.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // cantidad
+            // 
+            cantidad.DataPropertyName = "cantidad";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            cantidad.DefaultCellStyle = dataGridViewCellStyle3;
+            cantidad.FillWeight = 45F;
+            cantidad.HeaderText = "Cantidad";
+            cantidad.MinimumWidth = 6;
+            cantidad.Name = "cantidad";
+            cantidad.ReadOnly = true;
+            // 
+            // precio
+            // 
+            precio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            precio.DataPropertyName = "precio";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            precio.DefaultCellStyle = dataGridViewCellStyle4;
+            precio.FillWeight = 45F;
+            precio.HeaderText = "Precio";
+            precio.MinimumWidth = 6;
+            precio.Name = "precio";
+            precio.ReadOnly = true;
             // 
             // rdbAgregar
             // 
             rdbAgregar.AutoSize = true;
             rdbAgregar.Font = new Font("Stencil", 22.2F);
             rdbAgregar.ForeColor = Color.White;
-            rdbAgregar.Location = new Point(18, 40);
-            rdbAgregar.Margin = new Padding(3, 2, 3, 2);
+            rdbAgregar.Location = new Point(51, 45);
             rdbAgregar.Name = "rdbAgregar";
-            rdbAgregar.Size = new Size(169, 39);
+            rdbAgregar.Size = new Size(206, 48);
             rdbAgregar.TabIndex = 0;
             rdbAgregar.TabStop = true;
             rdbAgregar.Text = "Agregar";
             rdbAgregar.UseVisualStyleBackColor = true;
+            rdbAgregar.CheckedChanged += rdbAgregar_CheckedChanged;
             // 
             // npgsqlDataAdapter1
             // 
@@ -144,146 +247,181 @@
             // pnlGeneral
             // 
             pnlGeneral.BackColor = Color.Transparent;
-            pnlGeneral.Controls.Add(nudCant);
-            pnlGeneral.Controls.Add(pictureBox1);
-            pnlGeneral.Controls.Add(btnEjecutar);
-            pnlGeneral.Controls.Add(lblPrecioUnidad);
-            pnlGeneral.Controls.Add(lblCantidad);
-            pnlGeneral.Controls.Add(txtPrecio);
-            pnlGeneral.Controls.Add(tctEjecutar);
-            pnlGeneral.Controls.Add(lblmagen);
-            pnlGeneral.Controls.Add(lblPrecio);
-            pnlGeneral.Controls.Add(lblNombre);
+            pnlGeneral.Controls.Add(grpInf);
             pnlGeneral.Controls.Add(pnlDesicion);
             pnlGeneral.Location = new Point(3, 2);
             pnlGeneral.Margin = new Padding(3, 2, 3, 2);
             pnlGeneral.Name = "pnlGeneral";
-            pnlGeneral.Size = new Size(901, 386);
+            pnlGeneral.Size = new Size(1876, 933);
             pnlGeneral.TabIndex = 1;
             // 
-            // nudCant
+            // grpInf
             // 
-            nudCant.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nudCant.Location = new Point(732, 228);
-            nudCant.Margin = new Padding(3, 2, 3, 2);
-            nudCant.Name = "nudCant";
-            nudCant.Size = new Size(109, 39);
-            nudCant.TabIndex = 11;
+            grpInf.Controls.Add(rtbDescrip);
+            grpInf.Controls.Add(lblDescripcion);
+            grpInf.Controls.Add(lblNombre);
+            grpInf.Controls.Add(btnEjecutar);
+            grpInf.Controls.Add(lblPrecio);
+            grpInf.Controls.Add(nudCant);
+            grpInf.Controls.Add(txtPrecio);
+            grpInf.Controls.Add(txtNombre);
+            grpInf.Controls.Add(lblmagen);
+            grpInf.Controls.Add(lblCantidad);
+            grpInf.Controls.Add(lblPrecioUnidad);
+            grpInf.Controls.Add(pbImagen);
+            grpInf.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            grpInf.ForeColor = Color.White;
+            grpInf.Location = new Point(1296, 144);
+            grpInf.Name = "grpInf";
+            grpInf.Size = new Size(552, 713);
+            grpInf.TabIndex = 5;
+            grpInf.TabStop = false;
+            grpInf.Text = "Información";
+            grpInf.Visible = false;
             // 
-            // pictureBox1
+            // rtbDescrip
             // 
-            pictureBox1.BackColor = Color.White;
-            pictureBox1.Location = new Point(732, 92);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(109, 36);
-            pictureBox1.TabIndex = 10;
-            pictureBox1.TabStop = false;
+            rtbDescrip.Location = new Point(296, 165);
+            rtbDescrip.Name = "rtbDescrip";
+            rtbDescrip.Size = new Size(229, 228);
+            rtbDescrip.TabIndex = 14;
+            rtbDescrip.Text = "";
             // 
-            // btnEjecutar
+            // lblDescripcion
             // 
-            btnEjecutar.BackColor = SystemColors.ButtonFace;
-            btnEjecutar.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEjecutar.ForeColor = Color.Black;
-            btnEjecutar.Location = new Point(634, 302);
-            btnEjecutar.Margin = new Padding(3, 2, 3, 2);
-            btnEjecutar.Name = "btnEjecutar";
-            btnEjecutar.Size = new Size(176, 43);
-            btnEjecutar.TabIndex = 9;
-            btnEjecutar.Text = "Ejecutar";
-            btnEjecutar.UseVisualStyleBackColor = false;
-            btnEjecutar.Click += btnEjecutar_Click;
-            // 
-            // lblPrecioUnidad
-            // 
-            lblPrecioUnidad.AutoSize = true;
-            lblPrecioUnidad.Font = new Font("Tahoma", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPrecioUnidad.ForeColor = Color.White;
-            lblPrecioUnidad.Location = new Point(587, 192);
-            lblPrecioUnidad.Name = "lblPrecioUnidad";
-            lblPrecioUnidad.Size = new Size(116, 17);
-            lblPrecioUnidad.TabIndex = 8;
-            lblPrecioUnidad.Text = "Precio por Unidad";
-            // 
-            // lblCantidad
-            // 
-            lblCantidad.AutoSize = true;
-            lblCantidad.Font = new Font("Stencil", 18F);
-            lblCantidad.ForeColor = Color.White;
-            lblCantidad.Location = new Point(587, 234);
-            lblCantidad.Name = "lblCantidad";
-            lblCantidad.Size = new Size(129, 29);
-            lblCantidad.TabIndex = 6;
-            lblCantidad.Text = "Cantidad";
-            // 
-            // txtPrecio
-            // 
-            txtPrecio.Font = new Font("Microsoft Sans Serif", 16.2F);
-            txtPrecio.Location = new Point(732, 164);
-            txtPrecio.Margin = new Padding(3, 2, 3, 2);
-            txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(110, 32);
-            txtPrecio.TabIndex = 5;
-            // 
-            // tctEjecutar
-            // 
-            tctEjecutar.Font = new Font("Microsoft Sans Serif", 16.2F);
-            tctEjecutar.Location = new Point(732, 34);
-            tctEjecutar.Margin = new Padding(3, 2, 3, 2);
-            tctEjecutar.Name = "tctEjecutar";
-            tctEjecutar.Size = new Size(110, 32);
-            tctEjecutar.TabIndex = 2;
-            // 
-            // lblmagen
-            // 
-            lblmagen.AutoSize = true;
-            lblmagen.Font = new Font("Stencil", 18F);
-            lblmagen.ForeColor = Color.White;
-            lblmagen.Location = new Point(587, 92);
-            lblmagen.Name = "lblmagen";
-            lblmagen.Size = new Size(102, 29);
-            lblmagen.TabIndex = 3;
-            lblmagen.Text = "Imagen";
-            // 
-            // lblPrecio
-            // 
-            lblPrecio.AutoSize = true;
-            lblPrecio.Font = new Font("Stencil", 18F);
-            lblPrecio.ForeColor = Color.White;
-            lblPrecio.Location = new Point(587, 166);
-            lblPrecio.Name = "lblPrecio";
-            lblPrecio.Size = new Size(98, 29);
-            lblPrecio.TabIndex = 4;
-            lblPrecio.Text = "Precio";
+            lblDescripcion.AutoSize = true;
+            lblDescripcion.Font = new Font("Stencil", 18F);
+            lblDescripcion.ForeColor = Color.White;
+            lblDescripcion.Location = new Point(306, 103);
+            lblDescripcion.Name = "lblDescripcion";
+            lblDescripcion.Size = new Size(208, 35);
+            lblDescripcion.TabIndex = 12;
+            lblDescripcion.Text = "Descripción";
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Stencil", 18F);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(587, 37);
+            lblNombre.Location = new Point(23, 51);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(110, 29);
+            lblNombre.Size = new Size(136, 35);
             lblNombre.TabIndex = 1;
             lblNombre.Text = "Nombre";
+            // 
+            // btnEjecutar
+            // 
+            btnEjecutar.BackColor = SystemColors.ButtonFace;
+            btnEjecutar.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEjecutar.ForeColor = Color.Black;
+            btnEjecutar.Location = new Point(187, 626);
+            btnEjecutar.Name = "btnEjecutar";
+            btnEjecutar.Size = new Size(201, 57);
+            btnEjecutar.TabIndex = 9;
+            btnEjecutar.Text = "Ejecutar";
+            btnEjecutar.UseVisualStyleBackColor = false;
+            btnEjecutar.Click += btnEjecutar_Click;
+            // 
+            // lblPrecio
+            // 
+            lblPrecio.AutoSize = true;
+            lblPrecio.Font = new Font("Stencil", 18F);
+            lblPrecio.ForeColor = Color.White;
+            lblPrecio.Location = new Point(103, 532);
+            lblPrecio.Name = "lblPrecio";
+            lblPrecio.Size = new Size(98, 29);
+            lblPrecio.TabIndex = 4;
+            lblPrecio.Text = "Precio";
+            // 
+            // nudCant
+            // 
+            nudCant.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            nudCant.Location = new Point(296, 435);
+            nudCant.Maximum = new decimal(new int[] { 200000, 0, 0, 0 });
+            nudCant.Name = "nudCant";
+            nudCant.Size = new Size(189, 47);
+            nudCant.TabIndex = 11;
+            // 
+            // txtPrecio
+            // 
+            txtPrecio.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPrecio.Location = new Point(296, 532);
+            txtPrecio.Name = "txtPrecio";
+            txtPrecio.Size = new Size(189, 41);
+            txtPrecio.TabIndex = 5;
+            txtPrecio.KeyPress += txtPrecio_KeyPress;
+            // 
+            // txtNombre
+            // 
+            txtNombre.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNombre.Location = new Point(165, 45);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(360, 41);
+            txtNombre.TabIndex = 2;
+            // 
+            // lblmagen
+            // 
+            lblmagen.AutoSize = true;
+            lblmagen.Font = new Font("Stencil", 18F);
+            lblmagen.ForeColor = Color.White;
+            lblmagen.Location = new Point(24, 103);
+            lblmagen.Name = "lblmagen";
+            lblmagen.Size = new Size(126, 35);
+            lblmagen.TabIndex = 3;
+            lblmagen.Text = "Imagen";
+            // 
+            // lblCantidad
+            // 
+            lblCantidad.AutoSize = true;
+            lblCantidad.Font = new Font("Stencil", 18F);
+            lblCantidad.ForeColor = Color.White;
+            lblCantidad.Location = new Point(103, 443);
+            lblCantidad.Name = "lblCantidad";
+            lblCantidad.Size = new Size(159, 35);
+            lblCantidad.TabIndex = 6;
+            lblCantidad.Text = "Cantidad";
+            // 
+            // lblPrecioUnidad
+            // 
+            lblPrecioUnidad.AutoSize = true;
+            lblPrecioUnidad.Font = new Font("Tahoma", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPrecioUnidad.ForeColor = Color.White;
+            lblPrecioUnidad.Location = new Point(103, 567);
+            lblPrecioUnidad.Name = "lblPrecioUnidad";
+            lblPrecioUnidad.Size = new Size(140, 21);
+            lblPrecioUnidad.TabIndex = 8;
+            lblPrecioUnidad.Text = "Precio por Unidad";
+            // 
+            // pbImagen
+            // 
+            pbImagen.BackColor = Color.White;
+            pbImagen.Location = new Point(24, 165);
+            pbImagen.Name = "pbImagen";
+            pbImagen.Size = new Size(238, 228);
+            pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
+            pbImagen.TabIndex = 10;
+            pbImagen.TabStop = false;
+            pbImagen.DoubleClick += pbImagen_DoubleClick;
             // 
             // FrmMedicamentos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(906, 388);
+            ClientSize = new Size(1884, 939);
             Controls.Add(pnlGeneral);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMedicamentos";
             Text = "FrmMedicamentos";
+            Load += FrmMedicamentos_Load;
             pnlDesicion.ResumeLayout(false);
             pnlDesicion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDatos).EndInit();
             pnlGeneral.ResumeLayout(false);
-            pnlGeneral.PerformLayout();
+            grpInf.ResumeLayout(false);
+            grpInf.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudCant).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbImagen).EndInit();
             ResumeLayout(false);
         }
 
@@ -291,7 +429,6 @@
 
         private Panel pnlDesicion;
         private RadioButton rdbAgregar;
-        private DataGridView dataGridView1;
         private Npgsql.NpgsqlDataAdapter npgsqlDataAdapter1;
         private RadioButton rdbModificar;
         private RadioButton rdbReabastecer;
@@ -299,13 +436,23 @@
         private Panel pnlGeneral;
         private Label lblPrecio;
         private Label lblmagen;
-        private TextBox tctEjecutar;
+        private TextBox txtNombre;
         private Label lblNombre;
         private Label lblPrecioUnidad;
         private Label lblCantidad;
         private TextBox txtPrecio;
         private Button btnEjecutar;
-        private PictureBox pictureBox1;
+        private PictureBox pbImagen;
         private NumericUpDown nudCant;
+        private GroupBox grpInf;
+        private Label lblDescripcion;
+        private RichTextBox rtbDescrip;
+        private DataGridView dgvDatos;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn nombre;
+        private DataGridViewTextBoxColumn descripcion;
+        private DataGridViewImageColumn imagen;
+        private DataGridViewTextBoxColumn cantidad;
+        private DataGridViewTextBoxColumn precio;
     }
 }
