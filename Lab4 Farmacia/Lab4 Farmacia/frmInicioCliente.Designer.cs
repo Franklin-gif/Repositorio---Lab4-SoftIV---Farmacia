@@ -63,15 +63,17 @@
             // sesionToolStripMenuItem
             // 
             sesionToolStripMenuItem.Name = "sesionToolStripMenuItem";
-            sesionToolStripMenuItem.Size = new Size(63, 20);
-            sesionToolStripMenuItem.Text = "Sesion";
+            sesionToolStripMenuItem.Size = new Size(117, 20);
+            sesionToolStripMenuItem.Text = "Cerrar Sesion";
+            sesionToolStripMenuItem.Click += sesionToolStripMenuItem_Click;
             // 
             // lblBienvenida
             // 
             lblBienvenida.AutoSize = true;
-            lblBienvenida.Location = new Point(727, 426);
+            lblBienvenida.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBienvenida.Location = new Point(343, 66);
             lblBienvenida.Name = "lblBienvenida";
-            lblBienvenida.Size = new Size(38, 15);
+            lblBienvenida.Size = new Size(65, 25);
             lblBienvenida.TabIndex = 3;
             lblBienvenida.Text = "label1";
             lblBienvenida.Click += lblBienvenida_Click;

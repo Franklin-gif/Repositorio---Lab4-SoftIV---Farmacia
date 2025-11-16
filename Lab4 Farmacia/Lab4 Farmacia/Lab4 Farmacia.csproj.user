@@ -22,6 +22,9 @@
     <Compile Update="frmRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="InventarioCli.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="sesion.cs">
       <SubType>Form</SubType>
     </Compile>
