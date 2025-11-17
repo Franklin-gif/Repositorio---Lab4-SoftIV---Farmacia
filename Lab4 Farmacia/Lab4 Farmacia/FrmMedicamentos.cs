@@ -285,6 +285,14 @@ namespace Lab4_Farmacia
             e.Handled = true;
         }
 
+        // Método 1 — Este es tu evento lblNombre_Click
+        private void lblNombre_Click(object sender, EventArgs e)
+        {
+            // Aquí va tu código si deseas agregar algo
+        }
+
+
+        // Método 2 — Este es el evento rdbModificar_CheckedChanged
         private void rdbModificar_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbModificar.Checked)
@@ -370,5 +378,11 @@ namespace Lab4_Farmacia
                 }
             }
         }
+
+        private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
+

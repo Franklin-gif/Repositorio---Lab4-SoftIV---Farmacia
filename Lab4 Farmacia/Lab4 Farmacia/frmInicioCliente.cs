@@ -7,12 +7,10 @@ namespace Lab4_Farmacia
     {
         string usuarioActual;
 
-
         public frmInicioCliente(string usuario)
         {
             InitializeComponent();
             usuarioActual = usuario;
-
         }
 
         private void frmInicioCliente_Load(object sender, EventArgs e)
@@ -57,7 +55,15 @@ namespace Lab4_Farmacia
 
         private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
+        }
 
+        private void pedidosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            frmPedidosCli pedidosCli = new frmPedidosCli();
+            pedidosCli.MdiParent = this;
+            pedidosCli.WindowState= FormWindowState.Maximized;
+            pedidosCli.Show();
         }
     }
 }

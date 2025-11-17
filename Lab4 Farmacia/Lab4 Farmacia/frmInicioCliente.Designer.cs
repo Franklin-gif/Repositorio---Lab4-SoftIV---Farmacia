@@ -59,6 +59,7 @@
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
             pedidosToolStripMenuItem.Size = new Size(71, 20);
             pedidosToolStripMenuItem.Text = "Pedidos";
+            pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click_1;
             // 
             // sesionToolStripMenuItem
             // 
@@ -70,13 +71,13 @@
             // lblBienvenida
             // 
             lblBienvenida.AutoSize = true;
-            lblBienvenida.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBienvenida.Location = new Point(647, 56);
+            lblBienvenida.Font = new Font("Agency FB", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBienvenida.Location = new Point(590, 47);
             lblBienvenida.Name = "lblBienvenida";
-            lblBienvenida.Size = new Size(65, 25);
+            lblBienvenida.Size = new Size(37, 20);
             lblBienvenida.TabIndex = 3;
             lblBienvenida.Text = "label1";
-            lblBienvenida.Click += lblBienvenida_Click;
+            
             // 
             // frmInicioCliente
             // 

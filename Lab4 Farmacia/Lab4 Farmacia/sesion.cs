@@ -31,5 +31,10 @@ namespace Lab4_Farmacia
         {
 
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

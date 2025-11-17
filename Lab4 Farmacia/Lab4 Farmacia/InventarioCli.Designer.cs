@@ -40,17 +40,18 @@
             panel1.BackColor = Color.LightSteelBlue;
             panel1.Controls.Add(btnActualizarCli);
             panel1.Controls.Add(dgvMedicamentosCliente);
-            panel1.Location = new Point(0, -2);
+            panel1.Location = new Point(0, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(801, 452);
+            panel1.Size = new Size(801, 453);
             panel1.TabIndex = 0;
+            panel1.Paint += panel1_Paint;
             // 
             // btnActualizarCli
             // 
             btnActualizarCli.BackColor = Color.DimGray;
             btnActualizarCli.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnActualizarCli.ForeColor = SystemColors.ButtonFace;
-            btnActualizarCli.Location = new Point(339, 300);
+            btnActualizarCli.Location = new Point(342, 326);
             btnActualizarCli.Name = "btnActualizarCli";
             btnActualizarCli.Size = new Size(107, 40);
             btnActualizarCli.TabIndex = 1;
@@ -64,7 +65,7 @@
             dgvMedicamentosCliente.AllowUserToDeleteRows = false;
             dgvMedicamentosCliente.AllowUserToOrderColumns = true;
             dgvMedicamentosCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMedicamentosCliente.Location = new Point(138, 103);
+            dgvMedicamentosCliente.Location = new Point(139, 120);
             dgvMedicamentosCliente.Name = "dgvMedicamentosCliente";
             dgvMedicamentosCliente.ReadOnly = true;
             dgvMedicamentosCliente.Size = new Size(500, 191);

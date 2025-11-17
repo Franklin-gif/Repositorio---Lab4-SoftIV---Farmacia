@@ -67,9 +67,10 @@
             btnCerrarSesion.BackColor = SystemColors.ButtonFace;
             btnCerrarSesion.Font = new Font("Stencil", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnCerrarSesion.ForeColor = Color.Black;
-            btnCerrarSesion.Location = new Point(201, 257);
+            btnCerrarSesion.Location = new Point(176, 192);
+            btnCerrarSesion.Margin = new Padding(3, 2, 3, 2);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(542, 76);
+            btnCerrarSesion.Size = new Size(474, 57);
             btnCerrarSesion.TabIndex = 14;
             btnCerrarSesion.Text = "Cerrar Sesión";
             btnCerrarSesion.UseVisualStyleBackColor = false;
@@ -86,21 +87,24 @@
             tableLayoutPanel1.Controls.Add(lblRol, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 273F));
-            tableLayoutPanel1.Size = new Size(944, 527);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 205F));
+            tableLayoutPanel1.Size = new Size(826, 395);
             tableLayoutPanel1.TabIndex = 15;
+            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // sesion
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Diseño_sin_título__1_;
-            ClientSize = new Size(944, 527);
+            ClientSize = new Size(826, 395);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "sesion";
             Text = "sesion";
             Load += sesion_Load;

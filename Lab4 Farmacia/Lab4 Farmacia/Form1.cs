@@ -32,7 +32,7 @@ namespace Lab4_Farmacia
                         {
                             if (!reader.Read())
                             {
-                                MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Usuario o contraseÃ±a incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
                             }
 
@@ -41,42 +41,32 @@ namespace Lab4_Farmacia
                             string tipoUsuario = reader.GetString(1);
 
                             // ?? Mostrar mensaje opcional
-                            MessageBox.Show($"Bienvenido {nombreUsuario} ({tipoUsuario})", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show($"Bienvenido {nombreUsuario} ({tipoUsuario})", "Inicio de SesiÃ³n", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                         
                             if (tipoUsuario == "Admin")
                             {
                                 frmInicioAdmin frmAdmin = new frmInicioAdmin();
                                 frmAdmin.Show();
                                 sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
-                                
-
-
-                                // Abrir la ventana 'sesion' automáticamente
- 
                             }
                             else if (tipoUsuario == "Cliente")
                             {
                                 frmInicioCliente frmCliente = new frmInicioCliente(nombreUsuario);
                                 frmCliente.Show();
-
                                 sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
-                              
                             }
                             else
                             {
                                 MessageBox.Show("Rol no reconocido en la base de datos.");
                             }
-
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al iniciar sesión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al iniciar sesiÃ³n: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
         }
 
         private void btmRegistro_Click(object sender, EventArgs e)
@@ -92,7 +82,6 @@ namespace Lab4_Farmacia
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
