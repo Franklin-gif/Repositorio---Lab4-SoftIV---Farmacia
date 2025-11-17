@@ -59,5 +59,13 @@ namespace Lab4_Farmacia
         {
 
         }
+
+        private void pedidosToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            frmPedidosCli pedidosCli = new frmPedidosCli();
+            pedidosCli.MdiParent = this;
+            pedidosCli.WindowState= FormWindowState.Maximized;
+            pedidosCli.Show();
+        }
     }
 }

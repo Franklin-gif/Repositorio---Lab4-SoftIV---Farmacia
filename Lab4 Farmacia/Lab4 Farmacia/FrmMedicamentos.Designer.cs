@@ -92,7 +92,7 @@
             rdbReabastecer.Location = new Point(840, 35);
             rdbReabastecer.Margin = new Padding(3, 4, 3, 4);
             rdbReabastecer.Name = "rdbReabastecer";
-            rdbReabastecer.Size = new Size(294, 48);
+            rdbReabastecer.Size = new Size(240, 39);
             rdbReabastecer.TabIndex = 4;
             rdbReabastecer.TabStop = true;
             rdbReabastecer.Text = "Reabastecer";
@@ -106,7 +106,7 @@
             rdbEliminar.Location = new Point(580, 35);
             rdbEliminar.Margin = new Padding(3, 4, 3, 4);
             rdbEliminar.Name = "rdbEliminar";
-            rdbEliminar.Size = new Size(215, 48);
+            rdbEliminar.Size = new Size(174, 39);
             rdbEliminar.TabIndex = 3;
             rdbEliminar.TabStop = true;
             rdbEliminar.Text = "Eliminar";
@@ -238,7 +238,7 @@
             rdbAgregar.Location = new Point(38, 35);
             rdbAgregar.Margin = new Padding(3, 4, 3, 4);
             rdbAgregar.Name = "rdbAgregar";
-            rdbAgregar.Size = new Size(206, 48);
+            rdbAgregar.Size = new Size(169, 39);
             rdbAgregar.TabIndex = 0;
             rdbAgregar.TabStop = true;
             rdbAgregar.Text = "Agregar";
@@ -315,7 +315,7 @@
             lblDescripcion.ForeColor = Color.White;
             lblDescripcion.Location = new Point(350, 137);
             lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(208, 35);
+            lblDescripcion.Size = new Size(167, 29);
             lblDescripcion.TabIndex = 12;
             lblDescripcion.Text = "Descripción";
             // 
@@ -326,9 +326,10 @@
             lblNombre.ForeColor = Color.White;
             lblNombre.Location = new Point(26, 68);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(136, 35);
+            lblNombre.Size = new Size(110, 29);
             lblNombre.TabIndex = 1;
             lblNombre.Text = "Nombre";
+            lblNombre.Click += lblNombre_Click;
             // 
             // btnEjecutar
             // 
@@ -362,7 +363,8 @@
             nudCant.Margin = new Padding(3, 4, 3, 4);
             nudCant.Maximum = new decimal(new int[] { 200000, 0, 0, 0 });
             nudCant.Name = "nudCant";
-            nudCant.Size = new Size(216, 47);
+nudCant.Size = new Size(216, 47);
+
             nudCant.TabIndex = 11;
             // 
             // txtPrecio
@@ -371,7 +373,8 @@
             txtPrecio.Location = new Point(336, 632);
             txtPrecio.Margin = new Padding(3, 4, 3, 4);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(215, 41);
+txtPrecio.Size = new Size(215, 41);
+
             txtPrecio.TabIndex = 5;
             txtPrecio.KeyPress += txtPrecio_KeyPress;
             // 
@@ -381,7 +384,8 @@
             txtNombre.Location = new Point(189, 60);
             txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(411, 41);
+txtNombre.Size = new Size(411, 41);
+
             txtNombre.TabIndex = 2;
             // 
             // lblmagen
@@ -391,7 +395,7 @@
             lblmagen.ForeColor = Color.White;
             lblmagen.Location = new Point(27, 137);
             lblmagen.Name = "lblmagen";
-            lblmagen.Size = new Size(126, 35);
+            lblmagen.Size = new Size(102, 29);
             lblmagen.TabIndex = 3;
             lblmagen.Text = "Imagen";
             // 
@@ -402,7 +406,7 @@
             lblCantidad.ForeColor = Color.White;
             lblCantidad.Location = new Point(116, 553);
             lblCantidad.Name = "lblCantidad";
-            lblCantidad.Size = new Size(159, 35);
+            lblCantidad.Size = new Size(129, 29);
             lblCantidad.TabIndex = 6;
             lblCantidad.Text = "Cantidad";
             // 
@@ -413,7 +417,7 @@
             lblPrecioUnidad.ForeColor = Color.White;
             lblPrecioUnidad.Location = new Point(116, 679);
             lblPrecioUnidad.Name = "lblPrecioUnidad";
-            lblPrecioUnidad.Size = new Size(140, 21);
+            lblPrecioUnidad.Size = new Size(116, 17);
             lblPrecioUnidad.TabIndex = 8;
             lblPrecioUnidad.Text = "Precio por Unidad";
             // 
@@ -434,7 +438,8 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1924, 1055);
+ClientSize = new Size(1924, 1055);
+
             Controls.Add(pnlGeneral);
             Name = "FrmMedicamentos";
             Text = "FrmMedicamentos";
