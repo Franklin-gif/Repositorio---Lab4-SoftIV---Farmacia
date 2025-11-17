@@ -43,27 +43,22 @@ namespace Lab4_Farmacia
                             // ?? Mostrar mensaje opcional
                             MessageBox.Show($"Bienvenido {nombreUsuario} ({tipoUsuario})", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                         
                             if (tipoUsuario == "Admin")
                             {
                                 frmInicioAdmin frmAdmin = new frmInicioAdmin();
                                 frmAdmin.Show();
                                 sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
-                              
                             }
                             else if (tipoUsuario == "Cliente")
                             {
                                 frmInicioCliente frmCliente = new frmInicioCliente(nombreUsuario);
                                 frmCliente.Show();
-
                                 sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
-                              
                             }
                             else
                             {
                                 MessageBox.Show("Rol no reconocido en la base de datos.");
                             }
-
                         }
                     }
                 }
@@ -72,7 +67,6 @@ namespace Lab4_Farmacia
             {
                 MessageBox.Show("Error al iniciar sesión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
         }
 
         private void btmRegistro_Click(object sender, EventArgs e)
@@ -88,7 +82,6 @@ namespace Lab4_Farmacia
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

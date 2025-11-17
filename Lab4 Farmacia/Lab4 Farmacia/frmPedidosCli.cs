@@ -12,53 +12,104 @@ namespace Lab4_Farmacia
             InitializeComponent();
         }
 
-        // ---------------------------------------------------------
-        // Cargar medicamentos automáticamente al abrir el formulario
-        // ---------------------------------------------------------
-        private void frmPedidosCli_Load(object sender, EventArgs e)
+        private void frmPedidosCli_Load_1(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+            txtNom.ReadOnly = true; 
             CargarMedicamentos();
+
+            
+            dgvMedicamentos.CellClick += dgvMedicamentos_CellClick;
         }
 
-        // ---------------------------------------------------------
-        // FUNCIÓN: Cargar los medicamentos al DataGridView
-        // ---------------------------------------------------------
+        
         private void CargarMedicamentos()
         {
-            using (var con = ConexionBd.ObtenerConexion())
+            try
             {
-                string sql = "SELECT id, nombre, descripcion, cantidad, precio FROM medicamentos";
+                using (var con = ConexionBd.ObtenerConexion())
+                {
+                    string sql = "SELECT * FROM sp_ver_inventario_cli();";
 
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, con);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, con);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                dgvMedicamentos.DataSource = dt;
+                    dgvMedicamentos.DataSource = dt;
+
+                    if (dgvMedicamentos.Columns.Contains("imagen"))
+                        dgvMedicamentos.Columns["imagen"].Visible = false;
+
+                    dgvMedicamentos.ClearSelection();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar medicamentos: " + ex.Message);
             }
         }
 
-        // ---------------------------------------------------------
-        // BOTÓN: Actualizar lista de medicamentos
-        // ---------------------------------------------------------
-        private void btnActualizar_Click(object sender, EventArgs e)
+      
+        private void dgvMedicamentos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            CargarMedicamentos();
-            MessageBox.Show("Lista de medicamentos actualizada.");
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow fila = dgvMedicamentos.Rows[e.RowIndex];
+                    string nombre = fila.Cells["nombre"].Value.ToString();
+                    txtNom.Text = nombre;
+                    nudCant.Focus();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No se pudo obtener el nombre del medicamento.");
+            }
         }
 
-        // ---------------------------------------------------------
-        // BOTÓN: Confirmar pedido
-        // ---------------------------------------------------------
-        private void btnConfirmarPedido_Click(object sender, EventArgs e)
+       
+        private int ObtenerIdPorNombre(string nombre)
         {
-            if (dgvMedicamentos.SelectedRows.Count == 0)
+            try
+            {
+                using (var con = ConexionBd.ObtenerConexion())
+                using (var cmd = new NpgsqlCommand(
+                    "SELECT id FROM medicamentos WHERE LOWER(nombre) = LOWER(@n);", con))
+                {
+                    cmd.Parameters.AddWithValue("@n", nombre.Trim());
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                        return Convert.ToInt32(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error buscando medicamento: " + ex.Message);
+            }
+
+            return -1;
+        }
+
+        private void btnConfirmarPedido_Click_1(object sender, EventArgs e)
+        {
+            string nombreMed = txtNom.Text.Trim();
+
+            if (string.IsNullOrEmpty(nombreMed))
             {
                 MessageBox.Show("Seleccione un medicamento.");
                 return;
             }
 
-            int idCliente = 1; // ← Cambiar por el cliente que inició sesión
-            int idMedicamento = Convert.ToInt32(dgvMedicamentos.SelectedRows[0].Cells["id"].Value);
+            int idMedicamento = ObtenerIdPorNombre(nombreMed);
+
+            if (idMedicamento == -1)
+            {
+                MessageBox.Show("No existe un medicamento con ese nombre.");
+                return;
+            }
+
             int cantidad = (int)nudCant.Value;
 
             if (cantidad <= 0)
@@ -67,75 +118,37 @@ namespace Lab4_Farmacia
                 return;
             }
 
-            decimal precio = Convert.ToDecimal(dgvMedicamentos.SelectedRows[0].Cells["precio"].Value);
-            decimal subtotal = cantidad * precio;
+            int cli = 1; 
 
-            using (var con = ConexionBd.ObtenerConexion())
-            using (var trans = con.BeginTransaction())
+            try
             {
-                try
+                using (var con = ConexionBd.ObtenerConexion())
+                using (var cmd = new NpgsqlCommand(
+                    "CALL sp_registrar_pedido_cli(@p_id_cliente, @p_id_medicamento, @p_cantidad);",
+                    con))
                 {
-                    // -----------------------------------
-                    // 1) Insertar el pedido
-                    // -----------------------------------
-                    string sqlPedido = "INSERT INTO pedidos(id_cliente) VALUES(@cli) RETURNING id";
-                    int idPedido = 0;
+                 
+                    cmd.Parameters.AddWithValue("@p_id_cliente", cli);
+                    cmd.Parameters.AddWithValue("@p_id_medicamento", idMedicamento);
+                    cmd.Parameters.AddWithValue("@p_cantidad", cantidad);
 
-                    using (var cmd = new NpgsqlCommand(sqlPedido, con, trans))
-                    {
-                        cmd.Parameters.AddWithValue("@cli", idCliente);
-                        idPedido = Convert.ToInt32(cmd.ExecuteScalar());
-                    }
-
-                    // -----------------------------------
-                    // 2) Insertar detalle del pedido
-                    // -----------------------------------
-                    string sqlDetalle =
-                        @"INSERT INTO detalle_pedido(id_pedido, id_medicamento, cantidad, subtotal)
-                          VALUES(@p, @m, @c, @s)";
-
-                    using (var cmd = new NpgsqlCommand(sqlDetalle, con, trans))
-                    {
-                        cmd.Parameters.AddWithValue("@p", idPedido);
-                        cmd.Parameters.AddWithValue("@m", idMedicamento);
-                        cmd.Parameters.AddWithValue("@c", cantidad);
-                        cmd.Parameters.AddWithValue("@s", subtotal);
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    // -----------------------------------
-                    // 3) Descontar inventario
-                    // -----------------------------------
-                    string sqlUpdate =
-                        @"UPDATE medicamentos
-                          SET cantidad = cantidad - @cant
-                          WHERE id = @id AND cantidad >= @cant";
-
-                    using (var cmd = new NpgsqlCommand(sqlUpdate, con, trans))
-                    {
-                        cmd.Parameters.AddWithValue("@cant", cantidad);
-                        cmd.Parameters.AddWithValue("@id", idMedicamento);
-
-                        int rows = cmd.ExecuteNonQuery();
-                        if (rows == 0)
-                            throw new Exception("Inventario insuficiente.");
-                    }
-
-                    // -----------------------------------
-                    // 4) Confirmar transacción
-                    // -----------------------------------
-                    trans.Commit();
-                    MessageBox.Show("Pedido registrado exitosamente.");
+                    cmd.ExecuteNonQuery(); 
                 }
-                catch (Exception ex)
-                {
-                    trans.Rollback();
-                    MessageBox.Show("Error al registrar pedido: " + ex.Message);
-                }
+
+                MessageBox.Show("Pedido registrado correctamente.");
+                CargarMedicamentos();
+                txtNom.Clear();
+                nudCant.Value = 1;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al registrar pedido: " + ex.Message);
+            }
+        }
 
-            // Recargar inventario actualizado
-            CargarMedicamentos();
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

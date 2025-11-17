@@ -23,11 +23,16 @@ namespace Lab4_Farmacia
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
-         
+
             this.Close();
             MessageBox.Show($"Sesión De: {usuarioSesion} cerrada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             Form1 form1 = new Form1();
             form1.Show();
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
