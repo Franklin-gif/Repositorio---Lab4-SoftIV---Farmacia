@@ -85,7 +85,7 @@ namespace Lab4_Farmacia
                     if (string.IsNullOrWhiteSpace(nombre) ||
                         string.IsNullOrWhiteSpace(desc) ||
                         string.IsNullOrWhiteSpace(txtPrecio.Text) ||
-                        nudCant.Value < 0) 
+                        nudCant.Value < 0)
                     {
                         MessageBox.Show("Complete todos los campos",
                                         "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -279,23 +279,27 @@ namespace Lab4_Farmacia
             e.Handled = true;
         }
 
-// Método 1 — Este es tu evento lblNombre_Click
-private void lblNombre_Click(object sender, EventArgs e)
-{
-    // Aquí va tu código si deseas agregar algo
-}
+        // Método 1 — Este es tu evento lblNombre_Click
+        private void lblNombre_Click(object sender, EventArgs e)
+        {
+            // Aquí va tu código si deseas agregar algo
+        }
 
 
-// Método 2 — Este es el evento rdbModificar_CheckedChanged
-private void rdbModificar_CheckedChanged(object sender, EventArgs e)
-{
-    if (rdbAgregar.Checked)
-    {
-        grpInf.Visible = true;
-        btnEjecutar.Text = "Agregar";
-    }
-}
+        // Método 2 — Este es el evento rdbModificar_CheckedChanged
+        private void rdbModificar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbAgregar.Checked)
+            {
+                grpInf.Visible = true;
+                btnEjecutar.Text = "Agregar";
+            }
+        }
+
+        private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
 }
+

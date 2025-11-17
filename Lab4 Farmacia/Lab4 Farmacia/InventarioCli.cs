@@ -81,5 +81,10 @@ namespace Lab4_Farmacia
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

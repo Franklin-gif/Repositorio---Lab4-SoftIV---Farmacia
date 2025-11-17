@@ -77,7 +77,7 @@
             lblBienvenida.Size = new Size(37, 20);
             lblBienvenida.TabIndex = 3;
             lblBienvenida.Text = "label1";
-            lblBienvenida.Click += lblBienvenida_Click;
+            
             // 
             // frmInicioCliente
             // 
