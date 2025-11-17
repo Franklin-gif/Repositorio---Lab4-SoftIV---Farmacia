@@ -5,15 +5,12 @@ namespace Lab4_Farmacia
 {
     public partial class sesion : Form
     {
-
-
         public sesion(string usuario, string rol)
         {
             InitializeComponent();
-            lblUsuario.Text = usuario; // adminFarma o Pedro
-            lblRol.Text = rol;         // Admin o Cliente
+            lblUsuario.Text = usuario;
+            lblRol.Text = rol;
         }
-
 
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)

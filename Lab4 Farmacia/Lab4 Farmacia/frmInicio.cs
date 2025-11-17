@@ -15,11 +15,19 @@ namespace Lab4_Farmacia
         private string usuarioActual;
         private string rolActual;
 
+        public frmInicioAdmin(string usuario, string rol)
+        {
+            InitializeComponent();
+            usuarioActual = usuario;   
+            rolActual = rol;
+        }
+
+
         public frmInicioAdmin()
         {
             InitializeComponent();
         }
-
+      
         private void medicamentosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmMedicamentos frmMedicamentos = new FrmMedicamentos();
@@ -49,7 +57,7 @@ namespace Lab4_Farmacia
 
         private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            sesion ventanaSesion = new sesion(usuarioActual,rolActual);
+            sesion ventanaSesion = new sesion(usuarioActual, rolActual); 
             ventanaSesion.MdiParent = this;
             ventanaSesion.WindowState= FormWindowState.Maximized;
             ventanaSesion.Show();
