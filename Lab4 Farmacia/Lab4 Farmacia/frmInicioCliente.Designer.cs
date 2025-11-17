@@ -71,7 +71,7 @@
             // 
             lblBienvenida.AutoSize = true;
             lblBienvenida.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBienvenida.Location = new Point(343, 66);
+            lblBienvenida.Location = new Point(647, 56);
             lblBienvenida.Name = "lblBienvenida";
             lblBienvenida.Size = new Size(65, 25);
             lblBienvenida.TabIndex = 3;
@@ -85,6 +85,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(lblBienvenida);
             Controls.Add(menuStrip1);
+            IsMdiContainer = true;
             Name = "frmInicioCliente";
             Text = "frmInicioCliente";
             Load += frmInicioCliente_Load;

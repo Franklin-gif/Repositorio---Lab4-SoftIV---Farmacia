@@ -38,12 +38,17 @@ namespace Lab4_Farmacia
         private void inventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InventarioCli inv = new InventarioCli();
+            inv.MdiParent = this;
+            inv.WindowState= FormWindowState.Maximized;
             inv.Show();
-            this.Hide();
         }
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FrmPedidos pedidosCli = new FrmPedidos();
+            pedidosCli.MdiParent = this;
+            pedidosCli.WindowState= FormWindowState.Maximized;
+            pedidosCli.Show();
 
         }
 
@@ -60,6 +65,21 @@ namespace Lab4_Farmacia
                 login.Show();
                 this.Hide();
             }
+        }
+
+        private void dgvMedicamentosCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,6 +12,7 @@ namespace Lab4_Farmacia
         {
             InitializeComponent();
             usuarioActual = usuario;
+
         }
 
         private void frmInicioCliente_Load(object sender, EventArgs e)
@@ -27,8 +28,9 @@ namespace Lab4_Farmacia
         private void inventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InventarioCli inv = new InventarioCli();
+            inv.MdiParent = this;
+            inv.WindowState= FormWindowState.Maximized;
             inv.Show();
-            this.Hide();
         }
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
