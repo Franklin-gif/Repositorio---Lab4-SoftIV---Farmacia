@@ -41,8 +41,9 @@
             panel1.Controls.Add(btnActualizarCli);
             panel1.Controls.Add(dgvMedicamentosCliente);
             panel1.Location = new Point(0, 1);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(801, 453);
+            panel1.Size = new Size(915, 604);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
@@ -51,9 +52,10 @@
             btnActualizarCli.BackColor = Color.DimGray;
             btnActualizarCli.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnActualizarCli.ForeColor = SystemColors.ButtonFace;
-            btnActualizarCli.Location = new Point(342, 326);
+            btnActualizarCli.Location = new Point(391, 435);
+            btnActualizarCli.Margin = new Padding(3, 4, 3, 4);
             btnActualizarCli.Name = "btnActualizarCli";
-            btnActualizarCli.Size = new Size(107, 40);
+            btnActualizarCli.Size = new Size(122, 53);
             btnActualizarCli.TabIndex = 1;
             btnActualizarCli.Text = "Actualizar";
             btnActualizarCli.UseVisualStyleBackColor = false;
@@ -64,20 +66,24 @@
             dgvMedicamentosCliente.AllowUserToAddRows = false;
             dgvMedicamentosCliente.AllowUserToDeleteRows = false;
             dgvMedicamentosCliente.AllowUserToOrderColumns = true;
+            dgvMedicamentosCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMedicamentosCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMedicamentosCliente.Location = new Point(139, 120);
+            dgvMedicamentosCliente.Location = new Point(159, 160);
+            dgvMedicamentosCliente.Margin = new Padding(3, 4, 3, 4);
             dgvMedicamentosCliente.Name = "dgvMedicamentosCliente";
             dgvMedicamentosCliente.ReadOnly = true;
-            dgvMedicamentosCliente.Size = new Size(500, 191);
+            dgvMedicamentosCliente.RowHeadersWidth = 51;
+            dgvMedicamentosCliente.Size = new Size(571, 255);
             dgvMedicamentosCliente.TabIndex = 0;
             dgvMedicamentosCliente.CellContentClick += dgvMedicamentosCliente_CellContentClick;
             // 
             // InventarioCli
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "InventarioCli";
             Text = "InventarioCli";
             panel1.ResumeLayout(false);

@@ -49,18 +49,20 @@
             panel1.Controls.Add(btnActualizar);
             panel1.Controls.Add(grpPedido);
             panel1.Controls.Add(dgvMedicamentos);
-            panel1.Location = new Point(2, 4);
+            panel1.Location = new Point(2, 5);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(797, 446);
+            panel1.Size = new Size(911, 595);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
             // 
             // btnActualizar
             // 
             btnActualizar.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnActualizar.Location = new Point(368, 222);
+            btnActualizar.Location = new Point(421, 296);
+            btnActualizar.Margin = new Padding(3, 4, 3, 4);
             btnActualizar.Name = "btnActualizar";
-            btnActualizar.Size = new Size(114, 33);
+            btnActualizar.Size = new Size(130, 44);
             btnActualizar.TabIndex = 14;
             btnActualizar.Text = "ACTUALIZAR";
             btnActualizar.UseVisualStyleBackColor = true;
@@ -74,9 +76,11 @@
             grpPedido.Controls.Add(label2);
             grpPedido.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             grpPedido.ForeColor = Color.Black;
-            grpPedido.Location = new Point(188, 270);
+            grpPedido.Location = new Point(215, 360);
+            grpPedido.Margin = new Padding(3, 4, 3, 4);
             grpPedido.Name = "grpPedido";
-            grpPedido.Size = new Size(483, 154);
+            grpPedido.Padding = new Padding(3, 4, 3, 4);
+            grpPedido.Size = new Size(552, 205);
             grpPedido.TabIndex = 13;
             grpPedido.TabStop = false;
             grpPedido.Text = "Pedido";
@@ -84,9 +88,10 @@
             // btnConfirmarPedido
             // 
             btnConfirmarPedido.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnConfirmarPedido.Location = new Point(185, 115);
+            btnConfirmarPedido.Location = new Point(211, 153);
+            btnConfirmarPedido.Margin = new Padding(3, 4, 3, 4);
             btnConfirmarPedido.Name = "btnConfirmarPedido";
-            btnConfirmarPedido.Size = new Size(109, 33);
+            btnConfirmarPedido.Size = new Size(125, 44);
             btnConfirmarPedido.TabIndex = 13;
             btnConfirmarPedido.Text = "Ordenar";
             btnConfirmarPedido.UseVisualStyleBackColor = true;
@@ -96,53 +101,58 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Stencil", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(98, 22);
+            label1.Location = new Point(112, 29);
             label1.Name = "label1";
-            label1.Size = new Size(96, 25);
+            label1.Size = new Size(123, 32);
             label1.TabIndex = 1;
             label1.Text = "Nombre";
             // 
             // nudCant
             // 
             nudCant.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nudCant.Location = new Point(220, 69);
+            nudCant.Location = new Point(251, 92);
+            nudCant.Margin = new Padding(3, 4, 3, 4);
             nudCant.Maximum = new decimal(new int[] { 200000, 0, 0, 0 });
             nudCant.Name = "nudCant";
-            nudCant.Size = new Size(157, 29);
+            nudCant.Size = new Size(179, 34);
             nudCant.TabIndex = 12;
             // 
             // txtNom
             // 
-            txtNom.Location = new Point(220, 22);
+            txtNom.Location = new Point(251, 29);
+            txtNom.Margin = new Padding(3, 4, 3, 4);
             txtNom.Multiline = true;
             txtNom.Name = "txtNom";
-            txtNom.Size = new Size(177, 25);
+            txtNom.Size = new Size(202, 32);
             txtNom.TabIndex = 0;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Stencil", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(98, 73);
+            label2.Location = new Point(112, 97);
             label2.Name = "label2";
-            label2.Size = new Size(112, 25);
+            label2.Size = new Size(145, 32);
             label2.TabIndex = 3;
             label2.Text = "Cantidad";
             // 
             // dgvMedicamentos
             // 
             dgvMedicamentos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMedicamentos.Location = new Point(146, 22);
+            dgvMedicamentos.Location = new Point(167, 29);
+            dgvMedicamentos.Margin = new Padding(3, 4, 3, 4);
             dgvMedicamentos.Name = "dgvMedicamentos";
-            dgvMedicamentos.Size = new Size(543, 194);
+            dgvMedicamentos.RowHeadersWidth = 51;
+            dgvMedicamentos.Size = new Size(621, 259);
             dgvMedicamentos.TabIndex = 4;
             // 
             // frmPedidosCli
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmPedidosCli";
             Text = "frmPedidosCli";
             Load += frmPedidosCli_Load_1;

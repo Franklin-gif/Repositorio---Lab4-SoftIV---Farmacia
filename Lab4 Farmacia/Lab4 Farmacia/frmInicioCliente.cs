@@ -55,7 +55,13 @@ namespace Lab4_Farmacia
 
         private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            foreach (Form frm in Application.OpenForms.Cast<Form>().ToList())
+            {
+                if (!(frm is Form1))
+                {
+                    frm.Close();
+                }
+            }
         }
 
         private void pedidosToolStripMenuItem_Click_1(object sender, EventArgs e)
