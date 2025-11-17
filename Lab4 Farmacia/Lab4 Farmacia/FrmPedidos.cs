@@ -16,5 +16,15 @@ namespace Lab4_Farmacia
         {
             InitializeComponent();
         }
+
+        private void FrmPedidos_Load(object sender, EventArgs e)
+        {
+            //this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void dgvPedidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

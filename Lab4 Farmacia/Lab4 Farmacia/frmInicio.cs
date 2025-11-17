@@ -57,6 +57,8 @@ namespace Lab4_Farmacia
         private void frmInicioAdmin_Load(object sender, EventArgs e)
         {
 
+            this.WindowState = FormWindowState.Maximized;
+
         }
     }
 }

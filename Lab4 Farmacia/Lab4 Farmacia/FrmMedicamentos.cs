@@ -20,6 +20,9 @@ namespace Lab4_Farmacia
         public FrmMedicamentos()
         {
             InitializeComponent();
+
+
+
         }
 
         private void btnEjecutar_Click(object sender, EventArgs e)
@@ -60,9 +63,78 @@ namespace Lab4_Farmacia
 
                 else if (rdbModificar.Checked)
                 {
+                    //Validar que haya una fila seleccionada y que tenga ID
+                    var row = dgvDatos.CurrentRow;
+                    if (row == null || row.IsNewRow || row.Cells["ID"].Value == null)
+                    {
+                        MessageBox.Show("Seleccione un medicamento de la lista para modificar.", "Atención",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (!int.TryParse(row.Cells["ID"].Value.ToString(), out int id))
+                    {
+                        MessageBox.Show("ID inválido en la fila seleccionada.", "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    string nombre = txtNombre.Text.Trim();
+                    string desc = rtbDescrip.Text.Trim();
+
+                    if (string.IsNullOrWhiteSpace(nombre) ||
+                        string.IsNullOrWhiteSpace(desc) ||
+                        string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+                        nudCant.Value < 0) 
+                    {
+                        MessageBox.Show("Complete todos los campos",
+                                        "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    if (!decimal.TryParse(txtPrecio.Text, out decimal precio) || precio <= 0)
+                    {
+                        MessageBox.Show("Precio inválido (debe ser > 0).", "Atención",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    int cantidad = (int)nudCant.Value;
+
+
+                    byte[] imgBytes = null;
+                    if (pbImagen.Image != null)
+                        imgBytes = Admin.ConvertirImagenABytes(pbImagen.Image);
+
+                    try
+                    {
+                        //Llamada al procedimiento almacenado 
+                        Admin.ModificarMedicamento(id, nombre, desc, cantidad, precio, imgBytes);
+
+                        MessageBox.Show("Medicamento actualizado correctamente.", "OK",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarMedicamentos();
+                        foreach (DataGridViewRow r in dgvDatos.Rows)
+                        {
+                            if (r.Cells["ID"].Value != null && r.Cells["ID"].Value.ToString() == id.ToString())
+                            {
+                                dgvDatos.ClearSelection();
+                                r.Selected = true;
+                                dgvDatos.CurrentCell = r.Cells[dgvDatos.Columns["nombre"].Index];
+                                break;
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al modificar: " + ex.Message, "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
                 else if (rdbReabastecer.Checked)
                 {
+
                 }
                 else
                 {
@@ -145,7 +217,7 @@ namespace Lab4_Farmacia
                     {
                         pbImagen.Image = Image.FromFile(ofd.FileName);
 
-                        
+
                     }
                     catch
                     {
@@ -184,6 +256,8 @@ namespace Lab4_Farmacia
 
         private void FrmMedicamentos_Load(object sender, EventArgs e)
         {
+
+            this.WindowState = FormWindowState.Maximized;
             CargarMedicamentos();
         }
 
@@ -203,6 +277,15 @@ namespace Lab4_Farmacia
 
             // Bloquear todo lo demás (letras, signos, más de un punto)
             e.Handled = true;
+        }
+
+        private void rdbModificar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbAgregar.Checked)
+            {
+                grpInf.Visible = true;
+                btnEjecutar.Text = "Agregar";
+            }
         }
     }
 }

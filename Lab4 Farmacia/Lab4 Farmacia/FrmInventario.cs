@@ -16,5 +16,10 @@ namespace Lab4_Farmacia
         {
             InitializeComponent();
         }
+
+        private void FrmInventario_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
