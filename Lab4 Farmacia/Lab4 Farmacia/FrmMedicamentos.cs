@@ -145,7 +145,7 @@ namespace Lab4_Farmacia
                     {
                         pbImagen.Image = Image.FromFile(ofd.FileName);
 
-                        
+
                     }
                     catch
                     {
@@ -203,6 +203,11 @@ namespace Lab4_Farmacia
 
             // Bloquear todo lo demás (letras, signos, más de un punto)
             e.Handled = true;
+        }
+
+        private void lblNombre_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
