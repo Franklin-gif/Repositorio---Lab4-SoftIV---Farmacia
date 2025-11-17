@@ -7,20 +7,23 @@ namespace Lab4_Farmacia
 {
     public partial class FrmPedidos : Form
     {
-        private int idCliente = 1; // ID del cliente actual, se puede cambiar según sesión
+
 
         public FrmPedidos()
         {
+            
             InitializeComponent();
+            CargarPedidos();
+
         }
 
         private void FrmPedidos_Load(object sender, EventArgs e)
         {
 
-            CargarPedidos();
+            //CargarPedidos();
 
         }
-
+        /*
         private void CargarPedidos()
         {
             try
@@ -49,6 +52,36 @@ namespace Lab4_Farmacia
             {
                 MessageBox.Show("Error al cargar pedidos: " + ex.Message);
             }
+        }*/
+
+        private void CargarPedidos()
+        {
+            try
+            {
+                DataTable dtPedidos = Admin.TraerPedidos();
+
+                if (dtPedidos == null)
+                {
+                    MessageBox.Show("Error: No se pudo obtener la información de pedidos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (dtPedidos != null&&dtPedidos.Rows.Count > 0)
+                {
+                    dgvPedidos.AutoGenerateColumns = true;
+                    dgvPedidos.DataSource = dtPedidos;
+                }
+                else
+                {
+                    dgvPedidos.DataSource = null;
+                    MessageBox.Show("No hay pedidos registrados.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar pedidos: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
+
