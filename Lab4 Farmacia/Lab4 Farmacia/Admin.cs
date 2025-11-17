@@ -48,6 +48,30 @@ namespace Lab4_Farmacia
             }
             return dt;
         }
-    }
 
+        public static void ModificarMedicamento(int id, string nombre, string descripcion, int cantidad, decimal precio, byte[] imagen)
+        {
+
+            using (var conn = ConexionBd.ObtenerConexion())
+            using (var cmd = new NpgsqlCommand("CALL sp_modificar_medicamento(@p_id, @p_nom, @p_desc, @p_img, @cant, @p_precio)", conn))
+            {
+                cmd.Parameters.AddWithValue("p_id", id);
+                cmd.Parameters.AddWithValue("p_nom", nombre);
+                cmd.Parameters.AddWithValue("p_desc", string.IsNullOrWhiteSpace(descripcion) ? (object)DBNull.Value : descripcion);
+                cmd.Parameters.AddWithValue("cant", cantidad);
+                cmd.Parameters.AddWithValue("p_precio", precio);
+
+                var pImg = new NpgsqlParameter("p_img", NpgsqlTypes.NpgsqlDbType.Bytea)
+                {
+                    Value = imagen ?? (object)DBNull.Value
+                };
+                cmd.Parameters.Add(pImg);
+
+                cmd.ExecuteNonQuery();
+            }
+
+        }
+
+
+    }
 }

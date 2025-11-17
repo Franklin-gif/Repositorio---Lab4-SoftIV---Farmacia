@@ -28,32 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
+            pnlGeneral = new Panel();
+            dgvPedidos = new DataGridView();
             lblTitulo = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            pnlGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // pnlGeneral
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(68, 138);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(863, 352);
-            dataGridView1.TabIndex = 5;
+            pnlGeneral.BackColor = Color.Transparent;
+            pnlGeneral.Controls.Add(lblTitulo);
+            pnlGeneral.Controls.Add(dgvPedidos);
+            pnlGeneral.Dock = DockStyle.Fill;
+            pnlGeneral.Location = new Point(0, 0);
+            pnlGeneral.Name = "pnlGeneral";
+            pnlGeneral.Padding = new Padding(40);
+            pnlGeneral.Size = new Size(998, 543);
+            pnlGeneral.TabIndex = 5;
+            // 
+            // dgvPedidos
+            // 
+            dgvPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPedidos.BackgroundColor = Color.White;
+            dgvPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPedidos.Dock = DockStyle.Fill;
+            dgvPedidos.Location = new Point(40, 40);
+            dgvPedidos.Name = "dgvPedidos";
+            dgvPedidos.RowHeadersWidth = 51;
+            dgvPedidos.Size = new Size(918, 463);
+            dgvPedidos.TabIndex = 3;
+            dgvPedidos.CellContentClick += dgvPedidos_CellContentClick;
             // 
             // lblTitulo
             // 
-            lblTitulo.AutoSize = true;
             lblTitulo.BackColor = Color.Transparent;
+            lblTitulo.Dock = DockStyle.Top;
             lblTitulo.Font = new Font("Stencil", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblTitulo.ForeColor = Color.White;
-            lblTitulo.Location = new Point(396, 49);
+            lblTitulo.Location = new Point(40, 40);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(217, 56);
-            lblTitulo.TabIndex = 4;
+            lblTitulo.Size = new Size(918, 89);
+            lblTitulo.TabIndex = 5;
             lblTitulo.Text = "Pedidos";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // FrmPedidos
             // 
@@ -61,18 +79,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Diseño_sin_título__1_;
             ClientSize = new Size(998, 543);
-            Controls.Add(dataGridView1);
-            Controls.Add(lblTitulo);
+            Controls.Add(pnlGeneral);
             Name = "FrmPedidos";
             Text = "FrmPedidos";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += FrmPedidos_Load;
+            pnlGeneral.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvPedidos).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dataGridView1;
+        private Panel pnlGeneral;
+        private DataGridView dgvPedidos;
         private Label lblTitulo;
     }
 }
