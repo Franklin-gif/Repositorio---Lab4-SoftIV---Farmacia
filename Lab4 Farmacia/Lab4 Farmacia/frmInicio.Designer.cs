@@ -33,56 +33,64 @@
             inventariosToolStripMenuItem = new ToolStripMenuItem();
             pedidosToolStripMenuItem = new ToolStripMenuItem();
             sesionToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             mnAdmin.SuspendLayout();
             SuspendLayout();
             // 
             // mnAdmin
             // 
-            mnAdmin.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            mnAdmin.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             mnAdmin.ImageScalingSize = new Size(20, 20);
-            mnAdmin.Items.AddRange(new ToolStripItem[] { medicamentosToolStripMenuItem, inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem });
+            mnAdmin.Items.AddRange(new ToolStripItem[] { medicamentosToolStripMenuItem, inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem, toolStripMenuItem1 });
             mnAdmin.Location = new Point(0, 0);
             mnAdmin.Name = "mnAdmin";
-            mnAdmin.Size = new Size(800, 24);
+            mnAdmin.Padding = new Padding(7, 3, 0, 3);
+            mnAdmin.Size = new Size(914, 45);
             mnAdmin.TabIndex = 1;
             mnAdmin.Text = "MenuAdmin";
             // 
             // medicamentosToolStripMenuItem
             // 
             medicamentosToolStripMenuItem.Name = "medicamentosToolStripMenuItem";
-            medicamentosToolStripMenuItem.Size = new Size(116, 20);
+            medicamentosToolStripMenuItem.Size = new Size(253, 39);
             medicamentosToolStripMenuItem.Text = "Medicamentos";
             medicamentosToolStripMenuItem.Click += medicamentosToolStripMenuItem_Click;
             // 
             // inventariosToolStripMenuItem
             // 
             inventariosToolStripMenuItem.Name = "inventariosToolStripMenuItem";
-            inventariosToolStripMenuItem.Size = new Size(103, 20);
+            inventariosToolStripMenuItem.Size = new Size(223, 39);
             inventariosToolStripMenuItem.Text = "Inventarios";
             inventariosToolStripMenuItem.Click += inventariosToolStripMenuItem_Click;
             // 
             // pedidosToolStripMenuItem
             // 
             pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            pedidosToolStripMenuItem.Size = new Size(71, 20);
+            pedidosToolStripMenuItem.Size = new Size(152, 39);
             pedidosToolStripMenuItem.Text = "Pedidos";
             pedidosToolStripMenuItem.Click += pedidosToolStripMenuItem_Click;
             // 
             // sesionToolStripMenuItem
             // 
             sesionToolStripMenuItem.Name = "sesionToolStripMenuItem";
-            sesionToolStripMenuItem.Size = new Size(63, 20);
+            sesionToolStripMenuItem.Size = new Size(132, 39);
             sesionToolStripMenuItem.Text = "Sesion";
             sesionToolStripMenuItem.Click += sesionToolStripMenuItem_Click;
             // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(14, 39);
+            // 
             // frmInicioAdmin
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(mnAdmin);
             IsMdiContainer = true;
             MainMenuStrip = mnAdmin;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmInicioAdmin";
             Text = "frmInicioAdmin";
             Load += frmInicioAdmin_Load;
@@ -99,5 +107,6 @@
         private ToolStripMenuItem inventariosToolStripMenuItem;
         private ToolStripMenuItem pedidosToolStripMenuItem;
         private ToolStripMenuItem sesionToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
     }
 }
