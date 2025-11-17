@@ -20,7 +20,7 @@ namespace Lab4_Farmacia
             {
                 using (NpgsqlConnection conn = ConexionBd.ObtenerConexion())
                 {
-                    // ?? Traer tanto el nombre de usuario como el tipo (rol)
+                    // Traer tanto el nombre de usuario como el tipo (rol)
                     string query = "SELECT usuario, tipo_usuario FROM usuarios WHERE usuario=@u AND clave=@c";
 
                     using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
@@ -40,14 +40,13 @@ namespace Lab4_Farmacia
                             string nombreUsuario = reader.GetString(0);
                             string tipoUsuario = reader.GetString(1);
 
-                            // ?? Mostrar mensaje opcional
                             MessageBox.Show($"Bienvenido {nombreUsuario} ({tipoUsuario})", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             if (tipoUsuario == "Admin")
                             {
-                                frmInicioAdmin frmAdmin = new frmInicioAdmin();
+                                frmInicioAdmin frmAdmin = new frmInicioAdmin(nombreUsuario, tipoUsuario);
                                 frmAdmin.Show();
-                                sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
+
                             }
                             else if (tipoUsuario == "Cliente")
                             {
