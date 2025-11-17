@@ -33,6 +33,7 @@
             inventariosToolStripMenuItem = new ToolStripMenuItem();
             pedidosToolStripMenuItem = new ToolStripMenuItem();
             sesionToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem2 = new ToolStripMenuItem();
             toolStripMenuItem1 = new ToolStripMenuItem();
             mnAdmin.SuspendLayout();
             SuspendLayout();
@@ -41,7 +42,7 @@
             // 
             mnAdmin.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             mnAdmin.ImageScalingSize = new Size(20, 20);
-            mnAdmin.Items.AddRange(new ToolStripItem[] { medicamentosToolStripMenuItem, inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem, toolStripMenuItem1 });
+            mnAdmin.Items.AddRange(new ToolStripItem[] { medicamentosToolStripMenuItem, inventariosToolStripMenuItem, pedidosToolStripMenuItem, sesionToolStripMenuItem, toolStripMenuItem2, toolStripMenuItem1 });
             mnAdmin.Location = new Point(0, 0);
             mnAdmin.Name = "mnAdmin";
             mnAdmin.Padding = new Padding(7, 3, 0, 3);
@@ -77,6 +78,11 @@
             sesionToolStripMenuItem.Text = "Sesion";
             sesionToolStripMenuItem.Click += sesionToolStripMenuItem_Click;
             // 
+            // toolStripMenuItem2
+            // 
+            toolStripMenuItem2.Name = "toolStripMenuItem2";
+            toolStripMenuItem2.Size = new Size(14, 39);
+            // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
@@ -92,7 +98,6 @@
             MainMenuStrip = mnAdmin;
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmInicioAdmin";
-            Text = "frmInicioAdmin";
             Load += frmInicioAdmin_Load;
             mnAdmin.ResumeLayout(false);
             mnAdmin.PerformLayout();
@@ -107,6 +112,7 @@
         private ToolStripMenuItem inventariosToolStripMenuItem;
         private ToolStripMenuItem pedidosToolStripMenuItem;
         private ToolStripMenuItem sesionToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem2;
         private ToolStripMenuItem toolStripMenuItem1;
     }
 }

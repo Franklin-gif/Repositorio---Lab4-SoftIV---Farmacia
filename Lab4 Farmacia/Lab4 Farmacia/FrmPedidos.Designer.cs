@@ -29,18 +29,10 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             pnlGeneral = new Panel();
             dgvPedidos = new DataGridView();
             lblTitulo = new Label();
-            ID = new DataGridViewTextBoxColumn();
-            nombre = new DataGridViewTextBoxColumn();
-            medicamento = new DataGridViewTextBoxColumn();
-            cantidad = new DataGridViewTextBoxColumn();
-            fecha = new DataGridViewTextBoxColumn();
             pnlGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             SuspendLayout();
@@ -70,15 +62,14 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvPedidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPedidos.ColumnHeadersHeight = 29;
-            dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { ID, nombre, medicamento, cantidad, fecha });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvPedidos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvPedidos.DefaultCellStyle = dataGridViewCellStyle2;
             dgvPedidos.Dock = DockStyle.Fill;
             dgvPedidos.Location = new Point(40, 120);
             dgvPedidos.Margin = new Padding(3, 4, 3, 4);
@@ -104,62 +95,6 @@
             lblTitulo.Text = "Pedidos";
             lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // ID
-            // 
-            ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ID.DataPropertyName = "id";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            ID.DefaultCellStyle = dataGridViewCellStyle2;
-            ID.FillWeight = 40F;
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 50;
-            ID.Name = "ID";
-            ID.ReadOnly = true;
-            ID.Resizable = DataGridViewTriState.True;
-            // 
-            // nombre
-            // 
-            nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            nombre.DataPropertyName = "nombre";
-            nombre.FillWeight = 70F;
-            nombre.HeaderText = "Nombre";
-            nombre.MinimumWidth = 6;
-            nombre.Name = "nombre";
-            nombre.ReadOnly = true;
-            // 
-            // medicamento
-            // 
-            medicamento.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            medicamento.DataPropertyName = "medicamento";
-            medicamento.FillWeight = 80F;
-            medicamento.HeaderText = "Medicamento";
-            medicamento.MinimumWidth = 6;
-            medicamento.Name = "medicamento";
-            medicamento.ReadOnly = true;
-            // 
-            // cantidad
-            // 
-            cantidad.DataPropertyName = "cantidad";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            cantidad.DefaultCellStyle = dataGridViewCellStyle3;
-            cantidad.FillWeight = 45F;
-            cantidad.HeaderText = "Cantidad";
-            cantidad.MinimumWidth = 6;
-            cantidad.Name = "cantidad";
-            cantidad.ReadOnly = true;
-            // 
-            // fecha
-            // 
-            fecha.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            fecha.DataPropertyName = "fecha";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            fecha.DefaultCellStyle = dataGridViewCellStyle4;
-            fecha.FillWeight = 45F;
-            fecha.HeaderText = "Fecha";
-            fecha.MinimumWidth = 6;
-            fecha.Name = "fecha";
-            fecha.ReadOnly = true;
-            // 
             // FrmPedidos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -181,10 +116,5 @@
         private Panel pnlGeneral;
         private DataGridView dgvPedidos;
         private Label lblTitulo;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn nombre;
-        private DataGridViewTextBoxColumn medicamento;
-        private DataGridViewTextBoxColumn cantidad;
-        private DataGridViewTextBoxColumn fecha;
     }
 }
