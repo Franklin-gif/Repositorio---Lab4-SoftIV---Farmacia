@@ -12,6 +12,9 @@ namespace Lab4_Farmacia
 {
     public partial class frmInicioAdmin : Form
     {
+        private string usuarioActual;
+        private string rolActual;
+
         public frmInicioAdmin()
         {
             InitializeComponent();
@@ -46,12 +49,10 @@ namespace Lab4_Farmacia
 
         private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Pasa el usuario y rol actuales. Puedes guardarlos como variables globales.
-            sesion ventanaSesion = new sesion("Admin", "Administrador");
+            sesion ventanaSesion = new sesion(usuarioActual,rolActual);
             ventanaSesion.MdiParent = this;
             ventanaSesion.WindowState= FormWindowState.Maximized;
             ventanaSesion.Show();
-            
         }
 
         private void frmInicioAdmin_Load(object sender, EventArgs e)

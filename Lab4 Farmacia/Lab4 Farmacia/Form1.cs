@@ -49,7 +49,11 @@ namespace Lab4_Farmacia
                                 frmInicioAdmin frmAdmin = new frmInicioAdmin();
                                 frmAdmin.Show();
                                 sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
-                              
+                                
+
+
+                                // Abrir la ventana 'sesion' automáticamente
+ 
                             }
                             else if (tipoUsuario == "Cliente")
                             {

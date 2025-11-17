@@ -97,6 +97,7 @@
             rdbReabastecer.TabStop = true;
             rdbReabastecer.Text = "Reabastecer";
             rdbReabastecer.UseVisualStyleBackColor = true;
+            rdbReabastecer.CheckedChanged += rdbReabastecer_CheckedChanged;
             // 
             // rdbEliminar
             // 
@@ -111,6 +112,7 @@
             rdbEliminar.TabStop = true;
             rdbEliminar.Text = "Eliminar";
             rdbEliminar.UseVisualStyleBackColor = true;
+            rdbEliminar.CheckedChanged += rdbEliminar_CheckedChanged;
             // 
             // rdbModificar
             // 
@@ -160,6 +162,7 @@
             dgvDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDatos.Size = new Size(1096, 669);
             dgvDatos.TabIndex = 1;
+            dgvDatos.CellDoubleClick += dgvDatos_CellDoubleClick;
             dgvDatos.SelectionChanged += dgvDatos_SelectionChanged;
             // 
             // ID

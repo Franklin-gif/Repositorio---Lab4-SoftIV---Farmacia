@@ -37,18 +37,17 @@ namespace Lab4_Farmacia
                 cmd.ExecuteNonQuery();
             }
         }
-
         public static DataTable TraerMedicamentos()
         {
-            DataTable dt = new DataTable();
             using (var conn = ConexionBd.ObtenerConexion())
-            using (var da = new NpgsqlDataAdapter("SELECT id, nombre, descripcion, imagen, cantidad, precio FROM medicamentos ORDER BY id ASC", conn))
+            using (var cmd = new NpgsqlCommand("SELECT * FROM sp_ver_inventario()", conn))
+            using (var da = new NpgsqlDataAdapter(cmd))
             {
+                DataTable dt = new DataTable();
                 da.Fill(dt);
+                return dt;
             }
-            return dt;
         }
-
         public static void ModificarMedicamento(int id, string nombre, string descripcion, int cantidad, decimal precio, byte[] imagen)
         {
 
@@ -72,6 +71,38 @@ namespace Lab4_Farmacia
 
         }
 
+        public static void ReabastecerMedicamento(int id, int cantidadAgregar)
+        {
+            using (var conn = ConexionBd.ObtenerConexion())
+            using (var cmd = new NpgsqlCommand("CALL sp_reabastecer_medicamento(@p_id, @cant_agregar)", conn))
+            {
+                cmd.Parameters.AddWithValue("p_id", id);
+                cmd.Parameters.AddWithValue("cant_agregar", cantidadAgregar);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void EliminarMedicamento(int id)
+        {
+            using (var conn = ConexionBd.ObtenerConexion())
+            using (var cmd = new NpgsqlCommand("CALL sp_eliminar_medicamento(@p_id)", conn))
+            {
+                cmd.Parameters.AddWithValue("p_id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public static DataTable TraerPedidos()
+        {
+            using (var conn = ConexionBd.ObtenerConexion())
+            using (var cmd = new NpgsqlCommand("SELECT * FROM sp_consultar_pedidos()", conn))
+            using (var da = new NpgsqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
 
     }
 }

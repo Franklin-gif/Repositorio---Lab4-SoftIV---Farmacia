@@ -59,8 +59,8 @@
             // inventariosToolStripMenuItem
             // 
             inventariosToolStripMenuItem.Name = "inventariosToolStripMenuItem";
-            inventariosToolStripMenuItem.Size = new Size(223, 39);
-            inventariosToolStripMenuItem.Text = "Inventarios";
+            inventariosToolStripMenuItem.Size = new Size(206, 39);
+            inventariosToolStripMenuItem.Text = "Inventario";
             inventariosToolStripMenuItem.Click += inventariosToolStripMenuItem_Click;
             // 
             // pedidosToolStripMenuItem

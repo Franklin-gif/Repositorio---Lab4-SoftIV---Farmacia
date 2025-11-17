@@ -20,9 +20,6 @@ namespace Lab4_Farmacia
         public FrmMedicamentos()
         {
             InitializeComponent();
-
-
-
         }
 
         private void btnEjecutar_Click(object sender, EventArgs e)
@@ -44,15 +41,14 @@ namespace Lab4_Farmacia
                     decimal precio = decimal.Parse(txtPrecio.Text);
                     byte[] imgBytes = Admin.ConvertirImagenABytes(pbImagen.Image);
 
-                    // Agregar a BD
                     try
                     {
                         Admin.AgregarMedicamento(nombre, desc, cant, precio, imgBytes);
                         MessageBox.Show("Medicamento agregado correctamente.");
 
                         // Actualizar dgv
-                        CargarMedicamentos();  // método que usa Admin.TraerMedicamentos()
-                        LimpiarCampos();       // limpia todo para agregar uno nuevo
+                        CargarMedicamentos();  
+                        LimpiarCampos();       
                     }
                     catch (Exception ex)
                     {
@@ -63,7 +59,6 @@ namespace Lab4_Farmacia
 
                 else if (rdbModificar.Checked)
                 {
-                    //Validar que haya una fila seleccionada y que tenga ID
                     var row = dgvDatos.CurrentRow;
                     if (row == null || row.IsNewRow || row.Cells["ID"].Value == null)
                     {
@@ -85,7 +80,7 @@ namespace Lab4_Farmacia
                     if (string.IsNullOrWhiteSpace(nombre) ||
                         string.IsNullOrWhiteSpace(desc) ||
                         string.IsNullOrWhiteSpace(txtPrecio.Text) ||
-                        nudCant.Value < 0) 
+                        nudCant.Value < 0)
                     {
                         MessageBox.Show("Complete todos los campos",
                                         "Faltan datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -108,7 +103,6 @@ namespace Lab4_Farmacia
 
                     try
                     {
-                        //Llamada al procedimiento almacenado 
                         Admin.ModificarMedicamento(id, nombre, desc, cantidad, precio, imgBytes);
 
                         MessageBox.Show("Medicamento actualizado correctamente.", "OK",
@@ -135,10 +129,35 @@ namespace Lab4_Farmacia
                 else if (rdbReabastecer.Checked)
                 {
 
-                }
-                else
-                {
-                    MessageBox.Show("Seleccione una acción: Agregar, Modificar o Reabastecer.");
+                    if (dgvDatos.SelectedRows.Count > 0)
+                    {
+                        var idCell = dgvDatos.SelectedRows[0].Cells["id"].Value;
+
+                        if (idCell == null || string.IsNullOrWhiteSpace(idCell.ToString()))
+                        {
+                            MessageBox.Show("Seleccione un medicamento de la lista para reabastecer.");
+                            return;
+                        }
+
+                        int id = Convert.ToInt32(idCell);
+                        int cantidadAgregar = (int)nudCant.Value;
+
+                        try
+                        {
+                            Admin.ReabastecerMedicamento(id, cantidadAgregar);
+                            MessageBox.Show("Medicamento reabastecido correctamente.");
+
+                            CargarMedicamentos();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione un medicamento para reabastecer.");
+                    }
                 }
             }
             catch (Exception ex)
@@ -157,7 +176,6 @@ namespace Lab4_Farmacia
             txtPrecio.Text = "";
             pbImagen.Image = null;
         }
-
 
         private void CargarMedicamentos()
         {
@@ -179,17 +197,10 @@ namespace Lab4_Farmacia
                 row.Cells[dgvDatos.Columns["Imagen"].Index].Value = bytes != null ? Image.FromStream(new MemoryStream(bytes)) : null;
                 dgvDatos.Rows.Add(row);
             }
-
-            var blank = new DataGridViewRow();
-            blank.CreateCells(dgvDatos);
-            dgvDatos.Rows.Add(blank);
-
             dgvDatos.ClearSelection();
             dgvDatos.CurrentCell = null;
 
             LimpiarCampos();
-
-
         }
 
         private void rdbAgregar_CheckedChanged(object sender, EventArgs e)
@@ -249,7 +260,6 @@ namespace Lab4_Farmacia
             else
                 txtPrecio.Text = "";
 
-            // Imagen: convertir bytes a Image
             var imgBytes = dgvDatos.CurrentRow.Cells["Imagen"].Value as Image;
             pbImagen.Image = imgBytes;
         }
@@ -263,28 +273,101 @@ namespace Lab4_Farmacia
 
         private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Permitir teclas de control (borrar, retroceso)
             if (char.IsControl(e.KeyChar))
                 return;
 
-            // Permitir dígitos
             if (char.IsDigit(e.KeyChar))
                 return;
 
-            // Permitir un solo punto decimal
             if (e.KeyChar == '.' && !txtPrecio.Text.Contains("."))
                 return;
 
-            // Bloquear todo lo demás (letras, signos, más de un punto)
             e.Handled = true;
         }
 
         private void rdbModificar_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdbAgregar.Checked)
+            if (rdbModificar.Checked)
             {
                 grpInf.Visible = true;
-                btnEjecutar.Text = "Agregar";
+                btnEjecutar.Text = "Modificar";
+            }
+        }
+
+        private void rdbReabastecer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbReabastecer.Checked)
+            {
+
+                lblNombre.Visible = false;
+                txtNombre.Visible = false;
+
+                lblDescripcion.Visible = false;
+                rtbDescrip.Visible = false;
+
+                lblPrecio.Visible = false;
+                txtPrecio.Visible = false;
+                lblPieFoto.Visible = false;
+
+                pbImagen.Visible = false;
+                lblPrecioUnidad.Visible = false;
+                lblmagen.Visible = false;
+
+                btnEjecutar.Visible = true;
+                lblCantidad.Visible = true;
+                nudCant.Visible = true;
+
+                btnEjecutar.Text = "Reabastecer";
+
+                btnEjecutar.Location = new Point(200, 200);
+                lblCantidad.Location = new Point(110, 100);
+                nudCant.Location = new Point(300, 95);
+
+                grpInf.Height = 360;
+                grpInf.Location = new Point(grpInf.Location.X, grpInf.Location.Y + 200);
+            }
+        }
+
+        private void rdbEliminar_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbEliminar.Checked)
+            {
+                grpInf.Visible = false;
+            }
+        }
+
+        private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && dgvDatos.Rows[e.RowIndex].Cells["id"].Value != null)
+            {
+                var idCell = dgvDatos.Rows[e.RowIndex].Cells["id"].Value;
+
+                if (string.IsNullOrWhiteSpace(idCell.ToString()))
+                {
+                    MessageBox.Show("Seleccione un medicamento válido para eliminar.");
+                    return;
+                }
+
+                int id = Convert.ToInt32(idCell);
+
+                var confirm = MessageBox.Show("¿Está seguro de eliminar este medicamento?", "Confirmar eliminación",
+                                              MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (confirm == DialogResult.Yes)
+                {
+                    try
+                    {
+                        Admin.EliminarMedicamento(id); 
+                        MessageBox.Show("Medicamento eliminado correctamente.", "OK",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarMedicamentos();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al eliminar: " + ex.Message, "Error",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
     }

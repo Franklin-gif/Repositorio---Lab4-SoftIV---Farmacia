@@ -41,11 +41,12 @@
             lblRol.BackColor = Color.Transparent;
             lblRol.Font = new Font("Stencil", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblRol.ForeColor = SystemColors.Window;
-            lblRol.Location = new Point(376, 146);
+            lblRol.Location = new Point(3, 146);
             lblRol.Name = "lblRol";
-            lblRol.Size = new Size(191, 89);
+            lblRol.Size = new Size(938, 89);
             lblRol.TabIndex = 13;
             lblRol.Text = "Rol";
+            lblRol.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // lblUsuario
             // 
@@ -53,11 +54,12 @@
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Stencil", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblUsuario.ForeColor = SystemColors.Window;
-            lblUsuario.Location = new Point(274, 39);
+            lblUsuario.Location = new Point(3, 39);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(395, 88);
+            lblUsuario.Size = new Size(938, 88);
             lblUsuario.TabIndex = 11;
             lblUsuario.Text = "Usuario";
+            lblUsuario.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // btnCerrarSesion
             // 
