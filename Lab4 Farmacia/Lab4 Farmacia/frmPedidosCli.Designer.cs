@@ -80,6 +80,7 @@
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel1.BackColor = Color.Transparent;
             tableLayoutPanel1.BackgroundImageLayout = ImageLayout.Stretch;
             tableLayoutPanel1.ColumnCount = 1;
@@ -89,7 +90,6 @@
             tableLayoutPanel1.Controls.Add(groupBox3, 0, 4);
             tableLayoutPanel1.Controls.Add(lblInventario, 0, 0);
             tableLayoutPanel1.Controls.Add(dgvInv, 0, 1);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
@@ -98,7 +98,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel1.Size = new Size(914, 619);
+            tableLayoutPanel1.Size = new Size(914, 634);
             tableLayoutPanel1.TabIndex = 17;
             tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
@@ -128,7 +128,7 @@
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
             dgvPedidosCli.DefaultCellStyle = dataGridViewCellStyle7;
             dgvPedidosCli.Dock = DockStyle.Fill;
-            dgvPedidosCli.Location = new Point(30, 245);
+            dgvPedidosCli.Location = new Point(30, 252);
             dgvPedidosCli.Margin = new Padding(30, 0, 30, 0);
             dgvPedidosCli.MultiSelect = false;
             dgvPedidosCli.Name = "dgvPedidosCli";
@@ -146,7 +146,7 @@
             dgvPedidosCli.RowsDefaultCellStyle = dataGridViewCellStyle9;
             dgvPedidosCli.RowTemplate.Height = 120;
             dgvPedidosCli.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPedidosCli.Size = new Size(854, 123);
+            dgvPedidosCli.Size = new Size(854, 126);
             dgvPedidosCli.TabIndex = 20;
             // 
             // IDCliente
@@ -214,7 +214,7 @@
             lblPedidos.BackColor = Color.Transparent;
             lblPedidos.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPedidos.ForeColor = SystemColors.Window;
-            lblPedidos.Location = new Point(3, 199);
+            lblPedidos.Location = new Point(3, 205);
             lblPedidos.Name = "lblPedidos";
             lblPedidos.Size = new Size(908, 30);
             lblPedidos.TabIndex = 19;
@@ -226,12 +226,12 @@
             groupBox3.Controls.Add(tableLayoutPanel2);
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.Font = new Font("Stencil", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox3.ForeColor = Color.Black;
-            groupBox3.Location = new Point(10, 378);
+            groupBox3.ForeColor = Color.White;
+            groupBox3.Location = new Point(10, 388);
             groupBox3.Margin = new Padding(10);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(3, 4, 3, 4);
-            groupBox3.Size = new Size(894, 231);
+            groupBox3.Size = new Size(894, 236);
             groupBox3.TabIndex = 18;
             groupBox3.TabStop = false;
             groupBox3.Text = "Pedido";
@@ -239,7 +239,7 @@
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.Controls.Add(btnOrdenar, 0, 4);
             tableLayoutPanel2.Controls.Add(lblNom, 0, 0);
             tableLayoutPanel2.Controls.Add(txtNom, 0, 1);
@@ -249,13 +249,12 @@
             tableLayoutPanel2.Location = new Point(3, 24);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 5;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 39.5061722F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 60.4938278F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 33F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 55F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 46F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Size = new Size(888, 203);
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 18.89913F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 16.5847416F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 21.5053768F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 21.5053768F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 21.5053768F));
+            tableLayoutPanel2.Size = new Size(888, 208);
             tableLayoutPanel2.TabIndex = 14;
             // 
             // btnOrdenar
@@ -264,7 +263,7 @@
             btnOrdenar.BackColor = SystemColors.ButtonFace;
             btnOrdenar.Font = new Font("Stencil", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnOrdenar.ForeColor = Color.Black;
-            btnOrdenar.Location = new Point(302, 159);
+            btnOrdenar.Location = new Point(302, 164);
             btnOrdenar.Name = "btnOrdenar";
             btnOrdenar.Size = new Size(283, 41);
             btnOrdenar.TabIndex = 22;
@@ -278,7 +277,7 @@
             lblNom.BackColor = Color.Transparent;
             lblNom.Font = new Font("Stencil", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblNom.ForeColor = SystemColors.Window;
-            lblNom.Location = new Point(3, 1);
+            lblNom.Location = new Point(3, 7);
             lblNom.Name = "lblNom";
             lblNom.Size = new Size(882, 24);
             lblNom.TabIndex = 14;
@@ -289,7 +288,7 @@
             // 
             txtNom.Anchor = AnchorStyles.Top;
             txtNom.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNom.Location = new Point(313, 31);
+            txtNom.Location = new Point(313, 43);
             txtNom.Margin = new Padding(3, 4, 3, 4);
             txtNom.Name = "txtNom";
             txtNom.Size = new Size(262, 34);
@@ -301,7 +300,7 @@
             lblCant.BackColor = Color.Transparent;
             lblCant.Font = new Font("Stencil", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblCant.ForeColor = SystemColors.Window;
-            lblCant.Location = new Point(3, 69);
+            lblCant.Location = new Point(3, 80);
             lblCant.Name = "lblCant";
             lblCant.Size = new Size(882, 30);
             lblCant.TabIndex = 15;
@@ -312,7 +311,7 @@
             // 
             nudCant.Anchor = AnchorStyles.Top;
             nudCant.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nudCant.Location = new Point(307, 105);
+            nudCant.Location = new Point(307, 121);
             nudCant.Margin = new Padding(3, 4, 3, 4);
             nudCant.Maximum = new decimal(new int[] { 200000, 0, 0, 0 });
             nudCant.Name = "nudCant";
@@ -327,7 +326,7 @@
             lblInventario.ForeColor = SystemColors.Window;
             lblInventario.Location = new Point(3, 0);
             lblInventario.Name = "lblInventario";
-            lblInventario.Size = new Size(908, 61);
+            lblInventario.Size = new Size(908, 63);
             lblInventario.TabIndex = 16;
             lblInventario.Text = "Inventario (Seleccione un medicamento de la lista)";
             lblInventario.TextAlign = ContentAlignment.MiddleCenter;
@@ -358,7 +357,7 @@
             dataGridViewCellStyle17.WrapMode = DataGridViewTriState.False;
             dgvInv.DefaultCellStyle = dataGridViewCellStyle17;
             dgvInv.Dock = DockStyle.Fill;
-            dgvInv.Location = new Point(30, 61);
+            dgvInv.Location = new Point(30, 63);
             dgvInv.Margin = new Padding(30, 0, 30, 0);
             dgvInv.MultiSelect = false;
             dgvInv.Name = "dgvInv";
@@ -376,7 +375,7 @@
             dgvInv.RowsDefaultCellStyle = dataGridViewCellStyle19;
             dgvInv.RowTemplate.Height = 120;
             dgvInv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvInv.Size = new Size(854, 123);
+            dgvInv.Size = new Size(854, 126);
             dgvInv.TabIndex = 15;
             // 
             // ID
