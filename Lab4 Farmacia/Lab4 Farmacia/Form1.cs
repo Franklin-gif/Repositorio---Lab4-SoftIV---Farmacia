@@ -11,77 +11,91 @@ namespace Lab4_Farmacia
             InitializeComponent();
         }
 
-        private void btmIniciarSesion_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            string usuario = txtUsuario.Text.Trim();
-            string clave = txtContra.Text.Trim();
+            this.WindowState = FormWindowState.Maximized;
+        }
 
-            try
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void LimpiarCampos()
+        {
+            txtUsuario.Text = "";
+            txtContra.Text = "";
+        }
+
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
             {
-                using (NpgsqlConnection conn = ConexionBd.ObtenerConexion())
+                string usuario = txtUsuario.Text.Trim();
+                string clave = txtContra.Text.Trim();
+
+                try
                 {
-                    // ?? Traer tanto el nombre de usuario como el tipo (rol)
-                    string query = "SELECT usuario, tipo_usuario FROM usuarios WHERE usuario=@u AND clave=@c";
-
-                    using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                    using (NpgsqlConnection conn = ConexionBd.ObtenerConexion())
                     {
-                        cmd.Parameters.AddWithValue("@u", usuario);
-                        cmd.Parameters.AddWithValue("@c", clave);
+                        string query = "SELECT usuario, tipo_usuario FROM usuarios WHERE usuario=@u AND clave=@c";
 
-                        using (var reader = cmd.ExecuteReader())
+                        using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                         {
-                            if (!reader.Read())
-                            {
-                                MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
+                            cmd.Parameters.AddWithValue("@u", usuario);
+                            cmd.Parameters.AddWithValue("@c", clave);
 
-                            // ?? Obtener datos del usuario
-                            string nombreUsuario = reader.GetString(0);
-                            string tipoUsuario = reader.GetString(1);
+                            using (var reader = cmd.ExecuteReader())
+                            {
+                                if (!reader.Read())
+                                {
+                                    MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    LimpiarCampos();
+                                    return;
+                                }
 
-                            // ?? Mostrar mensaje opcional
-                            MessageBox.Show($"Bienvenido {nombreUsuario} ({tipoUsuario})", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // ?? Obtener datos del usuario
+                                string nombreUsuario = reader.GetString(0);
+                                string tipoUsuario = reader.GetString(1);
 
-                            if (tipoUsuario == "Admin")
-                            {
-                                frmInicioAdmin frmAdmin = new frmInicioAdmin();
-                                frmAdmin.Show();
-                                sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
-                            }
-                            else if (tipoUsuario == "Cliente")
-                            {
-                                frmInicioCliente frmCliente = new frmInicioCliente(nombreUsuario);
-                                frmCliente.Show();
-                                sesion ventanaSesion = new sesion(nombreUsuario, tipoUsuario);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Rol no reconocido en la base de datos.");
+                                MessageBox.Show($"Bienvenido {nombreUsuario} ({tipoUsuario})", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                if (tipoUsuario == "Admin")
+                                {
+                                    frmInicioAdmin frmAdmin = new frmInicioAdmin(nombreUsuario, tipoUsuario);
+                                    frmAdmin.Show();
+                                    LimpiarCampos();
+
+                                }
+                                else if (tipoUsuario == "Cliente")
+                                {
+                                    frmInicioCliente frmCliente = new frmInicioCliente(nombreUsuario,tipoUsuario);
+                                    frmCliente.Show();
+                                    LimpiarCampos();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Rol no reconocido en la base de datos.");
+                                    LimpiarCampos();
+                                }
                             }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al iniciar sesión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    LimpiarCampos();
+                    return;
+                }
+
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al iniciar sesión: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
-        private void btmRegistro_Click(object sender, EventArgs e)
+        private void btnRegistro_Click(object sender, EventArgs e)
         {
-            frmRegistro registro = new frmRegistro();
-            registro.ShowDialog();
-            this.Close();
+            frmRegistro frmRegistro = new frmRegistro();
+            frmRegistro.WindowState = FormWindowState.Maximized;
+            frmRegistro.Show();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
     }
 }

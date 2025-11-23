@@ -11,25 +11,21 @@ namespace Lab4_Farmacia
             InitializeComponent();
         }
 
-        private void buttonRegistrar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void frmRegistro_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void btnRegistrar_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void btmRegistrar_Click(object sender, EventArgs e)
+        private void btnRegistro_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text;
             string clave = txtContraseña.Text;
+
+            if (string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(clave))
+            {
+                MessageBox.Show("Debe llenar todos los campos.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             try
             {
@@ -46,15 +42,13 @@ namespace Lab4_Farmacia
 
                     Form1 form1 = new Form1();
                     form1.Show();
-                        
+
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al registrar el cliente: " + ex.Message);
             }
-            
         }
-
     }
 }

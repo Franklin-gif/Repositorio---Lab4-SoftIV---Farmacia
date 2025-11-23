@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             pnlGeneral = new Panel();
             dgvInv = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
@@ -60,33 +65,45 @@
             // dgvInv
             // 
             dgvInv.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvInv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvInv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvInv.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvInv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvInv.ColumnHeadersHeight = 29;
             dgvInv.Columns.AddRange(new DataGridViewColumn[] { ID, nombre, descripcion, imagen, cantidad, precio });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvInv.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvInv.DefaultCellStyle = dataGridViewCellStyle8;
             dgvInv.Dock = DockStyle.Fill;
             dgvInv.Location = new Point(40, 120);
             dgvInv.Margin = new Padding(3, 4, 3, 4);
             dgvInv.MultiSelect = false;
             dgvInv.Name = "dgvInv";
             dgvInv.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvInv.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvInv.RowHeadersWidth = 51;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvInv.RowsDefaultCellStyle = dataGridViewCellStyle10;
             dgvInv.RowTemplate.Height = 120;
             dgvInv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvInv.Size = new Size(885, 347);
@@ -94,31 +111,38 @@
             // 
             // ID
             // 
-            ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             ID.DataPropertyName = "id";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            ID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.TopLeft;
+            ID.DefaultCellStyle = dataGridViewCellStyle3;
             ID.FillWeight = 40F;
+            ID.Frozen = true;
             ID.HeaderText = "ID";
             ID.MinimumWidth = 50;
             ID.Name = "ID";
             ID.ReadOnly = true;
             ID.Resizable = DataGridViewTriState.True;
+            ID.Width = 88;
             // 
             // nombre
             // 
-            nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            nombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             nombre.DataPropertyName = "nombre";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.TopLeft;
+            nombre.DefaultCellStyle = dataGridViewCellStyle4;
             nombre.FillWeight = 70F;
             nombre.HeaderText = "Nombre";
             nombre.MinimumWidth = 6;
             nombre.Name = "nombre";
             nombre.ReadOnly = true;
+            nombre.Width = 153;
             // 
             // descripcion
             // 
             descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             descripcion.DataPropertyName = "descripcion";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.TopLeft;
+            descripcion.DefaultCellStyle = dataGridViewCellStyle5;
             descripcion.FillWeight = 80F;
             descripcion.HeaderText = "Descripción";
             descripcion.MinimumWidth = 6;
@@ -140,8 +164,8 @@
             // cantidad
             // 
             cantidad.DataPropertyName = "cantidad";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            cantidad.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.TopLeft;
+            cantidad.DefaultCellStyle = dataGridViewCellStyle6;
             cantidad.FillWeight = 45F;
             cantidad.HeaderText = "Cantidad";
             cantidad.MinimumWidth = 6;
@@ -152,8 +176,8 @@
             // 
             precio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             precio.DataPropertyName = "precio";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            precio.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.TopLeft;
+            precio.DefaultCellStyle = dataGridViewCellStyle7;
             precio.FillWeight = 45F;
             precio.HeaderText = "Precio";
             precio.MinimumWidth = 6;
@@ -192,12 +216,12 @@
         #endregion
         private Panel pnlGeneral;
         private DataGridView dgvInv;
+        private Label lblTitulo;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn descripcion;
         private DataGridViewImageColumn imagen;
         private DataGridViewTextBoxColumn cantidad;
         private DataGridViewTextBoxColumn precio;
-        private Label lblTitulo;
     }
 }

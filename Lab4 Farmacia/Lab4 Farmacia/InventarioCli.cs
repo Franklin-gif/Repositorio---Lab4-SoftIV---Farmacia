@@ -17,74 +17,46 @@ namespace Lab4_Farmacia
         {
             InitializeComponent();
         }
-        private void CargarInventario()
-        {
-            using (var conexion = ConexionBd.ObtenerConexion())
-            {
-                string query = "SELECT nombre, descripcion, cantidad, precio FROM medicamentos";
-                NpgsqlDataAdapter adaptador = new NpgsqlDataAdapter(query, conexion);
-                DataTable tabla = new DataTable();
-                adaptador.Fill(tabla);
 
-                dgvMedicamentosCliente.DataSource = tabla;
+
+        private void CargarMedicamentos()
+        {
+            try
+            {
+                var dt = Farmacia.TraerMedicamentos();
+
+                foreach (DataRow dr in dt.Rows)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dgvMedicamentosCliente);
+
+                    row.Cells[dgvMedicamentosCliente.Columns["ID"].Index].Value = dr["id"];
+                    row.Cells[dgvMedicamentosCliente.Columns["nombre"].Index].Value = dr["nombre"];
+                    row.Cells[dgvMedicamentosCliente.Columns["descripcion"].Index].Value = dr["descripcion"];
+                    row.Cells[dgvMedicamentosCliente.Columns["Cantidad"].Index].Value = dr["cantidad"];
+                    row.Cells[dgvMedicamentosCliente.Columns["Precio"].Index].Value = dr["precio"];
+
+                    byte[] bytes = dr["imagen"] as byte[];
+                    row.Cells[dgvMedicamentosCliente.Columns["Imagen"].Index].Value = bytes != null ? Image.FromStream(new MemoryStream(bytes)) : null;
+
+                    dgvMedicamentosCliente.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar medicamentos: " + ex.Message);
             }
         }
 
-        private void btnActualizarCli_Click(object sender, EventArgs e)
-        {
-            CargarInventario();
-        }
-
-        private void inventariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            InventarioCli inv = new InventarioCli();
-            inv.MdiParent = this;
-            inv.WindowState= FormWindowState.Maximized;
-            inv.Show();
-        }
-
-        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmPedidos pedidosCli = new FrmPedidos();
-            pedidosCli.MdiParent = this;
-            pedidosCli.WindowState= FormWindowState.Maximized;
-            pedidosCli.Show();
-
-        }
-
-        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult r = MessageBox.Show("¿Deseas cerrar sesión?",
-                                 "Confirmar",
-                                 MessageBoxButtons.YesNo,
-                                 MessageBoxIcon.Question);
-
-            if (r == DialogResult.Yes)
-            {
-                Form1 login = new Form1();
-                login.Show();
-                this.Hide();
-            }
-        }
-
-        private void dgvMedicamentosCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void pnlGeneral_Paint_1(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void InventarioCli_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            CargarMedicamentos();
         }
     }
 }

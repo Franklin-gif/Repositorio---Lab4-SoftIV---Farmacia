@@ -32,6 +32,11 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnlGeneral = new Panel();
             dgvPedidos = new DataGridView();
+            cliente = new DataGridViewTextBoxColumn();
+            medicamentos = new DataGridViewTextBoxColumn();
+            cantidad = new DataGridViewTextBoxColumn();
+            total = new DataGridViewTextBoxColumn();
+            fecha = new DataGridViewTextBoxColumn();
             lblTitulo = new Label();
             pnlGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
@@ -53,7 +58,7 @@
             dgvPedidos.AllowUserToAddRows = false;
             dgvPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPedidos.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
@@ -62,6 +67,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvPedidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPedidos.ColumnHeadersHeight = 29;
+            dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { cliente, medicamentos, cantidad, total, fecha });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -81,6 +87,46 @@
             dgvPedidos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPedidos.Size = new Size(918, 383);
             dgvPedidos.TabIndex = 4;
+            // 
+            // cliente
+            // 
+            cliente.DataPropertyName = "cliente";
+            cliente.HeaderText = "Cliente";
+            cliente.MinimumWidth = 6;
+            cliente.Name = "cliente";
+            cliente.ReadOnly = true;
+            // 
+            // medicamentos
+            // 
+            medicamentos.DataPropertyName = "medicamentos";
+            medicamentos.HeaderText = "Medicamentos";
+            medicamentos.MinimumWidth = 6;
+            medicamentos.Name = "medicamentos";
+            medicamentos.ReadOnly = true;
+            // 
+            // cantidad
+            // 
+            cantidad.DataPropertyName = "cantidad";
+            cantidad.HeaderText = "Cantidad";
+            cantidad.MinimumWidth = 6;
+            cantidad.Name = "cantidad";
+            cantidad.ReadOnly = true;
+            // 
+            // total
+            // 
+            total.DataPropertyName = "total";
+            total.HeaderText = "Total";
+            total.MinimumWidth = 6;
+            total.Name = "total";
+            total.ReadOnly = true;
+            // 
+            // fecha
+            // 
+            fecha.DataPropertyName = "fecha";
+            fecha.HeaderText = "Fecha";
+            fecha.MinimumWidth = 6;
+            fecha.Name = "fecha";
+            fecha.ReadOnly = true;
             // 
             // lblTitulo
             // 
@@ -116,5 +162,10 @@
         private Panel pnlGeneral;
         private DataGridView dgvPedidos;
         private Label lblTitulo;
+        private DataGridViewTextBoxColumn cliente;
+        private DataGridViewTextBoxColumn medicamentos;
+        private DataGridViewTextBoxColumn cantidad;
+        private DataGridViewTextBoxColumn total;
+        private DataGridViewTextBoxColumn fecha;
     }
 }

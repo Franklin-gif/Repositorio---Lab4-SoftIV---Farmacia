@@ -1,6 +1,6 @@
 ﻿namespace Lab4_Farmacia
 {
-    partial class sesion
+    partial class sesionCli
     {
         /// <summary>
         /// Required designer variable.
@@ -28,52 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblRol = new Label();
-            lblUsuario = new Label();
-            btnCerrarSesion = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
+            lblUsuario = new Label();
+            lblRol = new Label();
+            btnCerrarSesion = new Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // lblRol
-            // 
-            lblRol.Anchor = AnchorStyles.None;
-            lblRol.BackColor = Color.Transparent;
-            lblRol.Font = new Font("Stencil", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblRol.ForeColor = SystemColors.Window;
-            lblRol.Location = new Point(3, 161);
-            lblRol.Name = "lblRol";
-            lblRol.Size = new Size(938, 119);
-            lblRol.TabIndex = 13;
-            lblRol.Text = "Rol";
-            lblRol.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // lblUsuario
-            // 
-            lblUsuario.Anchor = AnchorStyles.Bottom;
-            lblUsuario.BackColor = Color.Transparent;
-            lblUsuario.Font = new Font("Stencil", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblUsuario.ForeColor = SystemColors.Window;
-            lblUsuario.Location = new Point(3, 30);
-            lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(938, 117);
-            lblUsuario.TabIndex = 11;
-            lblUsuario.Text = "Usuario";
-            lblUsuario.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // btnCerrarSesion
-            // 
-            btnCerrarSesion.Anchor = AnchorStyles.Top;
-            btnCerrarSesion.BackColor = SystemColors.ButtonFace;
-            btnCerrarSesion.Font = new Font("Stencil", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCerrarSesion.ForeColor = Color.Black;
-            btnCerrarSesion.Location = new Point(201, 297);
-            btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Size = new Size(542, 76);
-            btnCerrarSesion.TabIndex = 14;
-            btnCerrarSesion.Text = "Cerrar Sesión";
-            btnCerrarSesion.UseVisualStyleBackColor = false;
-            btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -90,30 +50,68 @@
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 234F));
-            tableLayoutPanel1.Size = new Size(944, 529);
-            tableLayoutPanel1.TabIndex = 15;
-            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 208F));
+            tableLayoutPanel1.Size = new Size(900, 517);
+            tableLayoutPanel1.TabIndex = 16;
             // 
-            // sesion
+            // lblUsuario
+            // 
+            lblUsuario.Anchor = AnchorStyles.Bottom;
+            lblUsuario.BackColor = Color.Transparent;
+            lblUsuario.Font = new Font("Stencil", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUsuario.ForeColor = SystemColors.Window;
+            lblUsuario.Location = new Point(3, 37);
+            lblUsuario.Name = "lblUsuario";
+            lblUsuario.Size = new Size(894, 117);
+            lblUsuario.TabIndex = 11;
+            lblUsuario.Text = "Usuario";
+            lblUsuario.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblRol
+            // 
+            lblRol.Anchor = AnchorStyles.None;
+            lblRol.BackColor = Color.Transparent;
+            lblRol.Font = new Font("Stencil", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblRol.ForeColor = SystemColors.Window;
+            lblRol.Location = new Point(3, 179);
+            lblRol.Name = "lblRol";
+            lblRol.Size = new Size(894, 104);
+            lblRol.TabIndex = 13;
+            lblRol.Text = "Rol";
+            lblRol.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnCerrarSesion
+            // 
+            btnCerrarSesion.Anchor = AnchorStyles.Top;
+            btnCerrarSesion.BackColor = SystemColors.ButtonFace;
+            btnCerrarSesion.Font = new Font("Stencil", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCerrarSesion.ForeColor = Color.Black;
+            btnCerrarSesion.Location = new Point(179, 311);
+            btnCerrarSesion.Name = "btnCerrarSesion";
+            btnCerrarSesion.Size = new Size(542, 76);
+            btnCerrarSesion.TabIndex = 14;
+            btnCerrarSesion.Text = "Cerrar Sesión";
+            btnCerrarSesion.UseVisualStyleBackColor = false;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
+            // 
+            // sesionCli
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.Diseño_sin_título__1_;
-            ClientSize = new Size(944, 529);
+            ClientSize = new Size(900, 517);
             Controls.Add(tableLayoutPanel1);
-            Name = "sesion";
-            Text = "sesion";
-            Load += sesion_Load;
+            Name = "sesionCli";
+            Text = "sesionCli";
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Label lblRol;
-        private Label lblUsuario;
-        private Button btnCerrarSesion;
         private TableLayoutPanel tableLayoutPanel1;
+        private Label lblUsuario;
+        private Label lblRol;
+        private Button btnCerrarSesion;
     }
 }

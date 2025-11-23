@@ -15,33 +15,76 @@ namespace Lab4_Farmacia
         private void frmPedidosCli_Load_1(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            txtNom.ReadOnly = true; 
-            CargarMedicamentos();
 
-            
-            dgvMedicamentos.CellClick += dgvMedicamentos_CellClick;
+            dgvInv.CellClick += dgvMedicamentos_CellClick;  
+
+            CargarMedicamentos();                            
+            dgvInv.ClearSelection();                         
+            dgvInv.CurrentCell = null;
+
+            txtNom.ReadOnly = true;
         }
 
-        
+        private void CargarPedidosCliente(int idCliente)
+        {
+            dgvPedidosCli.Rows.Clear();
+
+            try
+            {
+                using (var con = ConexionBd.ObtenerConexion())
+                using (var cmd = new NpgsqlCommand(
+                    "SELECT * FROM sp_ver_pedidos_cliente(@id);", con))
+                {
+                    cmd.Parameters.AddWithValue("@id", idCliente);
+
+                    using (var dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            DataGridViewRow fila = new DataGridViewRow();
+                            fila.CreateCells(dgvPedidosCli);
+
+                            fila.Cells[dgvPedidosCli.Columns["IDPedido"].Index].Value = dr["id_pedido"];
+                            fila.Cells[dgvPedidosCli.Columns["Medicamento"].Index].Value = dr["nombre_medicamento"];
+                            fila.Cells[dgvPedidosCli.Columns["Cantidad"].Index].Value = dr["cantidad"];
+                            fila.Cells[dgvPedidosCli.Columns["Total"].Index].Value = dr["subtotal"];
+                            fila.Cells[dgvPedidosCli.Columns["Fecha"].Index].Value = dr["fecha"];
+
+                            dgvPedidosCli.Rows.Add(fila);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar pedidos del cliente: " + ex.Message);
+            }
+        }
+
+
         private void CargarMedicamentos()
         {
             try
             {
-                using (var con = ConexionBd.ObtenerConexion())
+                var dt = Farmacia.TraerMedicamentos();
+
+                foreach (DataRow dr in dt.Rows)
                 {
-                    string sql = "SELECT * FROM sp_ver_inventario_cli();";
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(dgvInv);
 
-                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, con);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
+                    row.Cells[dgvInv.Columns["ID"].Index].Value = dr["id"];
+                    row.Cells[dgvInv.Columns["nombre"].Index].Value = dr["nombre"];
+                    row.Cells[dgvInv.Columns["descripcion"].Index].Value = dr["descripcion"];
+                    row.Cells[dgvInv.Columns["Cantidad"].Index].Value = dr["cantidad"];
+                    row.Cells[dgvInv.Columns["Precio"].Index].Value = dr["precio"];
 
-                    dgvMedicamentos.DataSource = dt;
+                    byte[] bytes = dr["imagen"] as byte[];
+                    row.Cells[dgvInv.Columns["Imagen"].Index].Value = bytes != null ? Image.FromStream(new MemoryStream(bytes)) : null;
 
-                    if (dgvMedicamentos.Columns.Contains("imagen"))
-                        dgvMedicamentos.Columns["imagen"].Visible = false;
-
-                    dgvMedicamentos.ClearSelection();
+                    dgvInv.Rows.Add(row);
                 }
+
             }
             catch (Exception ex)
             {
@@ -49,14 +92,13 @@ namespace Lab4_Farmacia
             }
         }
 
-      
         private void dgvMedicamentos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 if (e.RowIndex >= 0)
                 {
-                    DataGridViewRow fila = dgvMedicamentos.Rows[e.RowIndex];
+                    DataGridViewRow fila = dgvInv.Rows[e.RowIndex];
                     string nombre = fila.Cells["nombre"].Value.ToString();
                     txtNom.Text = nombre;
                     nudCant.Focus();
@@ -68,7 +110,6 @@ namespace Lab4_Farmacia
             }
         }
 
-       
         private int ObtenerIdPorNombre(string nombre)
         {
             try
@@ -92,8 +133,15 @@ namespace Lab4_Farmacia
             return -1;
         }
 
-        private void btnConfirmarPedido_Click_1(object sender, EventArgs e)
+
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void btnOrdenar_Click_1(object sender, EventArgs e)
+                {
             string nombreMed = txtNom.Text.Trim();
 
             if (string.IsNullOrEmpty(nombreMed))
@@ -118,7 +166,7 @@ namespace Lab4_Farmacia
                 return;
             }
 
-            int cli = 1; 
+            int cli = 1;
 
             try
             {
@@ -127,12 +175,12 @@ namespace Lab4_Farmacia
                     "CALL sp_registrar_pedido_cli(@p_id_cliente, @p_id_medicamento, @p_cantidad);",
                     con))
                 {
-                 
+
                     cmd.Parameters.AddWithValue("@p_id_cliente", cli);
                     cmd.Parameters.AddWithValue("@p_id_medicamento", idMedicamento);
                     cmd.Parameters.AddWithValue("@p_cantidad", cantidad);
 
-                    cmd.ExecuteNonQuery(); 
+                    cmd.ExecuteNonQuery();
                 }
 
                 MessageBox.Show("Pedido registrado correctamente.");
@@ -144,11 +192,6 @@ namespace Lab4_Farmacia
             {
                 MessageBox.Show("Error al registrar pedido: " + ex.Message);
             }
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

@@ -17,13 +17,11 @@ namespace Lab4_Farmacia
             InitializeComponent();
         }
 
-
         private void CargarMedicamentos()
         {
             try
             {
-                var dt = Admin.TraerMedicamentos();
-                dgvInv.Rows.Clear();
+                var dt = Farmacia.TraerMedicamentos();
 
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -41,17 +39,12 @@ namespace Lab4_Farmacia
 
                     dgvInv.Rows.Add(row);
                 }
-
-                dgvInv.ClearSelection();
-                dgvInv.CurrentCell = null;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar medicamentos: " + ex.Message);
             }
         }
-
-
 
         private void FrmInventario_Load(object sender, EventArgs e)
         {

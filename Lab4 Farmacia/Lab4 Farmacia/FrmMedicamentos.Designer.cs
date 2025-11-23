@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMedicamentos));
             pnlDesicion = new Panel();
+            lblDetElim = new Label();
             rdbReabastecer = new RadioButton();
             rdbEliminar = new RadioButton();
             rdbModificar = new RadioButton();
@@ -73,24 +77,40 @@
             // pnlDesicion
             // 
             pnlDesicion.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            pnlDesicion.Controls.Add(lblDetElim);
             pnlDesicion.Controls.Add(rdbReabastecer);
             pnlDesicion.Controls.Add(rdbEliminar);
             pnlDesicion.Controls.Add(rdbModificar);
             pnlDesicion.Controls.Add(dgvDatos);
             pnlDesicion.Controls.Add(rdbAgregar);
-            pnlDesicion.Location = new Point(3, 3);
+            pnlDesicion.Location = new Point(3, 4);
+            pnlDesicion.Margin = new Padding(3, 4, 3, 4);
             pnlDesicion.Name = "pnlDesicion";
-            pnlDesicion.Size = new Size(1046, 767);
+            pnlDesicion.Size = new Size(1195, 1023);
             pnlDesicion.TabIndex = 0;
+            // 
+            // lblDetElim
+            // 
+            lblDetElim.AutoSize = true;
+            lblDetElim.BackColor = Color.Red;
+            lblDetElim.Font = new Font("Tahoma", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDetElim.ForeColor = Color.White;
+            lblDetElim.Location = new Point(38, 110);
+            lblDetElim.Name = "lblDetElim";
+            lblDetElim.Size = new Size(424, 21);
+            lblDetElim.TabIndex = 16;
+            lblDetElim.Text = "Haga doble click para para borrar medicamentos";
+            lblDetElim.Visible = false;
             // 
             // rdbReabastecer
             // 
             rdbReabastecer.AutoSize = true;
             rdbReabastecer.Font = new Font("Stencil", 22.2F);
             rdbReabastecer.ForeColor = Color.White;
-            rdbReabastecer.Location = new Point(735, 26);
+            rdbReabastecer.Location = new Point(840, 35);
+            rdbReabastecer.Margin = new Padding(3, 4, 3, 4);
             rdbReabastecer.Name = "rdbReabastecer";
-            rdbReabastecer.Size = new Size(240, 39);
+            rdbReabastecer.Size = new Size(294, 48);
             rdbReabastecer.TabIndex = 4;
             rdbReabastecer.TabStop = true;
             rdbReabastecer.Text = "Reabastecer";
@@ -102,9 +122,10 @@
             rdbEliminar.AutoSize = true;
             rdbEliminar.Font = new Font("Stencil", 22.2F);
             rdbEliminar.ForeColor = Color.White;
-            rdbEliminar.Location = new Point(508, 26);
+            rdbEliminar.Location = new Point(581, 35);
+            rdbEliminar.Margin = new Padding(3, 4, 3, 4);
             rdbEliminar.Name = "rdbEliminar";
-            rdbEliminar.Size = new Size(174, 39);
+            rdbEliminar.Size = new Size(215, 48);
             rdbEliminar.TabIndex = 3;
             rdbEliminar.TabStop = true;
             rdbEliminar.Text = "Eliminar";
@@ -116,9 +137,10 @@
             rdbModificar.AutoSize = true;
             rdbModificar.Font = new Font("Stencil", 22.2F);
             rdbModificar.ForeColor = Color.White;
-            rdbModificar.Location = new Point(248, 26);
+            rdbModificar.Location = new Point(283, 35);
+            rdbModificar.Margin = new Padding(3, 4, 3, 4);
             rdbModificar.Name = "rdbModificar";
-            rdbModificar.Size = new Size(201, 39);
+            rdbModificar.Size = new Size(247, 48);
             rdbModificar.TabIndex = 2;
             rdbModificar.TabStop = true;
             rdbModificar.Text = "Modificar ";
@@ -128,34 +150,47 @@
             // dgvDatos
             // 
             dgvDatos.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDatos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvDatos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDatos.BackgroundColor = Color.White;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvDatos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvDatos.ColumnHeadersHeight = 29;
             dgvDatos.Columns.AddRange(new DataGridViewColumn[] { ID, nombre, descripcion, imagen, cantidad, precio });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dgvDatos.DefaultCellStyle = dataGridViewCellStyle5;
-            dgvDatos.Location = new Point(33, 98);
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = SystemColors.Window;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dgvDatos.DefaultCellStyle = dataGridViewCellStyle6;
+            dgvDatos.Location = new Point(38, 131);
+            dgvDatos.Margin = new Padding(3, 4, 3, 4);
             dgvDatos.MultiSelect = false;
             dgvDatos.Name = "dgvDatos";
             dgvDatos.ReadOnly = true;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvDatos.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvDatos.RowHeadersWidth = 51;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDatos.RowsDefaultCellStyle = dataGridViewCellStyle8;
             dgvDatos.RowTemplate.Height = 120;
             dgvDatos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDatos.Size = new Size(959, 502);
+            dgvDatos.Size = new Size(1096, 669);
             dgvDatos.TabIndex = 1;
             dgvDatos.CellDoubleClick += dgvDatos_CellDoubleClick;
             dgvDatos.SelectionChanged += dgvDatos_SelectionChanged;
@@ -164,8 +199,8 @@
             // 
             ID.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ID.DataPropertyName = "id";
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            ID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            ID.DefaultCellStyle = dataGridViewCellStyle3;
             ID.FillWeight = 40F;
             ID.HeaderText = "ID";
             ID.MinimumWidth = 50;
@@ -208,8 +243,8 @@
             // cantidad
             // 
             cantidad.DataPropertyName = "cantidad";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            cantidad.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            cantidad.DefaultCellStyle = dataGridViewCellStyle4;
             cantidad.FillWeight = 45F;
             cantidad.HeaderText = "Cantidad";
             cantidad.MinimumWidth = 6;
@@ -220,8 +255,8 @@
             // 
             precio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             precio.DataPropertyName = "precio";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            precio.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            precio.DefaultCellStyle = dataGridViewCellStyle5;
             precio.FillWeight = 45F;
             precio.HeaderText = "Precio";
             precio.MinimumWidth = 6;
@@ -233,9 +268,10 @@
             rdbAgregar.AutoSize = true;
             rdbAgregar.Font = new Font("Stencil", 22.2F);
             rdbAgregar.ForeColor = Color.White;
-            rdbAgregar.Location = new Point(33, 26);
+            rdbAgregar.Location = new Point(38, 35);
+            rdbAgregar.Margin = new Padding(3, 4, 3, 4);
             rdbAgregar.Name = "rdbAgregar";
-            rdbAgregar.Size = new Size(169, 39);
+            rdbAgregar.Size = new Size(206, 48);
             rdbAgregar.TabIndex = 0;
             rdbAgregar.TabStop = true;
             rdbAgregar.Text = "Agregar";
@@ -255,9 +291,8 @@
             pnlGeneral.Controls.Add(grpInf);
             pnlGeneral.Controls.Add(pnlDesicion);
             pnlGeneral.Location = new Point(-1, 0);
-            pnlGeneral.Margin = new Padding(3, 2, 3, 2);
             pnlGeneral.Name = "pnlGeneral";
-            pnlGeneral.Size = new Size(1687, 794);
+            pnlGeneral.Size = new Size(1928, 1059);
             pnlGeneral.TabIndex = 1;
             // 
             // grpInf
@@ -277,9 +312,11 @@
             grpInf.Controls.Add(pbImagen);
             grpInf.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             grpInf.ForeColor = Color.White;
-            grpInf.Location = new Point(1062, 29);
+            grpInf.Location = new Point(1214, 39);
+            grpInf.Margin = new Padding(3, 4, 3, 4);
             grpInf.Name = "grpInf";
-            grpInf.Size = new Size(559, 624);
+            grpInf.Padding = new Padding(3, 4, 3, 4);
+            grpInf.Size = new Size(639, 832);
             grpInf.TabIndex = 5;
             grpInf.TabStop = false;
             grpInf.Text = "Información";
@@ -289,17 +326,18 @@
             // 
             lblPieFoto.AutoSize = true;
             lblPieFoto.Font = new Font("Tahoma", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPieFoto.Location = new Point(24, 371);
+            lblPieFoto.Location = new Point(27, 495);
             lblPieFoto.Name = "lblPieFoto";
-            lblPieFoto.Size = new Size(221, 17);
+            lblPieFoto.Size = new Size(275, 21);
             lblPieFoto.TabIndex = 15;
             lblPieFoto.Text = "Doble click para seleccionar imagen";
             // 
             // rtbDescrip
             // 
-            rtbDescrip.Location = new Point(296, 133);
+            rtbDescrip.Location = new Point(338, 177);
+            rtbDescrip.Margin = new Padding(3, 4, 3, 4);
             rtbDescrip.Name = "rtbDescrip";
-            rtbDescrip.Size = new Size(229, 228);
+            rtbDescrip.Size = new Size(261, 303);
             rtbDescrip.TabIndex = 14;
             rtbDescrip.Text = "";
             // 
@@ -308,9 +346,9 @@
             lblDescripcion.AutoSize = true;
             lblDescripcion.Font = new Font("Stencil", 18F);
             lblDescripcion.ForeColor = Color.White;
-            lblDescripcion.Location = new Point(306, 103);
+            lblDescripcion.Location = new Point(350, 137);
             lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(167, 29);
+            lblDescripcion.Size = new Size(208, 35);
             lblDescripcion.TabIndex = 12;
             lblDescripcion.Text = "Descripción";
             // 
@@ -319,21 +357,21 @@
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Stencil", 18F);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(23, 51);
+            lblNombre.Location = new Point(26, 68);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(110, 29);
+            lblNombre.Size = new Size(136, 35);
             lblNombre.TabIndex = 1;
             lblNombre.Text = "Nombre";
-            lblNombre.Click += lblNombre_Click;
             // 
             // btnEjecutar
             // 
             btnEjecutar.BackColor = SystemColors.ButtonFace;
             btnEjecutar.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnEjecutar.ForeColor = Color.Black;
-            btnEjecutar.Location = new Point(189, 551);
+            btnEjecutar.Location = new Point(216, 735);
+            btnEjecutar.Margin = new Padding(3, 4, 3, 4);
             btnEjecutar.Name = "btnEjecutar";
-            btnEjecutar.Size = new Size(201, 57);
+            btnEjecutar.Size = new Size(230, 76);
             btnEjecutar.TabIndex = 9;
             btnEjecutar.Text = "Ejecutar";
             btnEjecutar.UseVisualStyleBackColor = false;
@@ -344,36 +382,39 @@
             lblPrecio.AutoSize = true;
             lblPrecio.Font = new Font("Stencil", 18F);
             lblPrecio.ForeColor = Color.White;
-            lblPrecio.Location = new Point(102, 474);
+            lblPrecio.Location = new Point(117, 632);
             lblPrecio.Name = "lblPrecio";
-            lblPrecio.Size = new Size(98, 29);
+            lblPrecio.Size = new Size(122, 35);
             lblPrecio.TabIndex = 4;
             lblPrecio.Text = "Precio";
             // 
             // nudCant
             // 
             nudCant.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            nudCant.Location = new Point(294, 406);
+            nudCant.Location = new Point(336, 541);
+            nudCant.Margin = new Padding(3, 4, 3, 4);
             nudCant.Maximum = new decimal(new int[] { 200000, 0, 0, 0 });
             nudCant.Name = "nudCant";
-            nudCant.Size = new Size(189, 39);
+            nudCant.Size = new Size(216, 47);
             nudCant.TabIndex = 11;
             // 
             // txtPrecio
             // 
             txtPrecio.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPrecio.Location = new Point(294, 474);
+            txtPrecio.Location = new Point(336, 632);
+            txtPrecio.Margin = new Padding(3, 4, 3, 4);
             txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(189, 35);
+            txtPrecio.Size = new Size(215, 41);
             txtPrecio.TabIndex = 5;
             txtPrecio.KeyPress += txtPrecio_KeyPress;
             // 
             // txtNombre
             // 
             txtNombre.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNombre.Location = new Point(165, 45);
+            txtNombre.Location = new Point(189, 60);
+            txtNombre.Margin = new Padding(3, 4, 3, 4);
             txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(360, 35);
+            txtNombre.Size = new Size(411, 41);
             txtNombre.TabIndex = 2;
             // 
             // lblmagen
@@ -381,9 +422,9 @@
             lblmagen.AutoSize = true;
             lblmagen.Font = new Font("Stencil", 18F);
             lblmagen.ForeColor = Color.White;
-            lblmagen.Location = new Point(24, 103);
+            lblmagen.Location = new Point(27, 137);
             lblmagen.Name = "lblmagen";
-            lblmagen.Size = new Size(102, 29);
+            lblmagen.Size = new Size(126, 35);
             lblmagen.TabIndex = 3;
             lblmagen.Text = "Imagen";
             // 
@@ -392,9 +433,9 @@
             lblCantidad.AutoSize = true;
             lblCantidad.Font = new Font("Stencil", 18F);
             lblCantidad.ForeColor = Color.White;
-            lblCantidad.Location = new Point(102, 415);
+            lblCantidad.Location = new Point(117, 553);
             lblCantidad.Name = "lblCantidad";
-            lblCantidad.Size = new Size(129, 29);
+            lblCantidad.Size = new Size(159, 35);
             lblCantidad.TabIndex = 6;
             lblCantidad.Text = "Cantidad";
             // 
@@ -403,18 +444,19 @@
             lblPrecioUnidad.AutoSize = true;
             lblPrecioUnidad.Font = new Font("Tahoma", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPrecioUnidad.ForeColor = Color.White;
-            lblPrecioUnidad.Location = new Point(102, 509);
+            lblPrecioUnidad.Location = new Point(117, 679);
             lblPrecioUnidad.Name = "lblPrecioUnidad";
-            lblPrecioUnidad.Size = new Size(116, 17);
+            lblPrecioUnidad.Size = new Size(140, 21);
             lblPrecioUnidad.TabIndex = 8;
             lblPrecioUnidad.Text = "Precio por Unidad";
             // 
             // pbImagen
             // 
             pbImagen.BackColor = Color.White;
-            pbImagen.Location = new Point(24, 132);
+            pbImagen.Location = new Point(27, 176);
+            pbImagen.Margin = new Padding(3, 4, 3, 4);
             pbImagen.Name = "pbImagen";
-            pbImagen.Size = new Size(238, 228);
+            pbImagen.Size = new Size(272, 304);
             pbImagen.SizeMode = PictureBoxSizeMode.Zoom;
             pbImagen.TabIndex = 10;
             pbImagen.TabStop = false;
@@ -422,12 +464,11 @@
             // 
             // FrmMedicamentos
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(1684, 662);
+            ClientSize = new Size(1924, 883);
             Controls.Add(pnlGeneral);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FrmMedicamentos";
             Text = "FrmMedicamentos";
             Load += FrmMedicamentos_Load;
@@ -465,12 +506,13 @@
         private Label lblDescripcion;
         private RichTextBox rtbDescrip;
         private DataGridView dgvDatos;
+        private Label lblPieFoto;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn descripcion;
         private DataGridViewImageColumn imagen;
         private DataGridViewTextBoxColumn cantidad;
         private DataGridViewTextBoxColumn precio;
-        private Label lblPieFoto;
+        private Label lblDetElim;
     }
 }

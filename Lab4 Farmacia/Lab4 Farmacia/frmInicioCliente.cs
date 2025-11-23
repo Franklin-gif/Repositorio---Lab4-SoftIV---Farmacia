@@ -6,22 +6,20 @@ namespace Lab4_Farmacia
     public partial class frmInicioCliente : Form
     {
         string usuarioActual;
+        private string rolActual;
 
-        public frmInicioCliente(string usuario)
+        public frmInicioCliente(string usuario, string rol)
         {
             InitializeComponent();
             usuarioActual = usuario;
+            rolActual = rol;
         }
 
         private void frmInicioCliente_Load(object sender, EventArgs e)
         {
-            lblBienvenida.Text = "Bienvenido, " + usuarioActual;
+            this.WindowState = FormWindowState.Maximized;
         }
 
-        private void lblBienvenida_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void inventariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -31,37 +29,13 @@ namespace Lab4_Farmacia
             inv.Show();
         }
 
-        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult r = MessageBox.Show(
-                "¿Deseas cerrar sesión?",
-                "Confirmar",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (r == DialogResult.Yes)
-            {
-                Form1 login = new Form1();
-                login.Show();
-                this.Hide();
-            }
-        }
-
         private void sesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (Form frm in Application.OpenForms.Cast<Form>().ToList())
-            {
-                if (!(frm is Form1))
-                {
-                    frm.Close();
-                }
-            }
+            sesionCli ventanaSesion = new sesionCli(usuarioActual, rolActual);
+            ventanaSesion.MdiParent = this;
+            ventanaSesion.WindowState = FormWindowState.Maximized;
+            ventanaSesion.Show();
+
         }
 
         private void pedidosToolStripMenuItem_Click_1(object sender, EventArgs e)

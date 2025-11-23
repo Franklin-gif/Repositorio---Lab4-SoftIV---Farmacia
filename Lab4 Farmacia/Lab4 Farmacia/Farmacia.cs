@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Lab4_Farmacia
 {
-    internal class Admin
+    internal class Farmacia
     {
         public static byte[] ConvertirImagenABytes(Image img)
         {
@@ -109,59 +109,6 @@ namespace Lab4_Farmacia
 
             return dtPedidos;
         }
-        /*
-        public static DataTable TraerPedidos()
-        {
-            DataTable dtPedidos = new DataTable();
-            try
-            {
-                using (var conn = ConexionBd.ObtenerConexion())
-                using (var da = new NpgsqlDataAdapter("SELECT * FROM sp_consultar_pedidos()", conn))
-                {
-                    da.Fill(dtPedidos);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en TraerPedidos: " + ex.Message);
-            }
-            return dtPedidos ?? new DataTable(); // asegura que nunca devuelva null
-        }
-
-        /*
-        public static DataTable TraerPedidos()
-        {
-            DataTable dtPedidos = new DataTable();
-            try
-            {
-                using (var conn = ConexionBd.ObtenerConexion())
-                using (var da = new NpgsqlDataAdapter("SELECT * FROM sp_consultar_pedidos()", conn))
-                {
-                    da.Fill(dtPedidos);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al consultar los pedidos: " + ex.Message);
-            }
-            return dtPedidos;
-        }*/
-
-
-        // Otros métodos estáticos de tu clase Admin...
     }
-
-    /*
-    public static DataTable TraerPedidos()
-    {
-        using (var conn = ConexionBd.ObtenerConexion())
-        using (var cmd = new NpgsqlCommand("SELECT*FROM sp_consultar_pedidos()", conn))
-        using (var da = new NpgsqlDataAdapter(cmd))
-        {
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            return dt;
-        }
-    }*/
 
 }

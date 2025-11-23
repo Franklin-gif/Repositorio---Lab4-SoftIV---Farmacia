@@ -29,91 +29,118 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistro));
-            btmRegistrar = new Button();
-            label1 = new Label();
+            tlpGeneral = new TableLayoutPanel();
+            btnRegistro = new Button();
             lblUsuario = new Label();
-            txtContraseña = new TextBox();
             txtUsuario = new TextBox();
-            lblFarmatec = new Label();
-            pctbox = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pctbox).BeginInit();
+            txtContraseña = new TextBox();
+            lblTit = new Label();
+            lblContra = new Label();
+            tlpGeneral.SuspendLayout();
             SuspendLayout();
             // 
-            // btmRegistrar
+            // tlpGeneral
             // 
-            btmRegistrar.Font = new Font("Stencil", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btmRegistrar.Location = new Point(373, 485);
-            btmRegistrar.Margin = new Padding(3, 4, 3, 4);
-            btmRegistrar.Name = "btmRegistrar";
-            btmRegistrar.Size = new Size(154, 36);
-            btmRegistrar.TabIndex = 13;
-            btmRegistrar.Text = "Registrar";
-            btmRegistrar.UseVisualStyleBackColor = true;
-            btmRegistrar.Click += btmRegistrar_Click;
+            tlpGeneral.AllowDrop = true;
+            tlpGeneral.BackColor = Color.Transparent;
+            tlpGeneral.BackgroundImageLayout = ImageLayout.Stretch;
+            tlpGeneral.ColumnCount = 1;
+            tlpGeneral.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tlpGeneral.Controls.Add(btnRegistro, 0, 5);
+            tlpGeneral.Controls.Add(lblUsuario, 0, 1);
+            tlpGeneral.Controls.Add(txtUsuario, 0, 2);
+            tlpGeneral.Controls.Add(txtContraseña, 0, 4);
+            tlpGeneral.Controls.Add(lblTit, 0, 0);
+            tlpGeneral.Controls.Add(lblContra, 0, 3);
+            tlpGeneral.Dock = DockStyle.Fill;
+            tlpGeneral.Location = new Point(0, 0);
+            tlpGeneral.Name = "tlpGeneral";
+            tlpGeneral.RowCount = 6;
+            tlpGeneral.RowStyles.Add(new RowStyle(SizeType.Percent, 24.8211021F));
+            tlpGeneral.RowStyles.Add(new RowStyle(SizeType.Percent, 11.5F));
+            tlpGeneral.RowStyles.Add(new RowStyle(SizeType.Percent, 10.166667F));
+            tlpGeneral.RowStyles.Add(new RowStyle(SizeType.Percent, 7.33333349F));
+            tlpGeneral.RowStyles.Add(new RowStyle(SizeType.Percent, 16F));
+            tlpGeneral.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tlpGeneral.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tlpGeneral.Size = new Size(914, 600);
+            tlpGeneral.TabIndex = 17;
             // 
-            // label1
+            // btnRegistro
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Stencil", 9.75F);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(360, 325);
-            label1.Name = "label1";
-            label1.Size = new Size(116, 20);
-            label1.TabIndex = 12;
-            label1.Text = "Contraseña";
+            btnRegistro.Anchor = AnchorStyles.Top;
+            btnRegistro.BackColor = SystemColors.ButtonFace;
+            btnRegistro.Font = new Font("Stencil", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRegistro.ForeColor = Color.Black;
+            btnRegistro.Location = new Point(305, 422);
+            btnRegistro.Name = "btnRegistro";
+            btnRegistro.Size = new Size(303, 44);
+            btnRegistro.TabIndex = 16;
+            btnRegistro.Text = "Registrar";
+            btnRegistro.UseVisualStyleBackColor = false;
+            btnRegistro.Click += btnRegistro_Click;
             // 
             // lblUsuario
             // 
+            lblUsuario.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lblUsuario.AutoSize = true;
             lblUsuario.BackColor = Color.Transparent;
-            lblUsuario.Font = new Font("Stencil", 9.75F);
-            lblUsuario.ForeColor = Color.Transparent;
-            lblUsuario.Location = new Point(360, 183);
+            lblUsuario.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblUsuario.ForeColor = SystemColors.Window;
+            lblUsuario.Location = new Point(3, 183);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(84, 20);
-            lblUsuario.TabIndex = 11;
+            lblUsuario.Size = new Size(908, 35);
+            lblUsuario.TabIndex = 23;
             lblUsuario.Text = "Usuario";
-            // 
-            // txtContraseña
-            // 
-            txtContraseña.Location = new Point(360, 351);
-            txtContraseña.Margin = new Padding(3, 4, 3, 4);
-            txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(175, 27);
-            txtContraseña.TabIndex = 10;
+            lblUsuario.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(360, 212);
+            txtUsuario.Anchor = AnchorStyles.Top;
+            txtUsuario.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUsuario.Location = new Point(326, 222);
             txtUsuario.Margin = new Padding(3, 4, 3, 4);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(175, 27);
-            txtUsuario.TabIndex = 9;
+            txtUsuario.Size = new Size(262, 47);
+            txtUsuario.TabIndex = 20;
             // 
-            // lblFarmatec
+            // txtContraseña
             // 
-            lblFarmatec.AutoSize = true;
-            lblFarmatec.BackColor = Color.Transparent;
-            lblFarmatec.Font = new Font("Stencil", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblFarmatec.ForeColor = Color.Transparent;
-            lblFarmatec.Location = new Point(333, 61);
-            lblFarmatec.Name = "lblFarmatec";
-            lblFarmatec.Size = new Size(244, 52);
-            lblFarmatec.TabIndex = 7;
-            lblFarmatec.Text = "FARMATEC";
+            txtContraseña.Anchor = AnchorStyles.Top;
+            txtContraseña.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtContraseña.Location = new Point(322, 327);
+            txtContraseña.Margin = new Padding(3, 4, 3, 4);
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.Size = new Size(269, 47);
+            txtContraseña.TabIndex = 26;
             // 
-            // pctbox
+            // lblTit
             // 
-            pctbox.BackColor = Color.Transparent;
-            pctbox.Image = (Image)resources.GetObject("pctbox.Image");
-            pctbox.Location = new Point(216, -81);
-            pctbox.Margin = new Padding(0);
-            pctbox.Name = "pctbox";
-            pctbox.Size = new Size(246, 247);
-            pctbox.SizeMode = PictureBoxSizeMode.Zoom;
-            pctbox.TabIndex = 14;
-            pctbox.TabStop = false;
+            lblTit.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lblTit.AutoSize = true;
+            lblTit.BackColor = Color.Transparent;
+            lblTit.Font = new Font("Stencil", 48F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTit.ForeColor = SystemColors.Window;
+            lblTit.Location = new Point(3, 27);
+            lblTit.Name = "lblTit";
+            lblTit.Size = new Size(908, 95);
+            lblTit.TabIndex = 24;
+            lblTit.Text = "FarmaTEC";
+            lblTit.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblContra
+            // 
+            lblContra.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblContra.AutoSize = true;
+            lblContra.BackColor = Color.Transparent;
+            lblContra.Font = new Font("Stencil", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblContra.ForeColor = SystemColors.Window;
+            lblContra.Location = new Point(3, 288);
+            lblContra.Name = "lblContra";
+            lblContra.Size = new Size(908, 35);
+            lblContra.TabIndex = 25;
+            lblContra.Text = "Contraseña";
+            lblContra.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // frmRegistro
             // 
@@ -121,30 +148,23 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(914, 600);
-            Controls.Add(lblFarmatec);
-            Controls.Add(pctbox);
-            Controls.Add(btmRegistrar);
-            Controls.Add(label1);
-            Controls.Add(lblUsuario);
-            Controls.Add(txtContraseña);
-            Controls.Add(txtUsuario);
+            Controls.Add(tlpGeneral);
             Margin = new Padding(3, 4, 3, 4);
             Name = "frmRegistro";
             Text = "frmRegistro";
             Load += frmRegistro_Load;
-            ((System.ComponentModel.ISupportInitialize)pctbox).EndInit();
+            tlpGeneral.ResumeLayout(false);
+            tlpGeneral.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Button btmRegistrar;
-        private Label label1;
-        private Label lblUsuario;
+        private TableLayoutPanel tlpGeneral;
         private TextBox txtContraseña;
+        private Label lblContra;
+        private Label lblTit;
+        private Button btnRegistro;
+        private Label lblUsuario;
         private TextBox txtUsuario;
-        private Label lblFarmatec;
-        private PictureBox pctbox;
     }
 }
