@@ -39,6 +39,9 @@ namespace Lab4_Farmacia
 
                     dgvInv.Rows.Add(row);
                 }
+                
+                dgvInv.Sort(dgvInv.Columns["ID"], ListSortDirection.Ascending);
+                
             }
             catch (Exception ex)
             {
@@ -50,7 +53,8 @@ namespace Lab4_Farmacia
         {
 
             CargarMedicamentos();
-
+            dgvInv.ClearSelection();
+            dgvInv.CurrentCell = null;
         }
     }
 }

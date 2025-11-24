@@ -69,7 +69,7 @@
             dgvInv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvInv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvInv.BackgroundColor = Color.White;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = SystemColors.Control;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;

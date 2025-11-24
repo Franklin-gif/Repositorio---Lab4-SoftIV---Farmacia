@@ -33,8 +33,8 @@ namespace Lab4_Farmacia
                 {
                     DataGridViewRow row = new DataGridViewRow();
                     row.CreateCells(dgvPedidos);
-                    
 
+                    row.Cells[dgvPedidos.Columns["id"].Index].Value = dr["id_pedido"];
                     row.Cells[dgvPedidos.Columns["cliente"].Index].Value = dr["usuario_cliente"];
                     row.Cells[dgvPedidos.Columns["medicamentos"].Index].Value = dr["medicamento"];
                     row.Cells[dgvPedidos.Columns["cantidad"].Index].Value = dr["cantidad"];

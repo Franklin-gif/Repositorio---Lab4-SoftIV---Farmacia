@@ -31,6 +31,7 @@ namespace Lab4_Farmacia
             {
                 string usuario = txtUsuario.Text.Trim();
                 string clave = txtContra.Text.Trim();
+                
 
                 try
                 {

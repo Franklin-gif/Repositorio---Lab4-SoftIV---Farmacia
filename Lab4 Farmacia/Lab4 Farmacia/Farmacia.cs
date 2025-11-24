@@ -109,6 +109,23 @@ namespace Lab4_Farmacia
 
             return dtPedidos;
         }
+
+        public static void RegistrarPedido(int idCliente, int idMedicamento, int cantidad)
+        {
+            using (var conn = ConexionBd.ObtenerConexion())
+            using (var cmd = new NpgsqlCommand("CALL sp_registrar_pedido_cli(@p_id_cliente, @p_id_medicamento, @p_cantidad);", conn))
+            {
+                cmd.Parameters.AddWithValue("p_id_cliente", idCliente);
+                cmd.Parameters.AddWithValue("p_id_medicamento", idMedicamento);
+                cmd.Parameters.AddWithValue("p_cantidad", cantidad);
+
+                cmd.ExecuteNonQuery();
+            }
+
+        }
     }
 
+
 }
+
+

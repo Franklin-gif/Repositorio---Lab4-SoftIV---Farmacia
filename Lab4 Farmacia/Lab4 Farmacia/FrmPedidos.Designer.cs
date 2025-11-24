@@ -32,12 +32,13 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnlGeneral = new Panel();
             dgvPedidos = new DataGridView();
+            lblTitulo = new Label();
+            id = new DataGridViewTextBoxColumn();
             cliente = new DataGridViewTextBoxColumn();
             medicamentos = new DataGridViewTextBoxColumn();
             cantidad = new DataGridViewTextBoxColumn();
             total = new DataGridViewTextBoxColumn();
             fecha = new DataGridViewTextBoxColumn();
-            lblTitulo = new Label();
             pnlGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             SuspendLayout();
@@ -67,7 +68,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvPedidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPedidos.ColumnHeadersHeight = 29;
-            dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { cliente, medicamentos, cantidad, total, fecha });
+            dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { id, cliente, medicamentos, cantidad, total, fecha });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -87,6 +88,26 @@
             dgvPedidos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvPedidos.Size = new Size(918, 383);
             dgvPedidos.TabIndex = 4;
+            // 
+            // lblTitulo
+            // 
+            lblTitulo.BackColor = Color.Transparent;
+            lblTitulo.Dock = DockStyle.Top;
+            lblTitulo.Font = new Font("Stencil", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(0, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Size = new Size(998, 100);
+            lblTitulo.TabIndex = 7;
+            lblTitulo.Text = "Pedidos";
+            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // id
+            // 
+            id.HeaderText = "ID";
+            id.MinimumWidth = 6;
+            id.Name = "id";
+            id.ReadOnly = true;
             // 
             // cliente
             // 
@@ -128,19 +149,6 @@
             fecha.Name = "fecha";
             fecha.ReadOnly = true;
             // 
-            // lblTitulo
-            // 
-            lblTitulo.BackColor = Color.Transparent;
-            lblTitulo.Dock = DockStyle.Top;
-            lblTitulo.Font = new Font("Stencil", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTitulo.ForeColor = Color.White;
-            lblTitulo.Location = new Point(0, 0);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(998, 100);
-            lblTitulo.TabIndex = 7;
-            lblTitulo.Text = "Pedidos";
-            lblTitulo.TextAlign = ContentAlignment.MiddleCenter;
-            // 
             // FrmPedidos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -162,6 +170,7 @@
         private Panel pnlGeneral;
         private DataGridView dgvPedidos;
         private Label lblTitulo;
+        private DataGridViewTextBoxColumn id;
         private DataGridViewTextBoxColumn cliente;
         private DataGridViewTextBoxColumn medicamentos;
         private DataGridViewTextBoxColumn cantidad;

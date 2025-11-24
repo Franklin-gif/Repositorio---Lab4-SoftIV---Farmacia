@@ -50,12 +50,26 @@ namespace Lab4_Farmacia
                     decimal precio = decimal.Parse(txtPrecio.Text);
                     byte[] imgBytes = Farmacia.ConvertirImagenABytes(pbImagen.Image);
 
+
+                    if (NombreExiste(nombre))
+                    {
+                        MessageBox.Show("Ya existe un medicamento con ese nombre.");
+                        return;
+                    }
+
                     try
                     {
                         Farmacia.AgregarMedicamento(nombre, desc, cant, precio, imgBytes);
                         MessageBox.Show("Medicamento agregado correctamente.");
 
-                        CargarMedicamentos();  
+                        int nuevoId = SeleccionarFilaPorNombre(nombre);
+
+                        CargarMedicamentos();
+
+                        int index = BuscarFilaPorValor(dgvDatos, "ID", nuevoId);
+                        SeleccionarYEnfocarFila(dgvDatos, index);
+
+
                         LimpiarCampos();       
                     }
                     catch (Exception ex)
@@ -108,6 +122,17 @@ namespace Lab4_Farmacia
                     if (pbImagen.Image != null)
                         imgBytes = Farmacia.ConvertirImagenABytes(pbImagen.Image);
 
+                    bool modificado = desc != row.Cells["descripcion"].Value.ToString()
+                    || cantidad != int.Parse(row.Cells["cantidad"].Value.ToString())
+                    || precio != decimal.Parse(row.Cells["precio"].Value.ToString())
+                    || (pbImagen.Image != row.Cells["Imagen"].Value as Image);
+
+                    if (!modificado)
+                    {
+                        MessageBox.Show("No se realizaron cambios.");
+                        return;
+                    }
+
                     try
                     {
                         Farmacia.ModificarMedicamento(id, nombre, desc, cantidad, precio, imgBytes);
@@ -115,16 +140,11 @@ namespace Lab4_Farmacia
                         MessageBox.Show("Medicamento actualizado correctamente.", "OK",
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarMedicamentos();
-                        foreach (DataGridViewRow r in dgvDatos.Rows)
-                        {
-                            if (r.Cells["ID"].Value != null && r.Cells["ID"].Value.ToString() == id.ToString())
-                            {
-                                dgvDatos.ClearSelection();
-                                r.Selected = true;
-                                dgvDatos.CurrentCell = r.Cells[dgvDatos.Columns["nombre"].Index];
-                                break;
-                            }
-                        }
+
+                        int index = BuscarFilaPorValor(dgvDatos, "ID", id);
+                        SeleccionarYEnfocarFila(dgvDatos, index);
+
+
                     }
                     catch (Exception ex)
                     {
@@ -155,6 +175,10 @@ namespace Lab4_Farmacia
                             MessageBox.Show("Medicamento reabastecido correctamente.");
 
                             CargarMedicamentos();
+
+                            int index = BuscarFilaPorValor(dgvDatos, "ID", id);
+                            SeleccionarYEnfocarFila(dgvDatos, index);
+
                         }
                         catch (Exception ex)
                         {
@@ -174,7 +198,71 @@ namespace Lab4_Farmacia
             LimpiarCampos();
 
         }
+        private int BuscarFilaPorValor(DataGridView dgv, string columnName, object value)
+        {
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                var cellVal = row.Cells[columnName].Value;
+                if (cellVal != null && cellVal.ToString() == value?.ToString())
+                    return row.Index;
+            }
+            return -1;
+        }
 
+        private void SeleccionarYEnfocarFila(DataGridView dgv, int rowIndex, string focusColumnName = "nombre")
+        {
+            if (rowIndex < 0 || rowIndex >= dgv.Rows.Count) return;
+
+            dgv.ClearSelection();
+
+            int colIndex = dgv.Columns.Contains(focusColumnName)
+                            ? dgv.Columns[focusColumnName].Index
+                            : 0;
+
+            dgv.CurrentCell = dgv.Rows[rowIndex].Cells[colIndex];
+            dgv.Rows[rowIndex].Selected = true;
+
+            dgv.FirstDisplayedScrollingRowIndex = rowIndex;
+        }
+
+        public static bool NombreExiste(string nombre)
+        {
+            bool existe = false;
+
+            using (var con = ConexionBd.ObtenerConexion())
+            {
+                using (var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM medicamentos WHERE nombre = @nombre", con))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", NpgsqlTypes.NpgsqlDbType.Varchar, nombre.Trim());
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    existe = count > 0;
+                }
+            }
+
+            return existe;
+        }
+
+
+        private int SeleccionarFilaPorNombre(string nombre)
+        {
+            try
+            {
+                using (var con = ConexionBd.ObtenerConexion())
+                using (var cmd = new NpgsqlCommand(
+                    "SELECT id FROM medicamentos WHERE LOWER(nombre) = LOWER(@n);", con))
+                {
+                    cmd.Parameters.AddWithValue("@n", nombre.Trim());
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                        return Convert.ToInt32(result);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error. ");
+            }
+            return -1;
+        }
         private void LimpiarCampos()
         {
             txtNombre.Text = "";
@@ -182,6 +270,7 @@ namespace Lab4_Farmacia
             nudCant.Value = 0;
             txtPrecio.Text = "";
             pbImagen.Image = null;
+            
         }
 
         private void CargarMedicamentos()
@@ -204,20 +293,24 @@ namespace Lab4_Farmacia
                 row.Cells[dgvDatos.Columns["Imagen"].Index].Value = bytes != null ? Image.FromStream(new MemoryStream(bytes)) : null;
                 dgvDatos.Rows.Add(row);
             }
-            dgvDatos.ClearSelection();
-            dgvDatos.CurrentCell = null;
 
-            LimpiarCampos();
+            dgvDatos.Sort(dgvDatos.Columns["ID"], ListSortDirection.Ascending);
+           
         }
 
         private void rdbAgregar_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbAgregar.Checked)
             {
-                lblDetElim.Visible = false;
 
                 dgvDatos.ClearSelection();
                 dgvDatos.CurrentCell = null;
+
+
+                LimpiarCampos();
+                txtNombre.ReadOnly = false;
+
+                lblDetElim.Visible = false;
 
                 grpInf.Height = originalGrpInfHeight;
                 btnEjecutar.Location = originalBtnEjecutarLocation;
@@ -303,8 +396,12 @@ namespace Lab4_Farmacia
         private void FrmMedicamentos_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            dgvDatos.Rows.Clear();  
+
+
             CargarMedicamentos();
+            dgvDatos.ClearSelection();
+            dgvDatos.CurrentCell = null;
+            LimpiarCampos();
 
         }
 
@@ -324,11 +421,20 @@ namespace Lab4_Farmacia
 
         private void rdbModificar_CheckedChanged(object sender, EventArgs e)
         {
+            LimpiarCampos();
+
             if (rdbModificar.Checked)
             {
-                lblDetElim.Visible = false;
 
                 dgvDatos.ClearSelection();
+                dgvDatos.CurrentCell = null;
+
+
+                LimpiarCampos();
+
+                txtNombre.ReadOnly = true;
+                lblDetElim.Visible = false;
+
 
                 grpInf.Height = originalGrpInfHeight;
                 btnEjecutar.Location = originalBtnEjecutarLocation;
@@ -362,12 +468,16 @@ namespace Lab4_Farmacia
 
         private void rdbReabastecer_CheckedChanged(object sender, EventArgs e)
         {
+            LimpiarCampos();
+
             if (rdbReabastecer.Checked)
             {
-                lblDetElim.Visible = false;
-
                 dgvDatos.ClearSelection();
                 dgvDatos.CurrentCell = null;
+
+                LimpiarCampos();
+
+                lblDetElim.Visible = false;
 
                 grpInf.Visible = true;
 
@@ -405,6 +515,9 @@ namespace Lab4_Farmacia
         {
             if (rdbEliminar.Checked)
             {
+                dgvDatos.ClearSelection();
+                dgvDatos.CurrentCell = null;
+
                 lblDetElim.Visible = true;
                 dgvDatos.ClearSelection();
                 dgvDatos.CurrentCell = null;

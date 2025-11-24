@@ -23,6 +23,7 @@ namespace Lab4_Farmacia
         {
             try
             {
+                dgvMedicamentosCliente.Rows.Clear();
                 var dt = Farmacia.TraerMedicamentos();
 
                 foreach (DataRow dr in dt.Rows)
@@ -41,6 +42,7 @@ namespace Lab4_Farmacia
 
                     dgvMedicamentosCliente.Rows.Add(row);
                 }
+                dgvMedicamentosCliente.Sort(dgvMedicamentosCliente.Columns["ID"], ListSortDirection.Ascending);
 
             }
             catch (Exception ex)
@@ -57,6 +59,8 @@ namespace Lab4_Farmacia
         private void InventarioCli_Load(object sender, EventArgs e)
         {
             CargarMedicamentos();
+            dgvMedicamentosCliente.ClearSelection();
+            dgvMedicamentosCliente.CurrentCell = null;
         }
     }
 }

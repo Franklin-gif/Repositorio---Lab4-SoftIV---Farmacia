@@ -49,7 +49,7 @@
             DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
             tableLayoutPanel1 = new TableLayoutPanel();
             dgvPedidosCli = new DataGridView();
-            IDCliente = new DataGridViewTextBoxColumn();
+            IDPed = new DataGridViewTextBoxColumn();
             medicamento = new DataGridViewTextBoxColumn();
             cantidadCliente = new DataGridViewTextBoxColumn();
             total = new DataGridViewTextBoxColumn();
@@ -118,7 +118,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvPedidosCli.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvPedidosCli.ColumnHeadersHeight = 29;
-            dgvPedidosCli.Columns.AddRange(new DataGridViewColumn[] { IDCliente, medicamento, cantidadCliente, total, fecha });
+            dgvPedidosCli.Columns.AddRange(new DataGridViewColumn[] { IDPed, medicamento, cantidadCliente, total, fecha });
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = SystemColors.Window;
             dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
@@ -149,20 +149,20 @@
             dgvPedidosCli.Size = new Size(854, 126);
             dgvPedidosCli.TabIndex = 20;
             // 
-            // IDCliente
+            // IDPed
             // 
-            IDCliente.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            IDCliente.DataPropertyName = "id";
+            IDPed.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            IDPed.DataPropertyName = "id";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.TopLeft;
-            IDCliente.DefaultCellStyle = dataGridViewCellStyle3;
-            IDCliente.FillWeight = 40F;
-            IDCliente.Frozen = true;
-            IDCliente.HeaderText = "ID";
-            IDCliente.MinimumWidth = 50;
-            IDCliente.Name = "IDCliente";
-            IDCliente.ReadOnly = true;
-            IDCliente.Resizable = DataGridViewTriState.True;
-            IDCliente.Width = 88;
+            IDPed.DefaultCellStyle = dataGridViewCellStyle3;
+            IDPed.FillWeight = 40F;
+            IDPed.Frozen = true;
+            IDPed.HeaderText = "ID";
+            IDPed.MinimumWidth = 50;
+            IDPed.Name = "IDPed";
+            IDPed.ReadOnly = true;
+            IDPed.Resizable = DataGridViewTriState.True;
+            IDPed.Width = 88;
             // 
             // medicamento
             // 
@@ -481,11 +481,6 @@
         private GroupBox groupBox3;
         private Label lblInventario;
         private DataGridView dgvPedidosCli;
-        private DataGridViewTextBoxColumn IDCliente;
-        private DataGridViewTextBoxColumn medicamento;
-        private DataGridViewTextBoxColumn cantidadCliente;
-        private DataGridViewTextBoxColumn total;
-        private DataGridViewTextBoxColumn fecha;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn descripcion;
@@ -498,5 +493,10 @@
         private TextBox txtNom;
         private Label lblCant;
         private NumericUpDown nudCant;
+        private DataGridViewTextBoxColumn IDPed;
+        private DataGridViewTextBoxColumn medicamento;
+        private DataGridViewTextBoxColumn cantidadCliente;
+        private DataGridViewTextBoxColumn total;
+        private DataGridViewTextBoxColumn fecha;
     }
 }
