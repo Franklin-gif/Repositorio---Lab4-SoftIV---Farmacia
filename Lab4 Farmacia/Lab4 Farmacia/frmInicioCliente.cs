@@ -5,14 +5,16 @@ namespace Lab4_Farmacia
 {
     public partial class frmInicioCliente : Form
     {
+        int idCliente;
         string usuarioActual;
-        private string rolActual;
+        string rolActual;
 
-        public frmInicioCliente(string usuario, string rol)
+        public frmInicioCliente(int idCliente,string usuario, string rol)
         {
             InitializeComponent();
-            usuarioActual = usuario;
-            rolActual = rol;
+            this.idCliente = idCliente;
+            this.usuarioActual = usuario;
+            this.rolActual = rol;
         }
 
         private void frmInicioCliente_Load(object sender, EventArgs e)
@@ -40,10 +42,11 @@ namespace Lab4_Farmacia
 
         private void pedidosToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            frmPedidosCli pedidosCli = new frmPedidosCli(usuarioId);
+            frmPedidosCli pedidosCli = new frmPedidosCli(idCliente, usuarioActual,rolActual);
             pedidosCli.MdiParent = this;
             pedidosCli.WindowState= FormWindowState.Maximized;
             pedidosCli.Show();
         }
     }
 }
+

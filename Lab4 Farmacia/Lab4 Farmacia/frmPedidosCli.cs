@@ -10,12 +10,16 @@ namespace Lab4_Farmacia
     public partial class frmPedidosCli : Form
     {
         private int idCliente;
-        private string usuarioCliente;
-        public frmPedidosCli(int idCliente, string usuarioCliente)
+        private string usuarioActual;
+        private string rol;
+
+        public frmPedidosCli(int idCliente, string usuarioActual, string rol) 
         {
             InitializeComponent();
             this.idCliente = idCliente;
-            this.usuarioCliente = usuarioCliente;
+            this.usuarioActual = usuarioActual;
+            this.rol = rol;
+            //this.usuarioCliente = usuarioCliente;
         }
 
         private void frmPedidosCli_Load_1(object sender, EventArgs e)
@@ -25,7 +29,7 @@ namespace Lab4_Farmacia
             dgvInv.CellClick += dgvMedicamentos_CellClick;  
 
             CargarMedicamentos();
-            CargarPedidosCliente(usuarioCliente);
+            CargarPedidosCliente(usuarioActual);
 
             dgvInv.ClearSelection();                         
             dgvInv.CurrentCell = null;
@@ -33,7 +37,7 @@ namespace Lab4_Farmacia
             txtNom.ReadOnly = true;
         }
 
-        private void CargarPedidosCliente(string usuarioCliente)
+        private void CargarPedidosCliente(string idCliente)
         {
 
             try
@@ -42,7 +46,7 @@ namespace Lab4_Farmacia
 
                 DataTable dt = TraerPedidos();
                 DataView dv = new DataView(dt);
-                dv.RowFilter = $"usuario_cliente = '{usuarioCliente}'";
+                dv.RowFilter = $"usuario_cliente = '{usuarioActual}'";
 
                 foreach (DataRowView row in dv)
                 {
@@ -232,7 +236,7 @@ namespace Lab4_Farmacia
 
                 int idPedidoNuevo = ObtenerUltimoPedidoCliente(idCliente);
                 CargarMedicamentos();
-                CargarPedidosCliente(usuarioCliente);
+                CargarPedidosCliente(usuarioActual);
 
                 int idxInv = BuscarFilaPorValor(dgvInv, "ID", idMedicamento);
                 SeleccionarYEnfocarFila(dgvInv, idxInv, "nombre");

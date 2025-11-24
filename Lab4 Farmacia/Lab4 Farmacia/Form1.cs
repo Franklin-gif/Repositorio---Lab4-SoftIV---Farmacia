@@ -37,7 +37,7 @@ namespace Lab4_Farmacia
                 {
                     using (NpgsqlConnection conn = ConexionBd.ObtenerConexion())
                     {
-                        string query = "SELECT usuario, tipo_usuario FROM usuarios WHERE usuario=@u AND clave=@c";
+                        string query = "SELECT id, usuario, tipo_usuario FROM usuarios WHERE usuario=@u AND clave=@c";
 
                         using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                         {
@@ -54,8 +54,9 @@ namespace Lab4_Farmacia
                                 }
 
                                 // ?? Obtener datos del usuario
-                                string nombreUsuario = reader.GetString(0);
-                                string tipoUsuario = reader.GetString(1);
+                                int idUsuario = reader.GetInt32(0);
+                                string nombreUsuario = reader.GetString(1);
+                                string tipoUsuario = reader.GetString(2);
 
                                 MessageBox.Show($"Bienvenido {nombreUsuario} ({tipoUsuario})", "Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -68,7 +69,7 @@ namespace Lab4_Farmacia
                                 }
                                 else if (tipoUsuario == "Cliente")
                                 {
-                                    frmInicioCliente frmCliente = new frmInicioCliente(nombreUsuario,tipoUsuario);
+                                    frmInicioCliente frmCliente = new frmInicioCliente(idUsuario,nombreUsuario,tipoUsuario);
                                     frmCliente.Show();
                                     LimpiarCampos();
                                 }
