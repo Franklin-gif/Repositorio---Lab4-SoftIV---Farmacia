@@ -19,7 +19,7 @@ namespace Lab4_Farmacia
             this.idCliente = idCliente;
             this.usuarioActual = usuarioActual;
             this.rol = rol;
-            //this.usuarioCliente = usuarioCliente;
+
         }
 
         private void frmPedidosCli_Load_1(object sender, EventArgs e)

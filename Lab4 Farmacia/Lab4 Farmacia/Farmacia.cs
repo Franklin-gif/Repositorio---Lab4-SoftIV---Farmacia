@@ -45,7 +45,11 @@ namespace Lab4_Farmacia
             {
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                return dt;
+
+                var dv = new DataView(dt) { RowFilter = "cantidad > 0" };
+
+                return dv.ToTable();
+
             }
         }
         public static void ModificarMedicamento(int id, string nombre, string descripcion, int cantidad, decimal precio, byte[] imagen)
